@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORTO STRATEGY DECK 2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Utilities & Reset */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Chart Container Strategy */
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        /* Brutalist Utilities */
+        .border-thick {
+            border: 2px solid #000000;
+        }
+        
+        .border-b-thick {
+            border-bottom: 2px solid #000000;
+        }
+
+        .border-t-thick {
+            border-top: 2px solid #000000;
+        }
+
+        .tracking-tightest {
+            letter-spacing: -0.05em;
+        }
+
+        .font-stretch-expanded {
+            font-stretch: expanded;
+        }
+
+        /* Utility for black buttons hover */
+        .btn-brutal:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+            border: 1px solid #000000;
+        }
+        
+        /* Selection color */
+        ::selection {
+            background: #000000;
+            color: #FFFFFF;
+        }
+    </style>
+    
+    <!-- Chosen Palette: Monochrome (Black #000, White #FFF, Grays #333/#CCC) -->
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white border-b-thick border-black px-4 py-4 md:px-8 flex justify-between items-center">
+        <div class="w-32 md:w-40">
+            <img src="https://ortobrand.com/cdn/shop/files/orto_black_97ee1155-7a95-463d-bf94-fad0fa1a6c61.png?v=1740656152&width=160" alt="ORTO LOGO" class="block w-full h-auto">
+        </div>
+        <div class="text-right">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-gray-500">Document Type</h2>
+            <h1 class="text-sm md:text-base font-black uppercase tracking-tighter">STRATEGY DECK 2026</h1>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="px-4 py-12 md:py-16 md:px-8 border-b-thick border-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-end justify-between mb-6">
+                <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
+                    SALES<br>STRATEGY
+                </h1>
+                <div class="mt-8 md:mt-0 text-right">
+                    <div class="inline-block border border-black px-4 py-2 mb-2 bg-white text-black">
+                        <span class="font-mono text-xs uppercase font-bold">Data: Gennaio - Marzo 2026</span>
+                    </div>
+                    <p class="font-bold text-xl uppercase">Q1 Plan</p>
+                    <p class="font-mono text-xs text-gray-500 uppercase tracking-widest">Tactical Execution</p>
+                </div>
+            </div>
+            <p class="max-w-3xl text-lg font-medium leading-relaxed text-gray-700 border-l-4 border-black pl-6 mt-8">
+                Il piano si concentra sulla conversione della base utenti esistente e sull'acquisizione di nuovi lead attraverso una scontistica progressiva. Parallelamente, sfrutteremo il periodo di San Valentino per alzare lo scontrino medio tramite bundle strategici.
+            </p>
+        </div>
+    </header>
+
+    <!-- KPI / PHASES GRID -->
+    <section class="grid grid-cols-1 md:grid-cols-4 border-b-thick border-black">
+        <!-- Phase 1 -->
+        <div class="p-8 border-b md:border-b-0 md:border-r border-black hover:bg-neutral-50 transition duration-300">
+            <h3 class="font-mono text-xs uppercase text-gray-500 mb-2">Gennaio</h3>
+            <h2 class="text-2xl font-black uppercase mb-4">START</h2>
+            <div class="space-y-3">
+                <div class="flex justify-between border-b border-gray-200 pb-1">
+                    <span class="font-bold text-sm">Sito Pubblico</span>
+                    <span class="font-mono text-sm">-20%</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-200 pb-1">
+                    <span class="font-bold text-sm">Newsletter</span>
+                    <span class="font-mono text-sm bg-black text-white px-1">-10% Extra</span>
+                </div>
+                <div class="pt-2 text-right">
+                    <span class="text-xs font-mono text-gray-500 uppercase mr-2">Totale Iscritti</span>
+                    <span class="font-black text-lg">-30%</span>
+                </div>
+                <p class="text-xs text-gray-600 leading-snug mt-2">
+                    L'obiettivo è incentivare l'iscrizione alla newsletter offrendo un vantaggio immediato rispetto al pubblico.
+                </p>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="p-8 border-b md:border-b-0 md:border-r border-black hover:bg-neutral-50 transition duration-300">
+            <h3 class="font-mono text-xs uppercase text-gray-500 mb-2">Feb 1-14</h3>
+            <h2 class="text-2xl font-black uppercase mb-4">BUNDLE</h2>
+            <div class="space-y-3">
+                <p class="text-sm font-medium leading-relaxed">
+                    Creazione di bundle da <strong>2 paia</strong> basati sull'analisi dati "Golden Gift" (prodotti acquistati spesso insieme).
+                </p>
+                <p class="text-xs text-gray-600 leading-relaxed border-t border-gray-200 pt-2 mt-2">
+                    Utilizzeremo un Tone of Voice leggermente più emozionale per San Valentino, posizionando il bundle come regalo perfetto.
+                </p>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="p-8 border-b md:border-b-0 md:border-r border-black hover:bg-neutral-50 transition duration-300">
+            <h3 class="font-mono text-xs uppercase text-gray-500 mb-2">Fine Febbraio</h3>
+            <h2 class="text-2xl font-black uppercase mb-4">FLASH</h2>
+            <div class="space-y-3">
+                <div class="flex justify-between border-b border-gray-200 pb-1">
+                    <span class="font-bold text-sm">Sito Pubblico</span>
+                    <span class="font-mono text-sm">-30%</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-200 pb-1">
+                    <span class="font-bold text-sm">Newsletter</span>
+                    <span class="font-mono text-sm bg-black text-white px-1">-10% Extra</span>
+                </div>
+                <div class="pt-2 text-right">
+                    <span class="text-xs font-mono text-gray-500 uppercase mr-2">Totale Flash</span>
+                    <span class="font-black text-lg">-40%</span>
+                </div>
+                <p class="text-xs text-gray-600 leading-snug mt-2">
+                    Push finale per liquidare l'inventario rimasto con una leva aggressiva limitata nel tempo.
+                </p>
+            </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="p-8 hover:bg-neutral-800 transition duration-300 bg-black text-white">
+            <h3 class="font-mono text-xs uppercase text-gray-400 mb-2">Marzo</h3>
+            <h2 class="text-2xl font-black uppercase mb-4">EXTRA</h2>
+            <div class="space-y-3">
+                <p class="text-sm font-medium leading-relaxed border-b border-gray-700 pb-2">
+                    Riservato esclusivamente al segmento <strong>"Hot Funnel"</strong>: utenti iscritti alla "Ruota" (12-31 Dicembre) che non hanno ancora acquistato.
+                </p>
+                <div class="flex justify-between items-center pt-2">
+                    <span class="font-bold text-gray-400 text-xs">OFFERTA PRIVATA</span>
+                    <span class="font-mono text-white font-bold text-lg">-30%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA VISUALIZATION SECTION -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 border-b-thick border-black">
+        
+        <!-- CHART: Discount Progression -->
+        <div class="p-8 lg:border-r border-black">
+            <div class="mb-6">
+                <h2 class="text-xl font-black uppercase tracking-tight mb-2">PROGRESSIONE SCONTI</h2>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Il grafico illustra il differenziale di sconto tra un utente anonimo (Sito) e un iscritto alla Newsletter nelle varie fasi. Questo gap è la leva principale per l'acquisizione contatti.
+                </p>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="discountChart"></canvas>
+            </div>
+        </div>
+
+        <!-- BUNDLE & CRO STRATEGY -->
+        <div class="p-8 bg-neutral-50 flex flex-col gap-8">
+            
+            <!-- Bundle Note -->
+            <div>
+                <h2 class="text-xl font-black uppercase tracking-tight mb-3">OPPORTUNITÀ BUNDLE</h2>
+                <div class="bg-white border border-gray-300 p-5">
+                    <h3 class="font-bold text-sm uppercase mb-2">Nota Tecnica sul Pricing</h3>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        È fondamentale calcolare correttamente il prezzo del bundle. Per essere percepito come un vantaggio reale, il prezzo del pacchetto (2 paia) deve risultare inferiore rispetto all'acquisto dei due prodotti separati applicando lo sconto saldi corrente.
+                    </p>
+                    <p class="text-xs font-mono text-gray-500 mt-3">Target Margin: > 5% di vantaggio per il cliente.</p>
+                </div>
+            </div>
+
+            <!-- UX Strategy -->
+            <div>
+                 <h2 class="text-xl font-black uppercase tracking-tight mb-3">OTTIMIZZAZIONE SITO (CRO)</h2>
+                 <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                     Abbiamo previsto interventi mirati sull'interfaccia per massimizzare il tasso di conversione durante i picchi di traffico:
+                 </p>
+                 <div class="space-y-4">
+                     <div class="flex gap-4 items-start">
+                         <div class="w-1 h-full min-h-[20px] bg-black mt-1"></div>
+                         <div>
+                             <h4 class="font-bold text-sm uppercase">Social Proof & Urgenza</h4>
+                             <p class="text-sm text-gray-600">Inserimento di un contatore vendite/visualizzazioni live nella pagina prodotto. L'obiettivo è comunicare in modo trasparente ma efficace che i prodotti sono richiesti, riducendo il tempo di decisione dell'utente.</p>
+                         </div>
+                     </div>
+                     <div class="flex gap-4 items-start">
+                         <div class="w-1 h-full min-h-[20px] bg-black mt-1"></div>
+                         <div>
+                             <h4 class="font-bold text-sm uppercase">Refresh Home Page</h4>
+                             <p class="text-sm text-gray-600">Aggiornamento dei banner principali per comunicare immediatamente la fase attiva (Start, Bundle o Flash) appena l'utente atterra sul sito.</p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMAIL TACTICAL PLAN -->
+    <section class="bg-white">
+        <!-- Controls -->
+        <div class="p-6 border-b border-black flex flex-col md:flex-row justify-between items-center gap-4 bg-black text-white">
+            <div>
+                <h2 class="text-xl font-black uppercase tracking-tight">PIANO EMAIL MARKETING</h2>
+                <p class="text-xs text-gray-400 font-mono mt-1">CALENDARIZZAZIONE E CONTENUTI</p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="filterEmails('all')" class="font-mono text-xs uppercase px-4 py-2 bg-white text-black font-bold border border-white hover:bg-black hover:text-white hover:border-white transition">TUTTI</button>
+                <button onclick="filterEmails('valentine')" class="font-mono text-xs uppercase px-4 py-2 border border-white hover:bg-white hover:text-black transition">SAN VALENTINO</button>
+                <button onclick="filterEmails('flash')" class="font-mono text-xs uppercase px-4 py-2 border border-white hover:bg-white hover:text-black transition">FLASH SALE</button>
+            </div>
+        </div>
+
+        <!-- Table Header -->
+        <div class="hidden md:grid grid-cols-12 gap-6 px-8 py-4 border-b border-black bg-neutral-100 font-mono text-xs font-bold uppercase tracking-wider text-gray-600">
+            <div class="col-span-2">Data / Fase</div>
+            <div class="col-span-3">Segmento Target</div>
+            <div class="col-span-4">Hook (Oggetto/Titolo)</div>
+            <div class="col-span-3">Elementi Dinamici</div>
+        </div>
+
+        <!-- Email Rows Container -->
+        <div id="emailContainer" class="divide-y divide-gray-200">
+            <!-- Content injected by JS -->
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white border-t-thick border-black p-8 md:p-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h2 class="text-2xl font-black uppercase tracking-tighter">ORTO BRAND</h2>
+                <p class="font-mono text-xs text-gray-500 mt-2">EST. 2026 // GLOBAL</p>
+            </div>
+            
+            <div class="text-center md:text-right">
+                <p class="font-mono text-xs uppercase tracking-widest text-gray-500 mb-1">Confidential Strategy Deck</p>
+                <p class="font-mono text-xs font-bold">PRESENTATION BUILT BY MIRAI STUDIO</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // --- DATA ---
+        const emails = [
+            { date: "12 Gen", phase: "LANCIO", target: "Tutta la Lista", hook: "Il tuo accesso privilegiato", dynamic: "Banner Codice Extra -10%", tag: "launch" },
+            { date: "14 Gen", phase: "RECOVERY", target: "Visite Prodotto (48h)", hook: "Le abbiamo tenute da parte per te", dynamic: "Feed Prodotto visto con Prezzo scontato (-30%)", tag: "retention" },
+            { date: "17 Gen", phase: "SOCIAL PROOF", target: "Non ha ancora acquistato", hook: "Le più scelte della settimana", dynamic: "Griglia Best Seller dinamica + 'Acquistate da X persone'", tag: "launch" },
+            { date: "20 Gen", phase: "AOV BOOSTER", target: "Già Clienti (LTV)", hook: "Altri colori delle tue scarpe preferite?", dynamic: "Suggerimento prodotti complementari", tag: "retention" },
+            { date: "24 Gen", phase: "MID CALL", target: "Prospect (Mai acquistato)", hook: "Il tuo Extra -10% è ancora qui", dynamic: "Prodotti più visualizzati dall'utente", tag: "launch" },
+            { date: "29 Gen", phase: "FOMO", target: "Carrello Abbandonato", hook: "Altri le stanno guardando...", dynamic: "Focus scarsità taglie: 'X utenti hanno questo modello nel carrello'", tag: "retention" },
+            { date: "01 Feb", phase: "VALENTINE", target: "Tutta la Lista", hook: "Orto for Two: Il Bundle Esclusivo", dynamic: "Selezione Bundle basata su affinità prodotti (Golden Gift)", tag: "valentine" },
+            { date: "04 Feb", phase: "GIFT GUIDE", target: "Segmenti Uomo/Donna", hook: "Non il solito regalo", dynamic: "Proposta bundle specifica per genere + Prezzo Vantaggio", tag: "valentine" },
+            { date: "11 Feb", phase: "LAST CALL", target: "Ritardatari (Last Minute)", hook: "San Valentino: Consegna Garantita", dynamic: "Focus logistico su spedizione veloce + Bundle", tag: "valentine" },
+            { date: "14 Feb", phase: "BRAND LOVE", target: "Clienti Feb + VIP", hook: "Grazie di far parte della nostra storia", dynamic: "No-sell. Immagine ispirazionale (Brand Building)", tag: "valentine" },
+            { date: "20 Feb", phase: "FLASH SALE", target: "Tutta la Lista", hook: "Prezzi finali attivati", dynamic: "Annuncio nuovo prezzo finale (-40% Totale)", tag: "flash" },
+            { date: "25 Feb", phase: "CLOSE", target: "Cliccato ma non comprato", hook: "Ultime 48 ore per il -40%", dynamic: "Urgenza finale: 'Non lasciare che qualcun altro prenda il tuo paio'", tag: "flash" },
+            { date: "Marzo", phase: "HOT FUNNEL", target: "Ruota Dicembre (No acquisto)", hook: "Riservato: Il tuo vantaggio continua", dynamic: "Codice Privato -30% + 'Ti abbiamo visto...'", tag: "retention" },
+            { date: "Marzo", phase: "POST-SALES", target: "Acquirenti Saldi", hook: "Benvenuto nel club", dynamic: "Guida alla cura della scarpa (Retention)", tag: "retention" }
+        ];
+
+        // --- RENDER EMAILS ---
+        function renderEmails(data) {
+            const container = document.getElementById('emailContainer');
+            container.innerHTML = '';
+
+            data.forEach((email, index) => {
+                const row = document.createElement('div');
+                row.className = `grid grid-cols-1 md:grid-cols-12 gap-4 px-6 md:px-8 py-5 hover:bg-neutral-50 transition items-start animate-fade-in`;
+                
+                row.innerHTML = `
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="font-black text-sm uppercase text-black">${email.date}</div>
+                        <span class="inline-block mt-1 font-mono text-[10px] uppercase px-2 py-0.5 border border-gray-300 rounded-sm text-gray-500">
+                            ${email.phase}
+                        </span>
+                    </div>
+                    <div class="col-span-1 md:col-span-3">
+                        <span class="font-medium text-sm text-gray-800">${email.target}</span>
+                    </div>
+                    <div class="col-span-1 md:col-span-4">
+                        <span class="font-bold text-sm text-black">"${email.hook}"</span>
+                    </div>
+                    <div class="col-span-1 md:col-span-3">
+                        <p class="text-xs text-gray-500 font-mono leading-tight">
+                            ${email.dynamic}
+                        </p>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function filterEmails(filter) {
+            if (filter === 'all') {
+                renderEmails(emails);
+            } else {
+                const filtered = emails.filter(e => e.tag === filter);
+                renderEmails(filtered);
+            }
+        }
+
+        // --- CHART JS CONFIG ---
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#666666';
+        Chart.defaults.scale.grid.color = '#f0f0f0';
+
+        const ctx = document.getElementById('discountChart').getContext('2d');
+        
+        // Data for chart showing the GAP between public and member
+        const labels = ['START (Gen)', 'FLASH (Fine Feb)', 'EXTRA (Mar)'];
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Sconto Sito Pubblico',
+                        data: [20, 30, 0], 
+                        backgroundColor: '#e5e5e5', // Light Gray
+                        borderRadius: 2,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    },
+                    {
+                        label: 'Sconto Totale Iscritti (Con Extra)',
+                        data: [30, 40, 30], 
+                        backgroundColor: '#171717', // Black
+                        borderRadius: 2,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        align: 'end',
+                        labels: {
+                            usePointStyle: true,
+                            boxWidth: 8,
+                            boxHeight: 8,
+                            font: {
+                                size: 11,
+                                family: 'Inter',
+                                weight: 500
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#000000',
+                        titleFont: { family: 'Inter', size: 13, weight: 700 },
+                        bodyFont: { family: 'monospace', size: 12 },
+                        cornerRadius: 2,
+                        padding: 10,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': -' + context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        ticks: {
+                            callback: function(value) { return '-' + value + '%' },
+                            font: { size: 10 }
+                        },
+                        grid: {
+                            borderDash: [4, 4],
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: { size: 11, weight: 600 }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderEmails(emails);
+        });
+
+    </script>
+</body>
+</html>
