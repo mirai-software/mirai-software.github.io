@@ -3,486 +3,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic Audit & Performance Review | IamOnStage</title>
+    <title>Strategia Evoluzione CRM | Demblee</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        bg: {
-                            main: '#09090b', // Zinc 950
-                            panel: '#18181b', // Zinc 900
-                            surface: '#27272a' // Zinc 800
-                        },
-                        brand: {
-                            primary: '#6366f1', // Mirai Indigo
-                            secondary: '#ec4899', // Pink/Magenta accenti
-                            accent: '#ef4444', // Red for critical alerts
-                            success: '#10b981' // Green for KPIs
-                        }
-                    },
-                    boxShadow: {
-                        'glow': '0 0 20px rgba(99, 102, 241, 0.15)',
-                        'glow-red': '0 0 20px rgba(239, 68, 68, 0.15)'
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #09090b; color: #a1a1aa; -webkit-font-smoothing: antialiased; }
-        .text-heading { color: #f4f4f5; }
-        .glass-card {
-            background: rgba(24, 24, 27, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .data-point { font-family: 'JetBrains Mono', monospace; }
+        /* BASE STYLES */
+        body { font-family: 'Roboto', sans-serif; background-color: #fff; color: #000; overflow-x: hidden; }
+        h1, h2, h3, h4, .font-display { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        /* Timeline connectors for the funnel */
-        .timeline-line {
-            position: absolute;
-            left: 24px;
-            top: 50px;
-            bottom: -30px;
-            width: 1px;
-            background: linear-gradient(to bottom, #3f3f46 50%, transparent 100%);
-        }
-        .timeline-item:last-child .timeline-line { display: none; }
+        /* BRUTALIST UI ELEMENTS */
+        .border-thick { border: 2px solid #000; }
+        .box-shadow-hard { box-shadow: 6px 6px 0px 0px #000; }
+        .box-shadow-hover:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px 0px #000; }
+        
+        /* NAVIGATION */
+        .nav-link { position: relative; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 1px; color: #666; transition: color 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #000; }
+        .nav-link.active::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: #000; }
 
-        @media print {
-            body { background-color: #fff; color: #000; }
-            .glass-card { background: #fff; border: 1px solid #ddd; color: #000; }
-            .text-heading { color: #000; }
-            .timeline-line { background: #ccc; }
+        /* ANIMATIONS */
+        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* IMAGE CONTAINERS */
+        .screen-mockup {
+            background: #f0f0f0;
+            border: 3px solid #000;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 8px 8px 0px 0px #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-in; /* Indica che è cliccabile */
+            transition: all 0.3s ease;
         }
+        .screen-mockup img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .screen-mockup:hover {
+            box-shadow: 12px 12px 0px 0px #000; /* Effetto hover sul box */
+            transform: translate(-2px, -2px);
+        }
+        .screen-mockup:hover img {
+            transform: scale(1.02);
+        }
+
+        /* LIGHTBOX STYLES */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border: 2px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Oswald', sans-serif;
+            transition: color 0.3s;
+        }
+        .lightbox-close:hover { color: #ccc; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fff; }
+        ::-webkit-scrollbar-thumb { background: #000; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="flex flex-col min-h-screen">
 
-    <!-- NAVIGATION / HEADER -->
-    <header class="border-b border-white/5 bg-bg-main sticky top-0 z-50 backdrop-blur-xl bg-opacity-80">
-        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <!-- Mirai Logo (Text Only) -->
-                <div class="flex items-center gap-2">
-                    <span class="text-white font-semibold tracking-tight text-sm uppercase">Mirai Analysis</span>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur z-50 border-b-2 border-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-4">
+                    <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/Logo_Demblee_bk_5781616a-a02f-44de-8e92-8b02daf9b046.png?v=1761579991" alt="Demblee Logo" class="h-8 w-auto object-contain">
+                    <span class="hidden md:block text-xs font-bold uppercase tracking-widest border-l-2 border-black pl-4">CRM Evolution Strategy</span>
+                </div>
+                
+                <!-- Menu -->
+                <div class="flex gap-8">
+                    <a href="#contesto" class="nav-link">1. Contesto</a>
+                    <a href="#soluzioni" class="nav-link">2. Soluzioni</a>
+                    <a href="#economics" class="nav-link">3. Budget</a>
                 </div>
             </div>
+        </div>
+    </nav>
 
-            <div class="flex items-center gap-4">
-                <div class="text-right hidden sm:block">
-                    <h1 class="text-white text-sm font-bold leading-tight">IamOnStage</h1>
-                    <p class="text-[10px] text-zinc-500 uppercase tracking-wide">Q4 2024 - Q1 2025 Review</p>
-                </div>
-                <!-- CLIENT LOGO -->
-                <div class="w-10 h-10 rounded-lg overflow-hidden border border-white/10 bg-white">
-                    <img src="https://www.f6s.com/content-resource/products/product_35d8f387d4934b6ee53ce5c9a1d8c1d7/67614bfb3cc5b" alt="IamOnStage Logo" class="w-full h-full object-contain p-1">
-                </div>
-            </div>
+    <!-- HERO SECTION -->
+    <header class="pt-32 pb-20 px-4 max-w-7xl mx-auto">
+        <div class="max-w-4xl fade-in-up">
+            <span class="bg-black text-white px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4 inline-block">Proposta Strategica 2026</span>
+            <h1 class="text-5xl md:text-7xl font-bold leading-none mb-6">ECOSISTEMA<br>CLIENTE CENTRALIZZATO</h1>
+            <p class="text-xl text-gray-600 font-light max-w-3xl leading-relaxed">
+                <span class="font-bold text-black">IL PIANO:</span> Trasformare il database Demblee da semplice lista di contatti a motore di crescita.<br>
+                <span class="font-bold text-black">PERCHÉ:</span> Per ridurre i costi di acquisizione (CAC) e aumentare la frequenza di acquisto sui clienti esistenti (LTV).
+            </p>
         </div>
     </header>
 
-    <main class="flex-grow max-w-5xl mx-auto px-6 py-12 space-y-20">
-
-        <!-- CAPITOLO 1: EXECUTIVE SUMMARY -->
-        <section>
-            <div class="flex flex-col md:flex-row gap-10 items-start">
-                <div class="flex-1 space-y-6">
-                    <span class="text-brand-primary text-xs font-bold uppercase tracking-widest">01 • Executive Summary</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-heading leading-tight">Stato dell'Acquisizione e<br> Analisi dei Colli di Bottiglia</h2>
-                    
-                    <div class="prose prose-invert prose-zinc max-w-none">
-                        <p class="text-lg leading-relaxed">
-                            Il presente documento analizza le performance delle campagne di acquisizione Meta e Google attivate nel periodo <strong>Ottobre 2024 — Gennaio 2025</strong>. 
-                        </p>
-                        <p>
-                            Dai dati emerge uno scenario dicotomico: da un lato, l'infrastruttura di marketing (Ads e Landing Page) ha raggiunto livelli di efficienza ottimali, con un dimezzamento dei costi di conversione. Dall'altro, il <strong>processo di onboarding del software</strong> agisce come un freno strutturale, dissipando fino all'80% del valore generato a monte.
-                        </p>
-                    </div>
+    <!-- 1. CONTESTO (WHY) -->
+    <section id="contesto" class="py-20 border-t-2 border-black bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            
+            <!-- Text Content -->
+            <div class="fade-in-up delay-100 col-span-2 md:col-span-1">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-black text-white flex items-center justify-center text-2xl font-bold font-display">01</div>
+                    <h2 class="text-4xl font-bold">PERCHÉ ORA?</h2>
                 </div>
-
-                <!-- High Level KPIs Grid -->
-                <div class="w-full md:w-80 grid grid-cols-1 gap-4">
-                    <div class="glass-card p-5 rounded-xl border-l-2 border-brand-success relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-trending-down text-4xl text-brand-success"></i></div>
-                        <p class="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">Costo Conversione (Google)</p>
-                        <p class="text-3xl text-heading font-mono font-medium">€2.32</p>
-                        <p class="text-xs text-brand-success mt-2 flex items-center gap-1">
-                            <i class="fas fa-arrow-down"></i> -51% vs Ottobre (€4.76)
-                        </p>
-                    </div>
-                    
-                    <div class="glass-card p-5 rounded-xl border-l-2 border-brand-primary relative overflow-hidden group">
-                        <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-mouse-pointer text-4xl text-brand-primary"></i></div>
-                        <p class="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-1">CTR Ads (Google)</p>
-                        <p class="text-3xl text-heading font-mono font-medium">5.66%</p>
-                        <p class="text-xs text-brand-primary mt-2 flex items-center gap-1">
-                            <i class="fas fa-arrow-up"></i> Pertinenza elevata
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPITOLO 2: ANALISI FUNNEL -->
-        <section class="space-y-8">
-            <div class="border-b border-white/5 pb-4 mb-8">
-                <span class="text-brand-primary text-xs font-bold uppercase tracking-widest">02 • Deep Dive Analitico</span>
-                <h3 class="text-2xl font-bold text-heading mt-2">Mappatura delle Dispersioni (Funnel Analysis)</h3>
-                <p class="text-sm text-zinc-400 mt-2 max-w-2xl">
-                    Analisi sequenziale del comportamento utente. L'obiettivo è isolare dove la perdita di utenti è fisiologica (interesse) e dove è patologica (frizione tecnica).
-                </p>
-            </div>
-
-            <div class="relative space-y-0">
                 
-                <!-- STEP 1: AWARENESS -->
-                <div class="timeline-item relative pl-16 pb-12">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-bg-surface border border-white/10 flex items-center justify-center text-brand-primary font-bold shadow-glow z-10">1</div>
-                    
-                    <div class="glass-card p-6 rounded-xl">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h4 class="text-heading font-bold text-lg">Top of Funnel: Impression & Click</h4>
-                                <p class="text-sm text-zinc-500">Qualità del traffico in ingresso</p>
-                            </div>
-                            <span class="px-2 py-1 bg-brand-success/10 text-brand-success text-xs rounded border border-brand-success/20">Performance: Ottimale</span>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <p class="text-sm text-zinc-300 mb-2"><strong>Google Ads</strong> (High Intent)</p>
-                                <div class="flex items-baseline gap-2">
-                                    <span class="text-2xl text-heading font-mono">2.17%</span>
-                                    <span class="text-xs text-zinc-500">CTR Medio</span>
-                                </div>
-                                <p class="text-xs text-zinc-500 mt-2">Volume mirato, alta intenzione di ricerca.</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-zinc-300 mb-2"><strong>Meta Ads</strong> (Discovery)</p>
-                                <div class="flex items-baseline gap-2">
-                                    <span class="text-2xl text-heading font-mono">0.81% - 1.35%</span>
-                                    <span class="text-xs text-zinc-500">CTR Medio</span>
-                                </div>
-                                <p class="text-xs text-zinc-500 mt-2">Volume elevato a basso costo (CPM ridotti).</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 2: INTEREST -->
-                <div class="timeline-item relative pl-16 pb-12">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-bg-surface border border-white/10 flex items-center justify-center text-zinc-400 font-bold z-10">2</div>
-                    
-                    <div class="glass-card p-6 rounded-xl">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h4 class="text-heading font-bold text-lg">Landing Page: Interest & Desire</h4>
-                                <p class="text-sm text-zinc-500">Capacità della pagina di convertire il visitatore</p>
-                            </div>
-                            <span class="px-2 py-1 bg-brand-success/10 text-brand-success text-xs rounded border border-brand-success/20">Performance: Eccellente</span>
-                        </div>
-
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <div class="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-brand-success w-[51%]"></div>
-                                </div>
-                                <span class="text-brand-success font-bold font-mono">51.8% CR (Google)</span>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-zinc-500 w-[33%]"></div>
-                                </div>
-                                <span class="text-zinc-400 font-bold font-mono">33% - 50% CR (Meta)</span>
-                            </div>
-                            <div class="p-3 bg-zinc-900/50 rounded border border-white/5 mt-2">
-                                <p class="text-sm text-zinc-300">
-                                    <i class="fas fa-info-circle text-brand-primary mr-2"></i>
-                                    <strong>Insight:</strong> Il tasso di conversione della Landing Page (Click su Download) è nettamente sopra la media di mercato. Il drop-off della sessione è solo del 12-16%. Il messaggio "risuona" con l'audience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 3: THE WALL (CRITICAL) -->
-                <div class="timeline-item relative pl-16 pb-12">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-brand-accent text-white flex items-center justify-center font-bold z-10 shadow-glow-red animate-pulse">!</div>
-                    
-                    <div class="bg-gradient-to-r from-red-950/30 to-transparent border border-brand-accent/30 p-6 rounded-xl">
-                        <div class="flex justify-between items-start mb-6">
-                            <div>
-                                <h4 class="text-white font-bold text-lg flex items-center gap-2">
-                                    <i class="fas fa-exclamation-triangle text-brand-accent"></i> 
-                                    Il Punto di Rottura: L'Onboarding
-                                </h4>
-                                <p class="text-sm text-red-200/60">Fase: Click Download → Licenza Ricevuta</p>
-                            </div>
-                            <span class="px-2 py-1 bg-brand-accent/10 text-brand-accent text-xs rounded border border-brand-accent/20 font-bold uppercase">Criticità Alta</span>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <!-- Data Visualization -->
-                            <div class="space-y-6">
-                                <div>
-                                    <div class="flex justify-between text-xs uppercase font-bold text-zinc-500 mb-1">
-                                        <span>Meta Drop-off</span>
-                                        <span class="text-brand-accent">~80% Persi</span>
-                                    </div>
-                                    <div class="w-full h-3 bg-zinc-800 rounded-full">
-                                        <div class="h-full bg-brand-accent w-[20%] rounded-full"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between text-xs uppercase font-bold text-zinc-500 mb-1">
-                                        <span>Google Drop-off</span>
-                                        <span class="text-brand-accent">73% Persi</span>
-                                    </div>
-                                    <div class="w-full h-3 bg-zinc-800 rounded-full">
-                                        <div class="h-full bg-brand-accent w-[27%] rounded-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Analysis of Friction -->
-                            <div class="bg-bg-main p-5 rounded-lg border border-white/5">
-                                <p class="text-xs text-zinc-500 uppercase font-bold mb-3">Workflow Attuale (9 Step)</p>
-                                <ol class="space-y-2 text-xs text-zinc-400 list-decimal list-inside marker:text-brand-accent">
-                                    <li>Creazione Profilo</li>
-                                    <li>Inserimento Dati</li>
-                                    <li>Attesa Email</li>
-                                    <li><strong class="text-white">Double Opt-in (Uscita dal sito)</strong></li>
-                                    <li>Attesa Conferma</li>
-                                    <li>Ricezione Licenza</li>
-                                    <li>Click Link Download</li>
-                                    <li>Installazione</li>
-                                    <li>Attivazione</li>
-                                </ol>
-                                <p class="mt-3 text-xs text-red-400 font-bold">Diagnosi: Eccessivo Carico Cognitivo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 4: ACTIVATION (NEW SECTION) -->
-                <div class="timeline-item relative pl-16">
-                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-bg-surface border border-white/10 flex items-center justify-center text-zinc-400 font-bold z-10">3</div>
-                    
-                    <div class="glass-card p-6 rounded-xl">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h4 class="text-heading font-bold text-lg">Bottom of Funnel: Utenti Attivi</h4>
-                                <p class="text-sm text-zinc-500">Qualità post-installazione (Licenza -> Attivazione)</p>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-4 bg-zinc-900 rounded border-l-2 border-brand-success">
-                                <h5 class="text-white font-bold mb-1">Google Ads</h5>
-                                <p class="text-2xl font-mono text-brand-success">36.6%</p>
-                                <p class="text-xs text-zinc-500 mt-2">L'utente Google ha un intento specifico. Cerca una soluzione, la scarica e la usa. Alta motivazione.</p>
-                            </div>
-                            <div class="p-4 bg-zinc-900 rounded border-l-2 border-brand-primary">
-                                <h5 class="text-white font-bold mb-1">Meta Ads</h5>
-                                <p class="text-2xl font-mono text-brand-primary">14% - 21%</p>
-                                <p class="text-xs text-zinc-500 mt-2">L'utente Meta è "curioso". Ha scoperto il prodotto per caso. Necessita di un onboarding più fluido per non raffreddarsi.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- NEW SECTION: META TRENDS -->
-        <section class="mb-12">
-             <div class="border-b border-white/5 pb-4 mb-8">
-                <span class="text-brand-secondary text-xs font-bold uppercase tracking-widest">03 • Trend Analysis</span>
-                <h3 class="text-2xl font-bold text-heading mt-2">Focus Ecosistema Meta: Qualità vs Costi</h3>
-                <p class="text-sm text-zinc-400 mt-2">
-                    Analisi longitudinale delle campagne Meta. I dati mostrano un mercato che si satura (costi in aumento) ma un algoritmo che impara a convertire meglio.
+                <p class="text-lg mb-6 leading-relaxed font-bold">
+                    Il mercato Fashion ha un CAC (Costo Acquisizione Cliente) in aumento del +20% anno su anno. Acquisire un nuovo cliente costa 5 volte più che mantenerne uno.
                 </p>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    Come sappiamo una delle criticità di DEMBLEE è il "tempo vuoto" tra l'acquisto e la consegna (Made-to-Order). Questo vuoto genera ansia nel cliente e lavoro inutile per l'assistenza (ticket ripetitivi). Integrare questi strumenti CRM serve a:
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 border-2 border-gray-200 bg-white">
+                        <i class="fas fa-heart text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">TRANQUILLIZZARE</h4>
+                            <p class="text-sm text-gray-500">Trasformare l'attesa in esperienza positiva ("Visual Tracking").</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border-2 border-gray-200 bg-white">
+                        <i class="fas fa-clock text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">OTTIMIZZARE</h4>
+                            <p class="text-sm text-gray-500">Automatizzare il 40% delle risposte ripetitive.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border-2 border-gray-200 bg-white">
+                        <i class="fas fa-chart-line text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sm mb-1">SCALARE</h4>
+                            <p class="text-sm text-gray-500">Gestire volumi doppi senza raddoppiare lo staff.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="glass-card p-5 rounded-xl">
-                    <p class="text-xs text-zinc-500 uppercase font-bold">Conversion Rate Trend</p>
-                    <div class="mt-2 flex items-center gap-2">
-                        <span class="text-sm text-zinc-600">27%</span>
-                        <i class="fas fa-arrow-right text-xs text-zinc-700"></i>
-                        <span class="text-xl text-brand-success font-bold font-mono">42%</span>
-                    </div>
-                    <div class="h-1 w-full bg-zinc-800 mt-3 rounded overflow-hidden">
-                        <div class="h-full bg-brand-success w-full origin-left transform scale-x-0 animate-[grow_1s_ease-out_forwards]" style="transform: scaleX(1)"></div>
-                    </div>
-                    <p class="text-[10px] text-zinc-400 mt-2">La capacità di convertire sulla landing è in costante crescita.</p>
-                </div>
-
-                <div class="glass-card p-5 rounded-xl">
-                    <p class="text-xs text-zinc-500 uppercase font-bold">CTR Trend (Calo Fisiologico)</p>
-                    <div class="mt-2 flex items-center gap-2">
-                        <span class="text-sm text-zinc-600">1.35%</span>
-                        <i class="fas fa-arrow-right text-xs text-zinc-700"></i>
-                        <span class="text-xl text-yellow-500 font-bold font-mono">0.81%</span>
-                    </div>
-                    <p class="text-[10px] text-zinc-400 mt-2">L'attrattiva iniziale cala leggermente con la frequenza.</p>
-                </div>
-
-                <div class="glass-card p-5 rounded-xl">
-                    <p class="text-xs text-zinc-500 uppercase font-bold">CPC Trend (Inflazione)</p>
-                    <div class="mt-2 flex items-center gap-2">
-                        <span class="text-sm text-zinc-600">€0.12</span>
-                        <i class="fas fa-arrow-right text-xs text-zinc-700"></i>
-                        <span class="text-xl text-red-400 font-bold font-mono">€0.26</span>
-                    </div>
-                    <p class="text-[10px] text-zinc-400 mt-2">Costo raddoppiato ma ancora molto competitivo.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPITOLO 4: OTTIMIZZAZIONE GOOGLE (EXPANDED) -->
-        <section>
-            <div class="border-b border-white/5 pb-4 mb-8">
-                <span class="text-brand-primary text-xs font-bold uppercase tracking-widest">04 • Efficienza Economica</span>
-                <h3 class="text-2xl font-bold text-heading mt-2">Risultati Ottimizzazione Google Ads</h3>
-                <p class="text-sm text-zinc-400 mt-2">
-                    Confronto granulare tra Fase 1 (Lancio) e Fase 2 (Ottimizzazione). I dati dimostrano un incremento di efficienza su tutti i KPI.
-                </p>
-            </div>
-
-            <!-- Detailed Comparison Table -->
-            <div class="glass-card rounded-xl overflow-hidden mb-8">
-                <table class="w-full text-left text-sm text-zinc-400">
-                    <thead class="bg-white/5 text-zinc-300 uppercase text-xs font-bold">
-                        <tr>
-                            <th class="px-6 py-4">Metrica</th>
-                            <th class="px-6 py-4">Fase 1 (13 Ott - 5 Nov)</th>
-                            <th class="px-6 py-4 text-white">Fase 2 (3 Dic - 14 Gen)</th>
-                            <th class="px-6 py-4 text-right">Variazione</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr>
-                            <td class="px-6 py-4 font-medium">CTR (Attrattiva)</td>
-                            <td class="px-6 py-4">2.17%</td>
-                            <td class="px-6 py-4 text-brand-primary font-bold">5.66%</td>
-                            <td class="px-6 py-4 text-right text-green-400">+160%</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-medium">CPC (Costo Traffico)</td>
-                            <td class="px-6 py-4">€2.07</td>
-                            <td class="px-6 py-4 text-white font-bold">€0.87</td>
-                            <td class="px-6 py-4 text-right text-green-400">-58%</td>
-                        </tr>
-                        <tr class="bg-brand-success/5">
-                            <td class="px-6 py-4 font-bold text-white">Costo Conversione (CPA)</td>
-                            <td class="px-6 py-4">€4.76</td>
-                            <td class="px-6 py-4 text-brand-success font-bold text-lg">€2.32</td>
-                            <td class="px-6 py-4 text-right text-brand-success font-bold">-51%</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 font-medium">Volume Conversioni</td>
-                            <td class="px-6 py-4">113</td>
-                            <td class="px-6 py-4 text-white">270</td>
-                            <td class="px-6 py-4 text-right text-white font-mono">+138%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- CAPITOLO 5: BRAND AWARENESS (META) -->
-        <section class="bg-gradient-to-br from-bg-panel to-bg-surface p-8 rounded-2xl border border-white/5 mt-12">
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="flex-1 space-y-4">
-                    <div class="flex items-center gap-2 mb-2">
-                        <i class="fab fa-instagram text-brand-secondary text-xl"></i>
-                        <h3 class="text-xl font-bold text-heading">Analisi Collaterale: Brand Equity</h3>
-                    </div>
-                    <p class="text-zinc-400 text-sm leading-relaxed">
-                        Durante la campagna di puro Traffico su Instagram (19 Nov - 14 Gen), abbiamo osservato un fenomeno significativo: una crescita organica dei follower non direttamente incentivata dall'obiettivo della campagna.
-                    </p>
-                    <ul class="space-y-2 text-sm text-zinc-300">
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-primary"></i> <strong>440 Nuovi Follower</strong> acquisiti.</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-primary"></i> <strong>€0.13</strong> Costo per visita al profilo (estremamente competitivo).</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-primary"></i> Media di <strong>10.7 follower/giorno</strong> con soli €5 di budget.</li>
-                    </ul>
-                    <div class="bg-bg-main p-3 rounded border border-white/5 inline-block">
-                        <p class="text-xs text-zinc-500 font-bold uppercase">Interpretazione</p>
-                        <p class="text-sm text-zinc-300 italic mt-1">"Il mercato convalida il prodotto. La gente non solo clicca, ma sceglie di restare connessa al brand. C'è un forte Product-Market Fit."</p>
-                    </div>
-                </div>
-                <!-- Visual Metric -->
-                <div class="w-full md:w-auto text-center">
-                    <div class="w-40 h-40 rounded-full border-4 border-brand-secondary/20 flex flex-col items-center justify-center bg-bg-main relative">
-                        <div class="absolute inset-0 rounded-full border-t-4 border-brand-secondary animate-spin duration-[3000ms]"></div>
-                        <span class="text-3xl font-bold text-white font-mono">440</span>
-                        <span class="text-[10px] text-zinc-500 uppercase tracking-widest mt-1">Nuovi Fan</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAPITOLO 6: CONCLUSIONI -->
-        <section class="space-y-6 mt-12">
-            <span class="text-brand-primary text-xs font-bold uppercase tracking-widest">06 • Sintesi & Roadmap</span>
-            <h3 class="text-2xl font-bold text-heading">Considerazioni Finali</h3>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-6 rounded-xl border-t-2 border-brand-success">
-                    <h4 class="text-white font-bold mb-2">Stato</h4>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
-                        Il motore di acquisizione è sano. Google Ads porta conversioni ad alta intenzione a costi dimezzati. Meta Ads garantisce volumi di traffico e awareness a prezzi contenuti. La Landing Page converte il 50% del traffico in interesse.
-                    </p>
-                </div>
-                <div class="glass-card p-6 rounded-xl border-t-2 border-brand-accent">
-                    <h4 class="text-white font-bold mb-2">Il Problema</h4>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
-                        L'onboarding attuale non è sostenibile per una strategia di crescita (Scale-up). Ogni euro investito in advertising viene depotenziato del 75-80% a causa della complessità tecnica di attivazione.
-                    </p>
-                </div>
-            </div>
-
-            <div class="bg-zinc-800 p-6 rounded-xl flex items-start gap-4 border border-zinc-700">
-                <i class="fas fa-lightbulb text-yellow-500 text-xl mt-1"></i>
+            <!-- Graphic/Context Area -->
+             <div class="col-span-2 md:col-span-1 flex items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded bg-white text-gray-400 text-center">
                 <div>
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-1">Azione Correttiva Richiesta</h4>
-                    <p class="text-zinc-300 text-sm mb-2">
-                        La priorità assoluta non è aumentare il budget pubblicitario, ma <strong>ridurre la frizione</strong>.
+                    <i class="fas fa-chart-pie text-6xl mb-4 text-gray-200"></i>
+                    <p class="font-display font-bold uppercase text-xl text-black">Focus sulla Retention</p>
+                    <p class="text-sm mt-2">Mentre l'acquisizione diventa più costosa,<br>l'ecosistema CRM aumenta il valore di ogni cliente.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 2. SOLUZIONI (THE 4 PILLARS) -->
+    <section id="soluzioni" class="py-20 border-t-2 border-black">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-16 fade-in-up">
+                <div class="flex items-center gap-4 mb-2">
+                    <div class="w-12 h-12 bg-black text-white flex items-center justify-center text-2xl font-bold font-display">02</div>
+                    <h2 class="text-4xl font-bold">LE SOLUZIONI</h2>
+                </div>
+                <p class="text-xl text-gray-500"></p>
+            </div>
+
+            <!-- PILASTRO A: HUB -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-start fade-in-up">
+                <!-- Visual Mockup (Grid for 2 images) -->
+                <div class="order-2 lg:order-1 grid grid-cols-2 gap-4">
+                    <div class="screen-mockup" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/customer_hub.png?v=1769010570" alt="Customer Hub View 1">
+                    </div>
+                    <div class="screen-mockup" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/customer_hub_2.png?v=1769010570" alt="Customer Hub View 2">
+                    </div>
+                </div>
+                
+                <!-- Text -->
+                <div class="order-1 lg:order-2">
+                    <span class="text-xs font-bold uppercase tracking-widest border border-black px-2 py-1 mb-4 inline-block">Pilastro A</span>
+                    <h3 class="text-3xl font-display font-bold mb-6">CUSTOMER HUB (SELF-SERVICE)</h3>
+                    <p class="mb-4 text-gray-600">
+                        Aggiornamento dell'area "Il mio Account" che diventa un pannello interattivo. Non è solo estetica, è funzionale al business.
                     </p>
-                    <ul class="list-disc list-inside text-xs text-zinc-400 space-y-1">
-                        <li>Implementare <strong>Social Login</strong> (Google/Apple) per eliminare la verifica email.</li>
-                        <li>Spostare la validazione email <strong>dopo</strong> il primo utilizzo (Magic Link).</li>
-                        <li>Permettere il download diretto dell'installer senza form.</li>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">01.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Trasparenza Totale</h4>
+                                <p class="text-sm text-gray-500">Timeline visiva (In lavorazione, Controllo Qualità). Vedere la lavorazione giustifica il prezzo e l'attesa.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">02.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Riduzione Ticket</h4>
+                                <p class="text-sm text-gray-500">Il cliente controlla lo stato dal telefono. Risultato stimato: -30% email "Dov'è il mio ordine".</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">03.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Retention Loop</h4>
+                                <p class="text-sm text-gray-500">Mostriamo anteprime drop esclusivi nel portale. Trasformiamo chi controlla la spedizione in un nuovo acquirente.</p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </section>
 
-    </main>
+            <!-- PILASTRO B: HELPDESK -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-start fade-in-up">
+                <!-- Text -->
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest border border-black px-2 py-1 mb-4 inline-block">Pilastro B</span>
+                    <h3 class="text-3xl font-display font-bold mb-6">HELPDESK UNIFICATO</h3>
+                    <p class="mb-4 text-gray-600">
+                        Il centro di controllo. Unisce Instagram, Email e Facebook in un'unica schermata. Elimina il rischio di "messaggi persi" nei DM.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">01.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Contesto Immediato</h4>
+                                <p class="text-sm text-gray-500">Vediamo subito: "Giulia, 3 ordini effettuati, Taglia 38, Spesa Totale €500". La risposta diventa personale e precisa.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">02.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Priorità al Fatturato (VIP)</h4>
+                                <p class="text-sm text-gray-500">Regole automatiche: i messaggi dei clienti alto-spendenti saltano la fila. Non facciamo aspettare i clienti "Vip".</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">03.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Velocità Operativa</h4>
+                                <p class="text-sm text-gray-500">Rimborsi, modifiche ordini e cambi indirizzo si fanno direttamente dalla chat, senza aprire Shopify.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Visual Mockup (Stack for 2 images) -->
+                <div class="flex flex-col gap-6 w-full">
+                     <div class="screen-mockup" onclick="openLightbox(this.querySelector('img').src)">
+                         <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/helpdesk1.png?v=1769010570" alt="Helpdesk View 1">
+                     </div>
+                     <div class="screen-mockup" onclick="openLightbox(this.querySelector('img').src)">
+                         <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/helpdesk2.png?v=1769010569" alt="Helpdesk View 2">
+                     </div>
+                </div>
+            </div>
+
+            <!-- PILASTRO C: AI AGENT -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-center fade-in-up">
+                 <!-- Visual Mockup -->
+                 <div class="order-2 lg:order-1 flex justify-center w-full">
+                    <div class="screen-mockup w-full" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/assistente_virtuale.png?v=1769010570" alt="AI Agent Interface">
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div class="order-1 lg:order-2">
+                    <span class="text-xs font-bold uppercase tracking-widest border border-black px-2 py-1 mb-4 inline-block">Pilastro C</span>
+                    <h3 class="text-3xl font-display font-bold mb-6">AI AGENT (H24)</h3>
+                    <p class="mb-4 text-gray-600">
+                        Intelligenza Artificiale istruita sui prodotti Demblee. Non un bot classico, ma un assistente che legge le schede prodotto e risponde correttamente. 
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">01.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Recupero Vendite Notturne</h4>
+                                <p class="text-sm text-gray-500">Il 90% degli ordini arriva di sera. Se il cliente ha un dubbio taglia alle 23:00, l'AI risponde "Veste regolare" e chiude la vendita.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="font-bold text-lg">02.</span>
+                            <div>
+                                <h4 class="font-bold text-sm uppercase">Filtro Operativo</h4>
+                                <p class="text-sm text-gray-500">Risolve il 40% delle domande banali (resi, spedizioni), dando la possibilità di riallocare le risorse.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PILASTRO D: SOCIAL & GROWTH (EXPANDED) -->
+            <div class="bg-black text-white p-8 md:p-12 fade-in-up border-2 border-black">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest border border-white px-2 py-1 mb-4 inline-block">Pilastro D</span>
+                            <h3 class="text-3xl font-display font-bold mb-4">SOCIAL SYNC &<br>CAMPAGNE DI CRESCITA</h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed">
+                                Questa integrazione è fondamentale non solo per le Ads, ma per trasformare i Follower (pubblico che non possediamo) in Iscritti Newsletter (pubblico che possediamo). Sfruttiamo i social per far crescere il database.
+                            </p>
+                        </div>
+                        
+                        <!-- Visual Grid for Socials -->
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                             <div class="screen-mockup border-white border-2" onclick="openLightbox(this.querySelector('img').src)">
+                                <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/social1.png?v=1769010569" alt="Social 1">
+                            </div>
+                            <div class="screen-mockup border-white border-2" onclick="openLightbox(this.querySelector('img').src)">
+                                <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/social_2.png?v=1769010570" alt="Social 2">
+                            </div>
+                             <div class="screen-mockup border-white border-2 col-span-2" onclick="openLightbox(this.querySelector('img').src)">
+                                <img src="https://cdn.shopify.com/s/files/1/0569/9328/4156/files/social_3.png?v=1769010570" alt="Social 3">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col gap-8 text-sm justify-center py-4">
+                        <div class="flex items-start gap-4 p-4 border border-gray-800 bg-gray-900/50">
+                            <div class="w-8 h-8 bg-white text-black flex items-center justify-center font-bold rounded-full flex-shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Da Follower a Lead (Lead Gen)</h4>
+                                <p class="text-gray-400">Usiamo le Instagram Stories per convertire clienti e non solo per status, collegandoli direttamente a Klaviyo.  Chi clicca diventa un contatto email nel CRM, pronto per essere convertito.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 border border-gray-800 bg-gray-900/50">
+                            <div class="w-8 h-8 bg-white text-black flex items-center justify-center font-bold rounded-full flex-shrink-0">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Campagne Coordinate</h4>
+                                <p class="text-gray-400">Quando inviamo una newsletter su un nuovo Drop, sincronizziamo lo stesso messaggio su Instagram solo per chi non ha aperto la mail. Copertura totale su tutti i canali.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 border border-gray-800 bg-gray-900/50">
+                            <div class="w-8 h-8 bg-white text-black flex items-center justify-center font-bold rounded-full flex-shrink-0">3</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Ottimizzazione del budget</h4>
+                                <p class="text-gray-400">Sincronizzazione real-time per NON mostrare pubblicità a chi ha già acquistato ieri. Risparmio budget stimato: 15-20% da reinvestire in acquisizione.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. ECONOMICS (PRICING) -->
+    <section id="economics" class="py-20 bg-gray-50 border-t-2 border-black">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12 fade-in-up">
+                <div class="flex items-center justify-center gap-4 mb-2">
+                    <div class="w-12 h-12 bg-black text-white flex items-center justify-center text-2xl font-bold font-display">03</div>
+                    <h2 class="text-4xl font-bold">RIEPILOGO ECONOMICO</h2>
+                </div>
+                <p class="text-gray-500">Investimento per l'ecosistema completo.</p>
+            </div>
+
+            <div class="bg-white border-2 border-black box-shadow-hard fade-in-up delay-100">
+                <div class="grid grid-cols-3 bg-black text-white font-display font-bold uppercase tracking-widest text-sm p-4 border-b-2 border-black">
+                    <div class="col-span-1">Funzionalità</div>
+                    <div class="col-span-1 text-center hidden md:block">Impatto Strategico</div>
+                    <div class="col-span-1 text-right">USD / Mese</div>
+                </div>
+
+                <!-- Row 1 -->
+                <div class="grid grid-cols-3 p-6 border-b border-gray-200 hover:bg-gray-50 transition items-center">
+                    <div class="col-span-2 md:col-span-1">
+                        <h4 class="font-bold uppercase">Portale Hub</h4>
+                        <p class="text-xs text-gray-500">Self-Service</p>
+                    </div>
+                    <div class="col-span-1 text-center text-sm text-gray-600 hidden md:block">
+                        Riduzione Ansia & Ticket
+                    </div>
+                    <div class="col-span-1 text-right font-mono font-bold text-lg">$50.00</div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="grid grid-cols-3 p-6 border-b border-gray-200 hover:bg-gray-50 transition items-center">
+                    <div class="col-span-2 md:col-span-1">
+                        <h4 class="font-bold uppercase">Helpdesk</h4>
+                        <p class="text-xs text-gray-500">Centralizzazione</p>
+                    </div>
+                    <div class="col-span-1 text-center text-sm text-gray-600 hidden md:block">
+                        Professionalità & Ordine
+                    </div>
+                    <div class="col-span-1 text-right font-mono font-bold text-lg">$50.00</div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="grid grid-cols-3 p-6 border-b-2 border-black bg-gray-50 hover:bg-gray-100 transition relative overflow-hidden items-center">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-black"></div>
+                    <div class="col-span-2 md:col-span-1 pl-4">
+                        <h4 class="font-bold uppercase">AI Agent</h4>
+                        <p class="text-xs text-gray-500">Automazione H24</p>
+                    </div>
+                    <div class="col-span-1 text-center text-sm text-gray-600 hidden md:block">
+                        Vendite Notturne
+                    </div>
+                    <div class="col-span-1 text-right font-mono font-bold text-lg">$108.00</div>
+                </div>
+
+                <!-- Total -->
+                <div class="grid grid-cols-3 p-6 bg-black text-white items-center">
+                    <div class="col-span-2">
+                        <h4 class="font-display font-bold text-xl uppercase tracking-widest">TOTALE INVESTIMENTO</h4>
+                        <p class="text-[10px] opacity-70">*Stima basata sui volumi attuali (15k profili)</p>
+                    </div>
+                    <div class="col-span-1 text-right font-mono font-bold text-3xl">$208.00</div>
+                </div>
+            </div>
+
+            <!-- Social Included Note -->
+            <div class="mt-6 text-center">
+                <span class="inline-block border border-black px-4 py-1 text-xs font-bold uppercase tracking-widest bg-gray-100">
+                    + Social Sync (Ads & Lead Gen) Incluso Gratuitamente
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONCLUSION & BONUS -->
+    <section class="py-20 border-t-2 border-black bg-white">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+            
+            <!-- Conclusions -->
+            <div class="fade-in-up">
+                <h3 class="font-display font-bold text-2xl uppercase mb-6">CONCLUSIONI</h3>
+                <div class="space-y-6">
+                    <div class="p-6 border-2 border-black bg-white box-shadow-hover transition duration-300">
+                        <h4 class="font-bold text-lg mb-2">SCALABILITÀ</h4>
+                        <p class="text-sm text-gray-600">Possiamo gestire il doppio degli ordini senza assumere nuovo staff. L'AI e il Portale assorbono il carico operativo.</p>
+                    </div>
+                    <div class="p-6 border-2 border-black bg-white box-shadow-hover transition duration-300">
+                        <h4 class="font-bold text-lg mb-2">PERCEZIONE DEL BRAND</h4>
+                        <p class="text-sm text-gray-600">Un servizio preciso e attento giustifica il prezzo del prodotto e i tempi di attesa. Il cliente si sente tutelato.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BONUS BLOCK (Less Impactful Design) -->
+            <div class="fade-in-up delay-200">
+                <div class="p-6 bg-gray-50 border border-gray-200 rounded-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fas fa-certificate text-gray-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Aggiornamento Partner</span>
+                    </div>
+                    <p class="text-sm font-light leading-relaxed mb-4 text-gray-700">
+                        Siamo stati contattati da <strong>Klaviyo</strong> per il lavoro svolto con DEMBLEE.
+                    </p>
+                    <div class="text-sm font-bold border-l-2 border-black pl-4 py-1 text-black">
+                        Nelle prossime settimane è prevista una call per valutare opportunità dedicate al brand.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer class="border-t border-white/5 bg-bg-panel py-10 mt-auto">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500">
-            <div class="mb-4 md:mb-0">
-                <p>&copy; 2025 Mirai Studio. Tutti i diritti riservati.</p>
-                <p class="mt-1">Analisi condotta su dati proprietari IamOnStage.</p>
-            </div>
+    <footer class="bg-gray-100 py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs font-bold uppercase tracking-widest text-gray-400">Documento Strategico • Demblee 2026</p>
         </div>
     </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
 
 </body>
 </html>
