@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Performance | Annuccia Capri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --capri-blue: #1e40af; /* Adjusted to match deep blue vibe */
+            --warm-white: #fdfbf7;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: #1f2937;
+        }
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-capri {
+            background-color: var(--capri-blue);
+        }
+        .text-capri {
+            color: var(--capri-blue);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(30, 64, 175, 0.08);
+        }
+        .pattern-bg {
+            background-image: radial-gradient(#1e40af 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 pattern-bg pointer-events-none z-0"></div>
+
+    <!-- Header (Non-sticky) -->
+    <header class="relative z-10 bg-white/80 backdrop-blur-md border-b border-blue-100">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo Only - Prominent & Larger -->
+            <div class="bg-blue-900 rounded-full p-4 w-20 h-20 flex items-center justify-center shadow-lg shadow-blue-900/20 hover:scale-105 transition-transform duration-300">
+                <img src="https://www.annucciacapri.it/wp-content/uploads/2023/06/Logo-White.svg" alt="Annuccia Logo" class="w-full h-auto">
+            </div>
+            
+            <div class="text-sm font-medium text-blue-800 bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
+                Report Performance: Ott - 23 Gen
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+        <!-- HERO SECTION: Crescita Brand -->
+        <section class="text-center space-y-6">
+            <span class="text-blue-600 font-bold tracking-widest text-xs uppercase">Obiettivo: Crescita Community</span>
+            <h1 class="serif-font text-5xl md:text-6xl text-blue-900 leading-tight">
+                La famiglia di <br><span class="italic text-blue-600">Annuccia</span> cresce.
+            </h1>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                Non stiamo solo acquisendo numeri, ma costruendo una community reale. Il traffico è qualificato e l'interesse per il brand è costante.
+            </p>
+            
+            <!-- Key Metrics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-blue-50 text-center hover:-translate-y-1 transition-transform duration-300">
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-2">Nuovi Follower Totali</div>
+                    <div class="serif-font text-5xl text-blue-900 font-medium">+3.370</div>
+                    <div class="text-green-600 text-sm mt-2 font-medium bg-green-50 inline-block px-2 py-1 rounded">in 113 giorni</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-blue-50 text-center hover:-translate-y-1 transition-transform duration-300">
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-2">Crescita Media</div>
+                    <div class="serif-font text-5xl text-blue-900 font-medium">~30</div>
+                    <div class="text-gray-500 text-sm mt-2">follower al giorno</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border border-blue-50 text-center hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-center">
+                    <div class="text-gray-500 text-sm font-medium uppercase tracking-wider mb-4">Origine Community</div>
+                    <div class="flex items-center justify-between text-sm mb-2">
+                        <span class="text-gray-600">Traffico (Discovery)</span>
+                        <span class="font-bold text-blue-900">2.185</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2 mb-4">
+                        <div class="bg-blue-400 h-2 rounded-full" style="width: 65%"></div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm mb-2">
+                        <span class="text-gray-600">Interazioni (Engagement)</span>
+                        <span class="font-bold text-blue-900">1.185</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-blue-800 h-2 rounded-full" style="width: 35%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION M1: Traffico -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-4 space-y-4">
+                <div class="flex items-center gap-2 text-blue-600 font-bold uppercase text-xs tracking-widest">
+                    <i class="ph ph-users text-lg"></i> M1: Campagna Traffico
+                </div>
+                <h2 class="serif-font text-3xl text-blue-900">Primo Contatto &<br>Discovery</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Questa campagna funge da "setaccio" per trovare utenti affini allo stile del brand. 
+                    <br><br>
+                    <strong>Il dato chiave:</strong> Gennaio, con soli 23 giorni di attività, ha quasi raggiunto i volumi di Dicembre. La media giornaliera è in netta crescita.
+                </p>
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm">
+                    <p class="text-sm text-green-800 font-bold">
+                        <i class="ph ph-trend-up text-lg mr-1 align-middle"></i>
+                        Gennaio sta performando meglio di Dicembre in termini di ritmo giornaliero.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-2xl card-shadow overflow-hidden border border-blue-50">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 border-b border-gray-100 text-xs uppercase tracking-wider text-gray-500 font-semibold">
+                                    <th class="p-6">Mese</th>
+                                    <th class="p-6">Visite Profilo</th>
+                                    <th class="p-6">Follower Acquisiti</th>
+                                    <th class="p-6">Costo Follower</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition">
+                                    <td class="p-6 font-medium text-gray-900">Ottobre</td>
+                                    <td class="p-6 text-gray-600">15.913</td>
+                                    <td class="p-6 text-gray-600">870</td>
+                                    <td class="p-6 text-gray-600">€0,33</td>
+                                </tr>
+                                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition">
+                                    <td class="p-6 font-medium text-gray-900">Novembre</td>
+                                    <td class="p-6 text-gray-600">14.369</td>
+                                    <td class="p-6 text-gray-600">507</td>
+                                    <td class="p-6 text-gray-600">€0,59</td>
+                                </tr>
+                                <tr class="border-b border-gray-50 hover:bg-gray-50/50 transition bg-red-50/30">
+                                    <td class="p-6 font-medium text-gray-900 flex items-center gap-2">Dicembre <span class="text-[10px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded uppercase font-bold">Natale</span></td>
+                                    <td class="p-6 text-gray-600">14.374</td>
+                                    <td class="p-6 text-gray-600">396</td>
+                                    <td class="p-6 text-gray-600 font-medium">€0,77</td>
+                                </tr>
+                                <!-- Fixed UI Row for Gennaio -->
+                                <tr class="bg-blue-50/50">
+                                    <td class="p-6 font-bold text-blue-900 border-l-4 border-l-blue-600 align-middle">
+                                        <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                            <span>Gennaio (1-23)</span>
+                                            <span class="text-[10px] bg-blue-200 text-blue-800 px-2 py-0.5 rounded uppercase font-bold w-fit">Parziale</span>
+                                        </div>
+                                        <div class="text-xs text-green-600 font-bold mt-1 uppercase tracking-wide flex items-center gap-1">
+                                            <i class="ph ph-lightning-fill"></i> +23% Visite/Day
+                                        </div>
+                                    </td>
+                                    <td class="p-6 font-bold text-blue-900 align-middle">
+                                        13.122
+                                        <span class="block text-xs text-gray-400 font-normal mt-0.5">in soli 23gg</span>
+                                    </td>
+                                    <td class="p-6 font-bold text-blue-900 align-middle">412</td>
+                                    <td class="p-6 align-middle">
+                                        <span class="font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full text-sm">€0,54</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION M2: Interazioni -->
+        <section class="bg-white rounded-3xl p-8 md:p-12 card-shadow border border-blue-50 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-32 bg-blue-50 rounded-full blur-3xl opacity-50 -mr-16 -mt-16 pointer-events-none"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2 text-blue-600 font-bold uppercase text-xs tracking-widest">
+                        <i class="ph ph-heart text-lg"></i> M2: Engagement & Gifting
+                    </div>
+                    <h2 class="serif-font text-3xl text-blue-900 mb-6">Un trend inarrestabile.<br>Ottimizzazione Continua.</h2>
+                    
+                    <!-- NEW METRICS GRID -->
+                    <div class="grid grid-cols-1 gap-4 mb-6">
+                        <!-- Metric 1: Clicks Growth -->
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-bold text-gray-500 uppercase mb-1">Crescita Click (Volume)</div>
+                                <div class="text-sm text-gray-600">Da <span class="font-bold">237</span> (Ott) a <span class="font-bold text-blue-900 text-lg">2.082</span> (Gen)</div>
+                            </div>
+                            <div class="text-green-600 bg-green-100 p-2 rounded-lg">
+                                <i class="ph ph-trend-up text-xl"></i>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2: CPC Drop -->
+                        <div class="bg-green-50 p-4 rounded-xl border border-green-100 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-bold text-gray-500 uppercase mb-1">Costo per Clic (Efficienza)</div>
+                                <div class="flex items-end gap-2">
+                                    <span class="text-lg font-bold text-blue-900">€0,16</span>
+                                    <span class="text-sm text-gray-400 line-through mb-0.5">€0,39</span>
+                                </div>
+                            </div>
+                            <div class="text-xs text-green-700 font-bold bg-white px-2 py-1 rounded border border-green-200">
+                                -59% Costi
+                            </div>
+                        </div>
+
+                        <!-- Metric 3: Follower Growth -->
+                        <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                            <div class="text-xs font-bold text-gray-500 uppercase mb-1">Impatto sulla Community</div>
+                            <p class="text-sm text-gray-700 leading-snug">
+                                <span class="font-bold text-blue-900">Svolta a Dicembre:</span> I follower da interazione sono iniziati a crescere in maniera netta proprio durante il periodo più competitivo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm">
+                        Non stiamo solo aumentando i volumi, stiamo pagando ogni singolo risultato molto meno.
+                    </p>
+                </div>
+
+                <!-- Visual Chart Comparison (Existing) -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <h3 class="font-serif text-xl text-blue-900 mb-2">Confronto Performance</h3>
+                    
+                    <!-- Ottobre Benchmark -->
+                    <div class="group opacity-50">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-gray-500">Ottobre (Start)</span>
+                            <span class="font-bold text-gray-500">237 Click</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-8 relative overflow-hidden border border-gray-200">
+                            <div class="bg-gray-400 h-full rounded-full" style="width: 11%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dicembre Bar -->
+                    <div class="group opacity-80">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-gray-700">Dicembre (Picco)</span>
+                            <span class="font-bold text-blue-900">2.108 Click</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-10 relative overflow-hidden border border-gray-200">
+                            <div class="bg-blue-500 h-full rounded-full flex items-center px-4 text-white font-medium text-sm" style="width: 100%">
+                                Volume Massimo
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gennaio Bar -->
+                    <div class="group">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-gray-700">Gennaio (Parziale 23gg)</span>
+                            <span class="font-bold text-blue-900">2.082 Click</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-10 relative overflow-hidden border border-gray-200 shadow-md">
+                            <div class="bg-gradient-to-r from-blue-800 to-blue-600 h-full rounded-full flex items-center px-4 text-white font-medium text-sm shadow-lg" style="width: 98%">
+                                <i class="ph ph-lightning mr-2 text-lg"></i> Ritmo Record
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-green-600 font-bold text-center mt-2 bg-green-50 py-2 rounded-lg border border-green-100">
+                        🚀 Proiezione Fine Mese: Gennaio supererà Dicembre di oltre il 20%
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Focus Contenuti -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-1 md:col-span-3 text-center mb-4">
+                <h2 class="serif-font text-3xl text-blue-900 mb-2">Focus: Contenuti Aziendali</h2>
+                <p class="text-gray-600">Lo storytelling di "Annuccia" batte la pubblicità classica.</p>
+            </div>
+            
+            <div class="bg-blue-900 text-white p-6 rounded-2xl text-center">
+                <div class="text-blue-200 text-xs font-bold uppercase tracking-widest mb-2">CTR (Click Through Rate)</div>
+                <div class="serif-font text-4xl">4,53%</div>
+                <div class="text-blue-200 text-xs mt-2">Media settore: &lt; 1%</div>
+            </div>
+            
+            <div class="bg-white border border-blue-50 p-6 rounded-2xl text-center card-shadow">
+                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Click Totali (Dic)</div>
+                <div class="serif-font text-4xl text-blue-900">4.414</div>
+            </div>
+
+            <div class="bg-white border border-blue-50 p-6 rounded-2xl text-center card-shadow">
+                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Costo per Clic</div>
+                <div class="serif-font text-4xl text-green-600">€0,07</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-blue-100 py-12 mt-12">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+             <div class="bg-blue-900 rounded-full p-2 w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <img src="https://www.annucciacapri.it/wp-content/uploads/2023/06/Logo-White.svg" alt="Annuccia Logo" class="w-full h-auto">
+            </div>
+            <h3 class="serif-font text-2xl text-blue-900 mb-2">Annuccia Capri</h3>
+            <p class="text-gray-500 text-sm mb-8">Strategia & Performance Marketing</p>
+            <div class="text-xs text-gray-400">
+                Documento riservato © 2026 Mirai per Annuccia Capri.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
