@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orto Brand - Report Saldi (Week 1)</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text-main: #111111;
+            --text-secondary: #555555;
+            --border-color: #E5E5E5;
+            --accent-black: #000000;
+            --success-color: #2E7D32;
+            --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --spacing-unit: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 60px;
+            transition: background 0.3s ease;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-unit);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-unit);
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem !important; }
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--text-main);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* --- COMPONENTS --- */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo-img {
+            max-width: 140px;
+            height: auto;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .lang-switch:hover {
+            background: #f0f0f0;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .metric-block {
+            padding: 16px;
+            background: var(--bg-color);
+            border-radius: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .metric-value.positive { color: var(--success-color); }
+        
+        .tag {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 8px;
+            text-transform: uppercase;
+        }
+        
+        .highlight-box {
+            background-color: #f4f4f4;
+            border-left: 4px solid #000;
+            padding: 20px;
+            margin-top: 24px;
+        }
+
+        .detail-list-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .detail-list-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .creative-img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            border: 1px solid #333;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="logo-container">
+            <img src="https://ortobrand.com/cdn/shop/files/orto_black_97ee1155-7a95-463d-bf94-fad0fa1a6c61.png?v=1740656152&width=160" alt="Orto Brand" class="logo-img">
+            <button class="lang-switch" onclick="switchLanguage()">IT / EN</button>
+        </div>
+
+        <header style="text-align: center; margin-bottom: 60px;">
+            <h1 data-key="title">Report Performance</h1>
+            <p class="subtitle" data-key="subtitle">Analisi Saldi Week 1: 18 Gennaio – 25 Gennaio</p>
+            <div style="max-width: 600px; margin: 0 auto; font-size: 0.95rem; color: #555;" data-key="intro">
+                Questo documento analizza l'andamento della campagna promozionale, focalizzandosi sul comportamento dell'algoritmo, la risposta alle creatività e i risultati di vendita.
+            </div>
+        </header>
+
+        <!-- SECTION 1: ADVERTISING -->
+        <section>
+            <h2 data-key="ads_title">Andamento Campagna (Ads)</h2>
+            <p data-key="ads_desc">
+                Abbiamo osservato un'evoluzione naturale delle metriche. Dopo un'immediata risposta della domanda latente nei primi giorni, l'algoritmo si è ora allineato su costi di acquisizione standard per il prosieguo dell'attività.
+            </p>
+
+            <div class="grid-2">
+                <div class="metric-block" style="border-left: 4px solid var(--success-color);">
+                    <h3 data-key="phase1_title">Impatto Iniziale</h3>
+                    <span class="metric-label" data-key="phase1_status">Stato: Ottimo</span>
+                    <p style="font-size: 0.9rem; margin-top: 8px;" data-key="phase1_desc">Acquisti rapidi da utenti già interessati.</p>
+                    <div style="margin-top: 12px;">
+                        <span class="metric-label">CPA</span>
+                        <span class="metric-value">11€ – 14€</span>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <span class="metric-label">ROAS</span>
+                        <span class="metric-value positive">8.29</span>
+                    </div>
+                </div>
+
+                <div class="metric-block" style="border-left: 4px solid #999;">
+                    <h3 data-key="phase2_title">Trend Attuale</h3>
+                    <span class="metric-label" data-key="phase2_status">Stato: Normale</span>
+                    <p style="font-size: 0.9rem; margin-top: 8px;" data-key="phase2_desc">Volumi stabili dopo il picco iniziale.</p>
+                    <div style="margin-top: 12px;">
+                        <span class="metric-label">CPA</span>
+                        <span class="metric-value">~30€</span>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <span class="metric-label">ROAS</span>
+                        <span class="metric-value">3.14</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CREATIVE ANALYSIS -->
+        <section>
+            <h2 data-key="creative_title">Analisi Immagini</h2>
+            <p data-key="creative_intro">
+                Analizzando l'intero periodo dei saldi, emergono chiaramente due elementi che distinguono le immagini vincenti da quelle meno efficaci.
+            </p>
+
+            <div class="grid-2">
+                <div>
+                    <h3 data-key="insight_title">Dettagli Ricorrenti</h3>
+                    
+                    <div class="detail-list-item">
+                        <span class="metric-label" data-key="insight_1_label">Il Modello Off-White</span>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;" data-key="insight_1_text">
+                            Le inserzioni con la scarpa off-white in primo piano hanno avuto una risposta più solida e costante, sia all'inizio che durante l'assestamento.
+                        </p>
+                    </div>
+
+                    <div class="detail-list-item">
+                        <span class="metric-label" data-key="insight_2_label">Riferimento Esplicito ai Saldi</span>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;" data-key="insight_2_text">
+                            Le immagini che funzionano meglio comunicano i saldi direttamente nel visual (scritte, badge, grafica) e non solo nel testo sotto. Il pubblico vuole capire l'offerta a colpo d'occhio.
+                        </p>
+                    </div>
+
+                    <div class="detail-list-item" style="border-bottom: none;">
+                        <span class="metric-label" style="color: #999;" data-key="insight_3_label">Cosa Evitare</span>
+                        <p style="margin-bottom: 0; font-size: 0.95rem; color: #777;" data-key="insight_3_text">
+                            Al contrario, le immagini senza riferimenti visivi chiari allo sconto perdono efficacia molto velocemente, anche se il testo dell'annuncio è corretto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="metric-block" style="background: #111; color: #fff;">
+                    <img src="https://cdn.shopify.com/s/files/1/0553/3768/0995/files/4.5SCONTRINO_2.png?v=1769439421" alt="Scontrino Creative" class="creative-img">
+                    
+                    <h3 style="color: #fff;" data-key="top_creative_title">La Migliore: "Scontrino"</h3>
+                    
+                    <p style="color: #ccc; font-size: 0.9rem;" data-key="top_creative_desc">
+                        L'esempio perfetto di comunicazione diretta. Mostrare lo scontrino rende tangibile il risparmio in modo immediato.
+                    </p>
+                    
+                    <div class="grid-3" style="margin-top: 20px;">
+                        <div>
+                            <span class="metric-label" style="color: #666;" data-key="metric_sales">Acquisti</span>
+                            <span class="metric-value" style="color: #fff;">12</span>
+                        </div>
+                        <div>
+                            <span class="metric-label" style="color: #666;">CPA</span>
+                            <span class="metric-value" style="color: #fff;">13.44€</span>
+                        </div>
+                        <div>
+                            <span class="metric-label" style="color: #666;">ROAS</span>
+                            <span class="metric-value" style="color: #fff;">7.11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SHOPIFY SALES -->
+        <section>
+            <h2 data-key="sales_title">Vendite (Shopify)</h2>
+            <p data-key="sales_desc">
+                Stiamo acquisendo soprattutto nuovi clienti. Il 91% del fatturato arriva da persone che non avevano mai comprato prima. Questo è un ottimo segnale per la crescita del marchio.
+            </p>
+
+            <div class="grid-4" style="margin-bottom: 30px;">
+                <div class="metric-block">
+                    <span class="metric-label" data-key="metric_rev">Fatturato Netto</span>
+                    <span class="metric-value">3.175 €</span>
+                </div>
+                <div class="metric-block">
+                    <span class="metric-label" data-key="metric_visit">Visitatori</span>
+                    <span class="metric-value">2.911</span>
+                </div>
+                <div class="metric-block">
+                    <span class="metric-label" data-key="metric_orders">Ordini</span>
+                    <span class="metric-value">34</span>
+                </div>
+                <div class="metric-block">
+                    <span class="metric-label" data-key="metric_returning">Clienti Abituali</span>
+                    <span class="metric-value">9%</span>
+                </div>
+            </div>
+
+            <h3 data-key="best_sellers">Prodotti più venduti</h3>
+            <p style="font-size: 0.9rem;" data-key="best_sellers_desc">Sono state preferite le colorazioni classiche e più versatili.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span class="tag">Off White</span>
+                <span class="tag">Blue Black</span>
+                <span class="tag">Suede Brown</span>
+                <span class="tag">Purple</span>
+                <span class="tag">Brown</span>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EMAIL MARKETING -->
+        <section>
+            <h2 data-key="email_title">Email Marketing</h2>
+            <p data-key="email_desc">
+                Le email hanno portato quasi il 25% del fatturato totale. Il tasso di apertura del 39% indica che gli iscritti sono ancora molto interessati alle nostre comunicazioni.
+            </p>
+            
+            <div class="grid-3">
+                <div class="metric-block">
+                    <span class="metric-label" data-key="email_vol">Volume</span>
+                    <span class="metric-value">5 Mail</span>
+                    <span style="display:block; font-size: 0.8rem; color: #666; margin-top: 4px;" data-key="email_date">Inviate dal 12 Gen.</span>
+                </div>
+                <div class="metric-block">
+                    <span class="metric-label" data-key="email_react">Reattività</span>
+                    <span class="metric-value">39%</span>
+                    <span style="display:block; font-size: 0.8rem; color: #666; margin-top: 4px;">Open Rate</span>
+                </div>
+                <div class="metric-block">
+                    <span class="metric-label" data-key="email_rev">Fatturato Diretto</span>
+                    <span class="metric-value">793,60 €</span>
+                    <span style="display:block; font-size: 0.8rem; color: #666; margin-top: 4px;" data-key="email_attr">Attribuzione minima</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <div data-key="email_insight">
+                    <strong>Nota Importante:</strong> Oltre alle vendite immediate, abbiamo ottenuto <strong>104 nuovi iscritti</strong> alla newsletter dall'inizio dei saldi. Questi sono contatti preziosi per le vendite future a prezzo pieno.
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / SYNTHESIS -->
+        <section style="background-color: #000; color: #fff; border: none;">
+            <h2 style="color: #fff; border-color: #444;" data-key="footer_title">Sintesi Finale</h2>
+            
+            <div class="grid-2">
+                <div>
+                    <h3 style="color: #fff;" data-key="status_title">Stato Attuale</h3>
+                    <p style="color: #aaa;" data-key="status_desc">
+                        Il calo del rendimento pubblicitario (ROAS) da 8 a 3 è fisiologico e riflette la normalizzazione dei costi. Abbiamo confermato che le foto più semplici e reali (come lo scontrino) sono quelle che convincono di più.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: #fff;" data-key="next_title">Prossimi Passi</h3>
+                    <p style="color: #aaa;" data-key="next_desc">
+                        1. Mantenere attive le immagini che mostrano il prezzo o lo scontrino.<br>
+                        2. Inviare comunicazioni specifiche ai 104 nuovi iscritti che non hanno ancora comprato.<br>
+                        3. Considerare il costo attuale (~30€) come un investimento per acquisire nuovi clienti.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p data-key="footer_note">Report generato per <strong>Orto Brand</strong> | Analisi interna riservata</p>
+        <p>Mirai</p>
+    </footer>
+
+    <script>
+        const content = {
+            it: {
+                title: "Report Performance",
+                subtitle: "Analisi Saldi Week 1: 18 Gennaio – 25 Gennaio",
+                intro: "Questo documento analizza l'andamento della campagna promozionale, focalizzandosi sul comportamento dell'algoritmo, la risposta alle creatività e i risultati di vendita.",
+                ads_title: "Andamento Campagna (Ads)",
+                ads_desc: "Abbiamo osservato un'evoluzione naturale delle metriche. Dopo un'immediata risposta della domanda latente nei primi giorni, l'algoritmo si è ora allineato su costi di acquisizione standard per il prosieguo dell'attività.",
+                phase1_title: "Impatto Iniziale",
+                phase1_status: "Stato: Ottimo",
+                phase1_desc: "Acquisti rapidi da utenti già interessati.",
+                phase2_title: "Trend Attuale",
+                phase2_status: "Stato: Normale",
+                phase2_desc: "Volumi stabili dopo il picco iniziale.",
+                
+                // Creative Section Specifics
+                creative_title: "Analisi Immagini (18-25 Gen)",
+                creative_intro: "Analizzando l'intero periodo dei saldi, emergono chiaramente due elementi che distinguono le immagini vincenti da quelle meno efficaci.",
+                insight_title: "Dettagli Ricorrenti",
+                insight_1_label: "Il Modello Off-White",
+                insight_1_text: "Le inserzioni con la scarpa off-white in primo piano hanno avuto una risposta più solida e costante, sia all'inizio che durante l'assestamento.",
+                insight_2_label: "Riferimento Esplicito ai Saldi",
+                insight_2_text: "Le immagini che funzionano meglio comunicano i saldi direttamente nel visual (scritte, badge, grafica) e non solo nel testo sotto. Il pubblico vuole capire l'offerta a colpo d'occhio.",
+                insight_3_label: "Cosa Evitare",
+                insight_3_text: "Al contrario, le immagini senza riferimenti visivi chiari allo sconto perdono efficacia molto velocemente, anche se il testo dell'annuncio è corretto.",
+                
+                top_creative_title: "La Migliore: 'Scontrino'",
+                top_creative_desc: "L'esempio perfetto di comunicazione diretta. Mostrare lo scontrino rende tangibile il risparmio in modo immediato.",
+                
+                metric_sales: "Acquisti",
+                sales_title: "Vendite (Shopify)",
+                sales_desc: "Stiamo acquisendo soprattutto nuovi clienti. Il 91% del fatturato arriva da persone che non avevano mai comprato prima. Questo è un ottimo segnale per la crescita del marchio.",
+                metric_rev: "Fatturato Netto",
+                metric_visit: "Visitatori",
+                metric_orders: "Ordini",
+                metric_returning: "Clienti Abituali",
+                best_sellers: "Prodotti più venduti",
+                best_sellers_desc: "Sono state preferite le colorazioni classiche e più versatili.",
+                email_title: "Email Marketing",
+                email_desc: "Le email hanno portato quasi il 25% del fatturato totale. Il tasso di apertura del 39% indica che gli iscritti sono ancora molto interessati alle nostre comunicazioni.",
+                email_vol: "Volume",
+                email_date: "Inviate dal 12 Gen.",
+                email_react: "Reattività",
+                email_rev: "Fatturato Diretto",
+                email_attr: "Attribuzione minima",
+                email_insight: "<strong>Nota Importante:</strong> Oltre alle vendite immediate, abbiamo ottenuto <strong>104 nuovi iscritti</strong> alla newsletter dall'inizio dei saldi. Questi sono contatti preziosi per le vendite future a prezzo pieno.",
+                footer_title: "Sintesi Finale",
+                status_title: "Stato Attuale",
+                status_desc: "Il calo del rendimento pubblicitario (ROAS) da 8 a 3 è fisiologico e riflette la normalizzazione dei costi. Abbiamo confermato che le foto più semplici e reali (come lo scontrino) sono quelle che convincono di più.",
+                next_title: "Prossimi Passi",
+                next_desc: "1. Mantenere attive le immagini che mostrano il prezzo o lo scontrino.<br>2. Inviare comunicazioni specifiche ai 104 nuovi iscritti che non hanno ancora comprato.<br>3. Considerare il costo attuale (~30€) come un investimento per acquisire nuovi clienti.",
+                footer_note: "Report generato per <strong>Orto Brand</strong> | Analisi interna riservata"
+            },
+            en: {
+                title: "Performance Report",
+                subtitle: "Sales Analysis Week 1: January 18 – January 25",
+                intro: "This document analyzes the promotional campaign performance, focusing on algorithm behavior, creative response, and sales results.",
+                ads_title: "Campaign Trends (Ads)",
+                ads_desc: "We observed a natural evolution of metrics. After an immediate response from latent demand in the first few days, the algorithm has now aligned with standard acquisition costs for the ongoing activity.",
+                phase1_title: "Initial Impact",
+                phase1_status: "Status: Excellent",
+                phase1_desc: "Rapid purchases from already interested users.",
+                phase2_title: "Current Trend",
+                phase2_status: "Status: Normal",
+                phase2_desc: "Volumes stabilized after the initial peak.",
+                
+                // Creative Section Specifics - EN
+                creative_title: "Image Analysis (Jan 18-25)",
+                creative_intro: "Analyzing the entire sales period, two distinct elements emerge that separate winning images from less effective ones.",
+                insight_title: "Recurring Details",
+                insight_1_label: "The Off-White Model",
+                insight_1_text: "Ads featuring the off-white shoe in the foreground showed a more solid and constant response, both at the start and during the settlement period.",
+                insight_2_label: "Explicit Sale Reference",
+                insight_2_text: "The best-performing images communicate the sale directly in the visual (text, badges, graphics) and not just in the caption. The audience wants to understand the offer at a glance.",
+                insight_3_label: "What to Avoid",
+                insight_3_text: "Conversely, images without clear visual references to the discount lose effectiveness very quickly, even if the ad copy is correct.",
+                
+                top_creative_title: "The Best: 'Receipt'",
+                top_creative_desc: "The perfect example of direct communication. Showing the printed receipt makes the savings tangible immediately.",
+
+                metric_sales: "Purchases",
+                sales_title: "Sales (Shopify)",
+                sales_desc: "We are acquiring mostly new customers. 91% of revenue comes from people who had never bought before. This is a great sign for brand growth.",
+                metric_rev: "Net Revenue",
+                metric_visit: "Visitors",
+                metric_orders: "Orders",
+                metric_returning: "Returning Customers",
+                best_sellers: "Best Sellers",
+                best_sellers_desc: "Classic and versatile colors were preferred.",
+                email_title: "Email Marketing",
+                email_desc: "Emails brought in almost 25% of total revenue. The 39% open rate indicates subscribers are still very interested in our communications.",
+                email_vol: "Volume",
+                email_date: "Sent since Jan 12.",
+                email_react: "Reactivity",
+                email_rev: "Direct Revenue",
+                email_attr: "Min. attribution",
+                email_insight: "<strong>Important Note:</strong> Beyond immediate sales, we gained <strong>104 new newsletter subscribers</strong> since sales started. These are valuable contacts for future full-price sales.",
+                footer_title: "Final Summary",
+                status_title: "Current Status",
+                status_desc: "The drop in ad return (ROAS) from 8 to 3 is physiological and reflects cost normalization. We confirmed that simpler, real photos (like the receipt) are the most convincing.",
+                next_title: "Next Steps",
+                next_desc: "1. Keep active the images showing the price or receipt.<br>2. Send specific communications to the 104 new subscribers who haven't bought yet.<br>3. Consider the current cost (~30€) as an investment to acquire new customers.",
+                footer_note: "Report generated for <strong>Orto Brand</strong> | Internal confidential analysis"
+            }
+        };
+
+        let currentLang = 'it';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (content[currentLang][key]) {
+                    el.innerHTML = content[currentLang][key];
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
