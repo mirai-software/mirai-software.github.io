@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labmec.it | Analisi SEO Tecnica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Labmec Industrial + Accent #F9BF01 -->
+    <!-- Application Structure Plan: 
+         1. Hero Dashboard: Key Metrics (Traffic, Keywords, Cost, Generic Reach).
+         2. Traffic & Intent Analysis: Side-by-side view of Traffic Composition and User Intent.
+         3. Keyword Intelligence: Interactive table of Top Keywords + "New Entries" highlight.
+         4. Content Performance: Horizontal bar chart showing traffic distribution across pages.
+         5. Competitive Landscape: Scatter plot visualization of competitors based on keyword overlap.
+    -->
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F0F2F5;
+            color: #1A202C;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; 
+        }
+
+        /* Chart Container Utilities */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 300px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Animation utilities */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .text-labmec-blue { color: #003366; }
+        .bg-labmec-blue { background-color: #003366; }
+        .text-labmec-gold { color: #F9BF01; }
+        .bg-labmec-gold { background-color: #F9BF01; }
+        .border-labmec-gold { border-color: #F9BF01; }
+        
+        /* Table Styles */
+        .custom-table th {
+            background-color: #003366;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .custom-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .custom-table tr:hover {
+            background-color: #fffbeb; /* Light gold tint */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="bg-labmec-blue text-white shadow-lg sticky top-0 z-50 border-b-4 border-labmec-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- HEADER LOGO -->
+                <img src="https://labmec.it/wp-content/uploads/2025/07/LABMEC_LOGO_1X1-2.png" alt="Labmec Logo" class="h-12 w-12 bg-white rounded p-1 object-contain shadow-sm">
+                <div>
+                    <h1 class="text-xl font-bold tracking-wider">LABMEC<span class="text-labmec-gold">.IT</span></h1>
+                    <p class="text-xs text-gray-300 tracking-widest uppercase">SEO Technical Report</p>
+                </div>
+            </div>
+            <div class="text-right hidden sm:block">
+                <p class="text-sm font-medium">Mirai Studio</p>
+                <p class="text-xs text-gray-400">Data: 27 Gen 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow p-4 sm:p-8 space-y-8 max-w-7xl mx-auto w-full">
+
+        <!-- SECTION 1: EXECUTIVE DASHBOARD -->
+        <section id="dashboard" class="fade-in">
+            <div class="mb-6 flex items-center space-x-2">
+                <div class="h-8 w-2 bg-labmec-gold rounded-full"></div>
+                <h2 class="text-2xl font-bold text-[#003366]">Overview Metriche</h2>
+            </div>
+
+            <!-- KPI GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- KPI 1 -->
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-[#003366] relative overflow-hidden">
+                    <div class="text-gray-500 text-xs font-bold uppercase tracking-wide mb-2">Traffico Organico</div>
+                    <div class="flex items-end justify-between relative z-10">
+                        <span class="text-4xl font-black text-gray-800">2.4K</span>
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-800">
+                            ▲ 69%
+                        </span>
+                    </div>
+                </div>
+                <!-- KPI 2 -->
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-[#003366]">
+                    <div class="text-gray-500 text-xs font-bold uppercase tracking-wide mb-2">Keywords Totali</div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-4xl font-black text-gray-800">508</span>
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-800">
+                            ▲ 9%
+                        </span>
+                    </div>
+                </div>
+                <!-- KPI 3 -->
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-[#003366]">
+                    <div class="text-gray-500 text-xs font-bold uppercase tracking-wide mb-2">Valore Traffico (Est.)</div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-4xl font-black text-gray-800">$1.4K</span>
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-800">
+                            ▲ 12%
+                        </span>
+                    </div>
+                </div>
+                <!-- KPI 4 (Changed to Generic Reach emphasis) -->
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-labmec-gold">
+                    <div class="text-gray-500 text-xs font-bold uppercase tracking-wide mb-2">Traffico Non-Branded</div>
+                    <div class="flex items-end justify-between">
+                        <span class="text-4xl font-black text-gray-800">2.2K</span>
+                        <div class="text-xs text-right">
+                            <span class="block font-bold text-gray-400">81% del Totale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ANALISI COMPOSIZIONE & INTENTO -->
+        <section id="composition" class="fade-in grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- LEFT: INTENT BREAKDOWN -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="border-b pb-4 mb-4 border-gray-100">
+                    <h3 class="text-lg font-bold text-[#003366]">Distribuzione Intento di Ricerca</h3>
+                    <p class="text-sm text-gray-500">Analisi motivazionale delle query utente.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="intentChart"></canvas>
+                </div>
+                <div class="mt-4 grid grid-cols-4 gap-2 text-center text-xs">
+                    <div class="p-2 bg-blue-50 rounded border border-blue-100">
+                        <span class="block font-bold text-blue-800">Info</span>
+                        <span class="block text-gray-600">69.0%</span>
+                    </div>
+                    <div class="p-2 bg-green-50 rounded border border-green-100">
+                        <span class="block font-bold text-green-800">Trans</span>
+                        <span class="block text-gray-600">19.8%</span>
+                    </div>
+                    <div class="p-2 bg-yellow-50 rounded border border-yellow-100">
+                        <span class="block font-bold text-yellow-800">Comm</span>
+                        <span class="block text-gray-600">8.9%</span>
+                    </div>
+                    <div class="p-2 bg-gray-50 rounded border border-gray-100">
+                        <span class="block font-bold text-gray-800">Nav</span>
+                        <span class="block text-gray-600">2.3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: TRAFFIC SOURCE -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="border-b pb-4 mb-4 border-gray-100">
+                    <h3 class="text-lg font-bold text-[#003366]">Composizione Sorgente Traffico</h3>
+                    <p class="text-sm text-gray-500">Rapporto tra ricerca diretta del marchio e scoperta generica.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="brandChart"></canvas>
+                </div>
+                <div class="mt-4 p-3 bg-gray-50 rounded text-sm text-gray-600 border-l-4 border-labmec-gold">
+                    <strong>Insight Dati:</strong> Il sito dimostra un'eccellente capacità di attrarre nuovi utenti tramite ricerche tecniche ("pantografo", "cnc"), che costituiscono la quasi totalità degli ingressi (91%).
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: KEYWORD INTELLIGENCE -->
+        <section id="keywords" class="fade-in bg-white rounded-lg shadow p-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6 border-b pb-4 border-gray-100">
+                <div>
+                    <h3 class="text-xl font-bold text-[#003366]">Analisi Keyword & Posizionamento</h3>
+                    <p class="text-sm text-gray-500">Dettaglio delle performance per query di ricerca.</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex space-x-2">
+                    <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full border border-green-200">
+                        Nuova Keyword: "pantografo cnc per legno" (Pos 26)
+                    </span>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left custom-table">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 rounded-tl-lg">Keyword</th>
+                            <th class="px-6 py-3 text-center">Intento</th>
+                            <th class="px-6 py-3 text-right">Volume</th>
+                            <th class="px-6 py-3 text-right">Traffico %</th>
+                            <th class="px-6 py-3 rounded-tr-lg text-center">Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody id="keywordTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 4: COMPETITIVE LANDSCAPE -->
+        <section id="competitors" class="fade-in bg-white rounded-lg shadow p-6">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-[#003366]">Matrice Competitiva</h3>
+                <p class="text-sm text-gray-500">Posizionamento rispetto ai principali player organici per sovrapposizione keyword.</p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="competitorChart"></canvas>
+            </div>
+            <div class="mt-4 grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="text-center p-2 bg-gray-50 rounded">
+                    <div class="text-xs text-gray-500">Sidaconc.it</div>
+                    <div class="font-bold text-[#003366]">40 KW Comuni</div>
+                </div>
+                <div class="text-center p-2 bg-gray-50 rounded">
+                    <div class="text-xs text-gray-500">Assistec.cc</div>
+                    <div class="font-bold text-[#003366]">36 KW Comuni</div>
+                </div>
+                <div class="text-center p-2 bg-gray-50 rounded">
+                    <div class="text-xs text-gray-500">Meckatronic</div>
+                    <div class="font-bold text-[#003366]">30 KW Comuni</div>
+                </div>
+                <div class="text-center p-2 bg-gray-50 rounded">
+                    <div class="text-xs text-gray-500">Pre-mec</div>
+                    <div class="font-bold text-[#003366]">29 KW Comuni</div>
+                </div>
+                <div class="text-center p-2 bg-gray-50 rounded">
+                    <div class="text-xs text-gray-500">Mepalitalia</div>
+                    <div class="font-bold text-[#003366]">26 KW Comuni</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CONTENT PERFORMANCE -->
+        <section id="pages" class="fade-in bg-white rounded-lg shadow p-6 mb-8">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-[#003366]">Performance per Pagina</h3>
+                <p class="text-sm text-gray-500">Distribuzione del traffico organico sulle top URL.</p>
+            </div>
+            <div class="chart-container h-80">
+                <canvas id="pagesChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#003366] text-white py-8 border-t-4 border-labmec-gold">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <!-- FOOTER LOGO -->
+            <img src="https://labmec.it/wp-content/uploads/2025/07/LABMEC_LOGO_1X1-2.png" alt="Labmec Logo" class="h-12 w-12 mx-auto bg-white rounded p-1 object-contain shadow-sm mb-4">
+            
+            <p class="text-xs opacity-70">&copy; 2026 Labmec SRL. Report generated by Mirai Studio.</p>
+            <p class="text-xs opacity-50 mt-1">Dati estratti da Semrush Export (27 Gen 2026)</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA STORE ---
+        const reportData = {
+            traffic: {
+                total: 2400,
+                growth: 69,
+                cost: 1400,
+                keywords: 508
+            },
+            split: {
+                branded: { value: 214, label: "Branded", color: "#F9BF01" }, // Gold
+                nonBranded: { value: 2200, label: "Non-Branded", color: "#003366" } // Blue
+            },
+            intent: {
+                informational: 69.0,
+                transactional: 19.8,
+                commercial: 8.9,
+                navigational: 2.3
+            },
+            keywords: [
+                { term: "pantografo", intent: "Info", vol: 9900, traffic: "27.03%", trend: "stable" },
+                { term: "cnc", intent: "Info", vol: 8100, traffic: "13.74%", trend: "stable" },
+                { term: "labmec", intent: "Nav", vol: 260, traffic: "8.61%", trend: "stable" },
+                { term: "cnc and", intent: "Info", vol: 3600, traffic: "6.08%", trend: "up" },
+                { term: "pantografo in legno", intent: "Comm", vol: 1600, traffic: "4.34%", trend: "up" },
+                { term: "pantografo cnc per legno", intent: "Trans", vol: 260, traffic: "< 0.01%", trend: "new" }
+            ],
+            pages: [
+                { url: "/pantografo-legno-guida-completa/", share: 44.30 },
+                { url: "/macchine-cnc-funzionamento...", share: 29.10 },
+                { url: "Homepage (labmec.it)", share: 8.61 },
+                { url: "/pantografo-cnc-come-funziona/", share: 5.50 },
+                { url: "/macchine-cnc-come-funzionano/", share: 3.02 }
+            ],
+            competitors: [
+                { name: 'Labmec', x: 508, y: 100, r: 25 }, // Center point
+                { name: 'Sidaconc.it', x: 225, y: 28, r: 15 },
+                { name: 'Assistec.cc', x: 313, y: 28, r: 18 },
+                { name: 'Meckatronic', x: 124, y: 22, r: 10 },
+                { name: 'Pre-mec', x: 352, y: 20, r: 20 },
+                { name: 'Mepalitalia', x: 185, y: 20, r: 12 }
+            ]
+        };
+
+        // --- CHART CONFIGURATION ---
+        Chart.defaults.font.family = "'Roboto', sans-serif";
+        Chart.defaults.color = '#4A5568';
+        
+        // 1. BRANDED vs NON-BRANDED CHART
+        const ctxBrand = document.getElementById('brandChart').getContext('2d');
+        new Chart(ctxBrand, {
+            type: 'doughnut',
+            data: {
+                labels: ['Branded (Labmec)', 'Non-Branded (Generico)'],
+                datasets: [{
+                    data: [reportData.split.branded.value, reportData.split.nonBranded.value],
+                    backgroundColor: ['#F9BF01', '#003366'],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) label += ': ';
+                                label += context.raw.toLocaleString() + ' visite';
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 2. INTENT CHART
+        const ctxIntent = document.getElementById('intentChart').getContext('2d');
+        new Chart(ctxIntent, {
+            type: 'pie',
+            data: {
+                labels: ['Informational', 'Transactional', 'Commercial', 'Navigational'],
+                datasets: [{
+                    data: [
+                        reportData.intent.informational, 
+                        reportData.intent.transactional, 
+                        reportData.intent.commercial,
+                        reportData.intent.navigational
+                    ],
+                    backgroundColor: ['#3B82F6', '#10B981', '#F9BF01', '#9CA3AF'],
+                    borderWidth: 1,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right', labels: { boxWidth: 12 } }
+                }
+            }
+        });
+
+        // 3. COMPETITOR CHART (SCATTER)
+        const ctxComp = document.getElementById('competitorChart').getContext('2d');
+        new Chart(ctxComp, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'Competitor Landscape',
+                    data: reportData.competitors,
+                    backgroundColor: (ctx) => {
+                        return ctx.raw && ctx.raw.name === 'Labmec' ? '#F9BF01' : 'rgba(0, 51, 102, 0.6)';
+                    },
+                    borderColor: '#003366',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Volume Keywords Organiche' },
+                        grid: { display: false }
+                    },
+                    y: {
+                        title: { display: true, text: 'Livello Competizione (%)' },
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.raw.name + ': ' + context.raw.x + ' KW';
+                            }
+                        }
+                    },
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // 4. TOP PAGES CHART
+        const ctxPages = document.getElementById('pagesChart').getContext('2d');
+        new Chart(ctxPages, {
+            type: 'bar',
+            data: {
+                labels: reportData.pages.map(p => p.url.length > 30 ? p.url.substring(0, 30) + '...' : p.url),
+                datasets: [{
+                    label: '% Share Traffico',
+                    data: reportData.pages.map(p => p.share),
+                    backgroundColor: (ctx) => {
+                        // Highlight top performers
+                        return ctx.dataIndex < 2 ? '#003366' : '#CBD5E0';
+                    },
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 50,
+                        title: { display: true, text: '% Traffico Totale' }
+                    }
+                }
+            }
+        });
+
+        // --- TABLE POPULATION ---
+        const tableBody = document.getElementById('keywordTableBody');
+        reportData.keywords.forEach(kw => {
+            const row = document.createElement('tr');
+            row.className = "border-b transition-colors";
+            
+            let trendIcon = '<span class="text-gray-400">-</span>';
+            if (kw.trend === 'new') trendIcon = '<span class="text-green-600 font-bold text-xs uppercase bg-green-100 px-2 py-1 rounded">NEW</span>';
+            if (kw.trend === 'up') trendIcon = '<span class="text-green-600">▲</span>';
+
+            let intentBadge = '';
+            if (kw.intent === 'Info') intentBadge = '<span class="px-2 py-0.5 rounded text-xs bg-blue-100 text-blue-800">Info</span>';
+            if (kw.intent === 'Trans') intentBadge = '<span class="px-2 py-0.5 rounded text-xs bg-green-100 text-green-800">Trans</span>';
+            if (kw.intent === 'Comm') intentBadge = '<span class="px-2 py-0.5 rounded text-xs bg-yellow-100 text-yellow-800">Comm</span>';
+            if (kw.intent === 'Nav') intentBadge = '<span class="px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-800">Nav</span>';
+
+            row.innerHTML = `
+                <td class="px-6 py-4 font-medium text-gray-900">${kw.term}</td>
+                <td class="px-6 py-4 text-center">${intentBadge}</td>
+                <td class="px-6 py-4 text-right font-mono text-gray-600">${kw.vol.toLocaleString()}</td>
+                <td class="px-6 py-4 text-right font-bold text-[#003366]">${kw.traffic}</td>
+                <td class="px-6 py-4 text-center">${trendIcon}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+    </script>
+</body>
+</html>
