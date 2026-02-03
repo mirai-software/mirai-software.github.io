@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta, Amore & Caffè | Strategia & UX Brand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- 
+        Palette UX:
+        Primary: #D32F2F (Call to Action / Alert)
+        Secondary: #388E3C (Success / Growth)
+        Accent: #FBC02D (Highlight / Warmth)
+        Neutral: #3E2723 (Text / Footer)
+        Bg: #FFFDE7 (Canvas)
+    -->
+
+    <style>
+        body { font-family: 'Lato', sans-serif; background-color: #FFFDE7; color: #3E2723; }
+        h1, h2, h3, .serif-font { font-family: 'Playfair Display', serif; }
+        
+        /* Chart Containers for Responsive UI */
+        .chart-container { position: relative; width: 100%; height: 350px; margin: 0 auto; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
+
+        /* Card Styling & Hover Effects */
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(62, 39, 35, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(62, 39, 35, 0.1);
+        }
+        
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#FBC02D] selection:text-[#3E2723]">
+
+    <!-- HERO SECTION: Storytelling -->
+    <header class="w-full bg-[#D32F2F] text-[#FFFDE7] py-20 px-4 shadow-xl relative overflow-hidden">
+        <!-- Decorative bg element -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" 
+             style="background-image: radial-gradient(#FBC02D 2px, transparent 2px); background-size: 30px 30px;">
+        </div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-block border border-[#FBC02D] text-[#FBC02D] px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+                Digital Strategy 2026
+            </div>
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 leading-tight">
+                Pasta, Amore <br/><span class="italic font-light text-[#FBC02D]">&</span> Caffè
+            </h1>
+            <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto opacity-90 leading-relaxed">
+                "Restituire il tempo al cibo. Custodire rituali, non solo ingredienti."
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 gap-20">
+
+        <!-- SECTION 3: Content Pillars (Doughnut) -->
+        <section>
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-[#3E2723] mb-3">Content Strategy Matrix</h2>
+                <p class="text-xl opacity-60 serif-font italic">"Di cosa parliamo quando parliamo di cibo?"</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="chart-container">
+                    <canvas id="pillarsChart"></canvas>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- Legend Items designed as UI Cards -->
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm border-l-8 border-[#D32F2F]">
+                        <span class="text-3xl mr-4">🏠</span>
+                        <div>
+                            <h4 class="font-bold text-[#D32F2F]">Sentirsi a Casa (50%)</h4>
+                            <p class="text-xs text-gray-500"> Emotional Storytelling. Rituali e memorie.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm border-l-8 border-[#388E3C]">
+                        <span class="text-3xl mr-4">🟢</span>
+                        <div>
+                            <h4 class="font-bold text-[#388E3C]">Cultura Gastronomica (20%)</h4>
+                            <p class="text-xs text-gray-500"> Education tecnica e artigianalità.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm border-l-8 border-[#FBC02D]">
+                        <span class="text-3xl mr-4">🤝</span>
+                        <div>
+                            <h4 class="font-bold text-[#FBC02D]">Il Consiglio dell'Amico (20%)</h4>
+                            <p class="text-xs text-gray-500"> Utility, ricette e zero sprechi.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-4 bg-white rounded-lg shadow-sm border-l-8 border-[#3E2723]">
+                        <span class="text-3xl mr-4">🚜</span>
+                        <div>
+                            <h4 class="font-bold text-[#3E2723]">Diario di Campagna (10%)</h4>
+                            <p class="text-xs text-gray-500"> Transparency, mani sporche di terra.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CALENDAR COMPARISON (NEW) -->
+        <section class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 relative overflow-hidden">
+            <!-- Header -->
+            <div class="text-center mb-12 relative z-10">
+                <div class="inline-block bg-[#3E2723] text-[#FFFDE7] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                    Obbiettivo: Posizionamento sui social media
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-[#3E2723] mb-4">Febbraio 2026</h2>
+                <p class="text-xl opacity-70 serif-font italic max-w-2xl mx-auto">
+                    "Due narrazioni parallele: l'amore perfetto vs l'amore vero."
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                
+                <!-- INSTAGRAM CALENDAR (Aesthetic) -->
+                <div class="bg-[#FFFDE7] rounded-2xl border-2 border-[#D32F2F]/10 overflow-hidden group hover:border-[#D32F2F]/30 transition-colors">
+                    <!-- Column Header -->
+                    <div class="bg-[#D32F2F] p-6 text-center text-[#FFFDE7]">
+                        <div class="text-3xl mb-2">📸</div>
+                        <h3 class="text-2xl font-bold font-serif">Instagram</h3>
+                        <p class="text-xs uppercase tracking-widest opacity-80 font-bold">La Vetrina (Aesthetic)</p>
+                    </div>
+
+                    <!-- Weeks -->
+                    <div class="p-6 space-y-8">
+                        <!-- Week 1 -->
+                        <div class="relative pl-6 border-l-2 border-[#D32F2F]/20">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#D32F2F]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 1</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">2/02:</strong> Preparazione box (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">4/02:</strong> Il rito della Moka: 4 errori da non fare (Carousel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">6/02:</strong> 4 Prodotti che non possono mancare (Carousel)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Week 2 -->
+                        <div class="relative pl-6 border-l-2 border-[#D32F2F]/20">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#D32F2F]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 2</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">9/02:</strong> Sostenibilità: Perché senza plastica? (Carousel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">11/02:</strong> Le Radici del Gusto: Pane e Pomodoro (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">13/02:</strong> Antichi Sapori: Tavole Moderne (Carousel)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Week 3 -->
+                        <div class="relative pl-6 border-l-2 border-[#D32F2F]/20">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#D32F2F]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 3</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">16/02:</strong> In Cucina con Renato: Pomodorini Gialli & Pasta (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">18/02:</strong> La Box Partenope: Cena tra amici (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">20/02:</strong> ASMR Coffee Ritual: Suoni puri (Reel)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Week 4 -->
+                        <div class="relative pl-6 border-l-2 border-[#D32F2F]/20">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#D32F2F]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 4</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">23/02:</strong> Proposta Regalo: Box PAC (Carousel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">25/02:</strong> Colazione d’Autore: Texture Miele (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">27/02:</strong> Miele PAC: Guida agli abbinamenti (Carousel)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIKTOK CALENDAR (Raw/Community) -->
+                <div class="bg-[#FFFDE7] rounded-2xl border-2 border-[#FBC02D]/20 overflow-hidden group hover:border-[#FBC02D]/50 transition-colors">
+                    <!-- Column Header -->
+                    <div class="bg-[#FBC02D] p-6 text-center text-[#3E2723]">
+                        <div class="text-3xl mb-2">⚡</div>
+                        <h3 class="text-2xl font-bold font-serif">TikTok</h3>
+                        <p class="text-xs uppercase tracking-widest opacity-80 font-bold">Il Diario (Unfiltered)</p>
+                    </div>
+
+                    <!-- Weeks -->
+                    <div class="p-6 space-y-8">
+                        <!-- Week 1 -->
+                        <div class="relative pl-6 border-l-2 border-[#FBC02D]/40">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#FBC02D]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 1</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">2/02:</strong> Preparazione box (Reel Repost)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">4/02:</strong> Il rito della Moka: 4 errori da non fare (Photo Mode)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">6/02:</strong> 4 Prodotti che non possono mancare (Photo Mode)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Week 2 -->
+                        <div class="relative pl-6 border-l-2 border-[#FBC02D]/40">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#FBC02D]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 2</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">9/02:</strong> Video Risposta 1</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">11/02:</strong> Le Radici del Gusto: Pane e Pomodoro (Reel Repost)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">13/02:</strong> Video Risposta 2</li>
+                            </ul>
+                        </div>
+
+                        <!-- Week 3 -->
+                        <div class="relative pl-6 border-l-2 border-[#FBC02D]/40">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#FBC02D]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 3</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">16/02:</strong> In Cucina con Renato: Pomodorini Gialli & Pasta (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">18/02:</strong> La Box Partenope: Cena tra amici (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">20/02:</strong> ASMR Coffee Ritual: Suoni puri (Reel)</li>
+                            </ul>
+                        </div>
+
+                         <!-- Week 4 -->
+                         <div class="relative pl-6 border-l-2 border-[#FBC02D]/40">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#FBC02D]"></div>
+                            <span class="text-xs font-bold text-[#D32F2F] uppercase mb-2 block">Settimana 4</span>
+                            <ul class="space-y-3">
+                                <li class="text-sm"><strong class="text-[#3E2723]">23/02:</strong> Video Risposta 3</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">25/02:</strong> Colazione d’Autore: Texture Miele (Reel)</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">27/02:</strong> Video Risposta 4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Visual Decoration Background -->
+            <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-[#FBC02D] rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -top-20 w-64 h-64 bg-[#D32F2F] rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+        </section>
+
+        <!-- SECTION 5: CREATIVE LAB (PROPOSTE VIDEO & CAROSELLI) -->
+        <section>
+            <div class="text-center mb-12">
+                <div class="inline-block bg-[#D32F2F] text-[#FFFDE7] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                    Creative Lab
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-[#3E2723] mb-4">Proposte Contenuti</h2>
+                <p class="text-xl opacity-70 serif-font italic max-w-2xl mx-auto">
+                    Format declinati per coinvolgere, educare e convertire.
+                </p>
+            </div>
+
+            <!-- SUBSECTION: VIDEO STRATEGY -->
+            <div class="mb-16">
+                <div class="flex items-center mb-8">
+                    <span class="text-4xl mr-4">🎬</span>
+                    <h3 class="text-3xl font-bold text-[#3E2723]">Video Reels & TikTok</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Video 1 -->
+                    <div class="card p-6 border-t-4 border-[#FBC02D] hover:shadow-xl transition-shadow flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="bg-[#FBC02D]/20 text-[#3E2723] text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Cooking Show</span>
+                            <h4 class="text-xl font-bold text-[#D32F2F] mt-2">In Cucina con Renato</h4>
+                        </div>
+                        <p class="text-sm opacity-80 mb-4 flex-grow">
+                            <strong>Concept:</strong> Renato ai fornelli con prodotti PAC. Dinamico e conviviale.<br>
+                            <strong>Focus:</strong> Pomodorini gialli, olio, pasta.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Spontaneo</span>
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Esperto</span>
+                            </div>
+                            <button class="w-full bg-[#3E2723] text-[#FBC02D] py-2 rounded text-sm font-bold hover:bg-[#5D4037] transition-colors flex justify-center items-center gap-2">
+                                <span>▶️</span> Visualizza Ref Instagram
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="card p-6 border-t-4 border-[#388E3C] hover:shadow-xl transition-shadow flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="bg-[#388E3C]/20 text-[#388E3C] text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Storytelling</span>
+                            <h4 class="text-xl font-bold text-[#D32F2F] mt-2">Le Radici del Gusto</h4>
+                        </div>
+                        <p class="text-sm opacity-80 mb-4 flex-grow">
+                            <strong>Concept:</strong> Il cibo come eredità culturale. Renato prepara una merenda semplice raccontando la sua infanzia.<br>
+                            <strong>Focus:</strong> Qualità materia prima, territorio.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Intimo</span>
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Nostalgico</span>
+                            </div>
+                            <button class="w-full bg-gray-200 text-gray-500 py-2 rounded text-sm font-bold cursor-not-allowed">
+                                Ref non disponibile
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="card p-6 border-t-4 border-[#D32F2F] hover:shadow-xl transition-shadow flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="bg-[#D32F2F]/20 text-[#D32F2F] text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Product Focus</span>
+                            <h4 class="text-xl font-bold text-[#D32F2F] mt-2">La "Box Partenope"</h4>
+                        </div>
+                        <p class="text-sm opacity-80 mb-4 flex-grow">
+                            <strong>Concept:</strong> La Box come soluzione per la socialità. Preparazione bruschette e pasta per cena tra amici.<br>
+                            <strong>Focus:</strong> Comodità, selezione curata.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Pratico</span>
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Solare</span>
+                            </div>
+                            <button class="w-full bg-gray-200 text-gray-500 py-2 rounded text-sm font-bold cursor-not-allowed">
+                                Ref non disponibile
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="card p-6 border-t-4 border-[#3E2723] hover:shadow-xl transition-shadow flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="bg-[#3E2723]/20 text-[#3E2723] text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Sensoriale</span>
+                            <h4 class="text-xl font-bold text-[#D32F2F] mt-2">ASMR Coffee Ritual</h4>
+                        </div>
+                        <p class="text-sm opacity-80 mb-4 flex-grow">
+                            <strong>Concept:</strong> Suoni puri. Dal chicco al gorgoglio della moka. Relax immersivo senza parlato.<br>
+                            <strong>Focus:</strong> Ritualità del caffè.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Immersivo</span>
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Ipnotico</span>
+                            </div>
+                            <button class="w-full bg-[#3E2723] text-[#FBC02D] py-2 rounded text-sm font-bold hover:bg-[#5D4037] transition-colors flex justify-center items-center gap-2">
+                                <span>▶️</span> Visualizza Ref YouTube
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Video 5 -->
+                    <div class="card p-6 border-t-4 border-[#FBC02D] hover:shadow-xl transition-shadow flex flex-col h-full">
+                        <div class="mb-4">
+                            <span class="bg-[#FBC02D]/20 text-[#3E2723] text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Lifestyle</span>
+                            <h4 class="text-xl font-bold text-[#D32F2F] mt-2">Colazione d’Autore</h4>
+                        </div>
+                        <p class="text-sm opacity-80 mb-4 flex-grow">
+                            <strong>Concept:</strong> Merenda sana con focus sulla texture del Miele PAC. Caratteristiche organolettiche.<br>
+                            <strong>Focus:</strong> Wellness, purezza.
+                        </p>
+                        <div class="mt-auto pt-4 border-t border-gray-100">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Curato</span>
+                                <span class="text-xs border border-gray-300 px-2 py-1 rounded-full opacity-60">Informativo</span>
+                            </div>
+                            <button class="w-full bg-[#3E2723] text-[#FBC02D] py-2 rounded text-sm font-bold hover:bg-[#5D4037] transition-colors flex justify-center items-center gap-2">
+                                <span>▶️</span> Visualizza Ref TikTok
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="border-[#3E2723] opacity-10 mb-16">
+
+            <!-- SUBSECTION: CAROUSEL STRATEGY -->
+            <div>
+                <div class="flex items-center mb-8">
+                    <span class="text-4xl mr-4">🎠</span>
+                    <h3 class="text-3xl font-bold text-[#3E2723]">Caroselli Educativi</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Carousel 1 -->
+                    <div class="bg-white rounded-xl shadow-md border-l-8 border-[#FBC02D] p-6">
+                        <h4 class="text-xl font-bold text-[#3E2723] mb-1">Miele PAC: Guida agli abbinamenti</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-bold">Obiettivo: Versatilità & Acquisto</p>
+                        <div class="space-y-2 text-sm opacity-80 bg-yellow-50 p-4 rounded-lg">
+                            <p><strong>S1:</strong> Come abbinare il miele come un vero gourmet.</p>
+                            <p><strong>S2:</strong> Formaggi: sapori forti vs dolci.</p>
+                            <p><strong>S3:</strong> In cucina: laccare carni e vinaigrette.</p>
+                            <p><strong>S4:</strong> Benessere: colazione energetica.</p>
+                            <p><strong>CTA:</strong> "Qual è il tuo abbinamento preferito?"</p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel 2 -->
+                    <div class="bg-white rounded-xl shadow-md border-l-8 border-[#3E2723] p-6">
+                        <h4 class="text-xl font-bold text-[#3E2723] mb-1">Il rito della Moka: Errori da non fare</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-bold">Obiettivo: Engagement & Authority</p>
+                        <div class="space-y-2 text-sm opacity-80 bg-[#3E2723]/5 p-4 rounded-lg">
+                            <p><strong>S1:</strong> Stai rovinando il tuo caffè? 4 errori comuni.</p>
+                            <p><strong>S2:</strong> Acqua: sotto la valvola, oligominerale.</p>
+                            <p><strong>S3:</strong> Caffè: mai fare la "montagnetta" pressata.</p>
+                            <p><strong>S4:</strong> Fiamma: bassa per estrazione lenta.</p>
+                            <p><strong>CTA:</strong> "Tagga l'amico che brucia il caffè."</p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel 3 -->
+                    <div class="bg-white rounded-xl shadow-md border-l-8 border-[#388E3C] p-6">
+                        <h4 class="text-xl font-bold text-[#3E2723] mb-1">Sostenibilità al primo posto</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-bold">Obiettivo: Brand Values</p>
+                        <div class="space-y-2 text-sm opacity-80 bg-green-50 p-4 rounded-lg">
+                            <p><strong>S1:</strong> Perché i prodotti PAC viaggiano senza plastica?</p>
+                            <p><strong>S2:</strong> Protezione Naturale (cartone, fibra mais).</p>
+                            <p><strong>S3:</strong> Impronta Ecologica (dati/stime).</p>
+                            <p><strong>S4:</strong> Ciclo Infinito (riutilizzo creativo).</p>
+                            <p><strong>CTA:</strong> "Scegli un acquisto che ama il futuro."</p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel 4 -->
+                    <div class="bg-white rounded-xl shadow-md border-l-8 border-[#D32F2F] p-6">
+                        <h4 class="text-xl font-bold text-[#3E2723] mb-1">Antichi Sapori, Tavole Moderne</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-bold">Obiettivo: Tradizione & Cucina Povera</p>
+                        <div class="space-y-2 text-sm opacity-80 bg-red-50 p-4 rounded-lg">
+                            <p><strong>S1:</strong> Foto artistica: ricettario antico vs pasta moderna.</p>
+                            <p><strong>S2:</strong> La Merenda Ritrovata (Pane e Pomodoro).</p>
+                            <p><strong>S3:</strong> Il Conforto della Tradizione (Pasta e Patate).</p>
+                            <p><strong>S4:</strong> Il Rituale del Sud (Lo Scarpariello).</p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel 5 (With Link) -->
+                    <div class="bg-white rounded-xl shadow-md border-l-8 border-[#FBC02D] p-6 relative overflow-hidden group">
+                        <div class="absolute right-0 top-0 bg-[#FBC02D] text-[#3E2723] text-[10px] font-bold px-2 py-1 rounded-bl">CON LINK</div>
+                        <h4 class="text-xl font-bold text-[#3E2723] mb-1">Proposta Regalo Box Pac</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-bold">Obiettivo: Sales</p>
+                        <div class="mb-4 text-sm opacity-70">
+                            Presentazione visuale della Box come idea regalo perfetta per ogni occasione.
+                        </div>
+                        <a href="https://www.instagram.com/p/DR4mecRDAqR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="inline-flex items-center text-[#D32F2F] font-bold text-sm hover:underline">
+                            Visualizza Reference Instagram ↗️
+                        </a>
+                    </div>
+
+                    <!-- Carousel 6 (With Link) -->
+                    <div class="bg-white rounded-xl shadow-md border-l-8 border-[#3E2723] p-6 relative overflow-hidden group">
+                        <div class="absolute right-0 top-0 bg-[#3E2723] text-[#FBC02D] text-[10px] font-bold px-2 py-1 rounded-bl">CON LINK</div>
+                        <h4 class="text-xl font-bold text-[#3E2723] mb-1">4 Prodotti Immancabili</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4 font-bold">Obiettivo: Product Awareness</p>
+                        <div class="mb-4 text-sm opacity-70">
+                            La selezione essenziale per avere la Campania in dispensa tutto l'anno.
+                        </div>
+                        <a href="https://www.instagram.com/p/DOYxAixDOTq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="inline-flex items-center text-[#D32F2F] font-bold text-sm hover:underline">
+                            Visualizza Reference Instagram ↗️
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#3E2723] text-[#FFFDE7] py-16 text-center border-t-8 border-[#D32F2F]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-4 serif-font">Pasta, Amore & Caffè</h2>
+            <div class="flex justify-center gap-6 mb-8 text-2xl">
+                <a href="#" class="opacity-70 hover:opacity-100 hover:text-[#FBC02D] transition-colors">IG</a>
+                <a href="#" class="opacity-70 hover:opacity-100 hover:text-[#FBC02D] transition-colors">TT</a>
+                <a href="#" class="opacity-70 hover:opacity-100 hover:text-[#FBC02D] transition-colors">FB</a>
+            </div>
+            <div class="text-sm opacity-50 font-mono">
+                &copy; PAC Digital Strategy | Campania State of Mind
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHARTS JAVASCRIPT -->
+    <script>
+        // Common Config
+        Chart.defaults.font.family = "'Lato', sans-serif";
+        Chart.defaults.color = '#3E2723';
+        
+        // --- 1. PILLARS (Doughnut) ---
+        new Chart(document.getElementById('pillarsChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Casa (Emotion)', 'Cultura (Edu)', 'Amico (Utility)', 'Campagna (Trust)'],
+                datasets: [{
+                    data: [50, 20, 20, 10],
+                    backgroundColor: ['#D32F2F', '#388E3C', '#FBC02D', '#3E2723'],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                layout: { padding: 20 }
+            }
+        });
+
+    </script>
+</body>
+</html>
