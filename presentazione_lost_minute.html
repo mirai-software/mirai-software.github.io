@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Minute | Brand Identity & Strategy</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#FF0033', // Rosso from image/pdf approx
+                            yellow: '#FFC800', // Yellow from image approx
+                            blue: '#2D00F7', // Electric Blue from image details
+                            cream: '#FFFDD0', // Light cream/white
+                            black: '#000000',
+                            dark: '#111111'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'], // Simulating Grendel's via CSS styling
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* General Styles */
+        body {
+            background-color: #F8F8F8;
+            color: #111;
+        }
+
+        /* Chart Container Rules */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 500px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF0033;
+            border-radius: 4px;
+        }
+
+        /* Grendel's Font Simulation (Condensed, Italic, Bold) */
+        .font-grendels {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            transform: scaleY(1.1); /* Make it taller/condensed looking */
+            display: inline-block;
+        }
+
+        /* Logo CSS Construction (No SVG/Raster) */
+        .logo-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .rabbit-icon {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        
+        /* Rabbit Head */
+        .rabbit-head {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: currentColor;
+            z-index: 2;
+        }
+
+        /* Rabbit Ears */
+        .rabbit-ear {
+            position: absolute;
+            bottom: 25px;
+            width: 12px;
+            height: 35px;
+            background-color: currentColor;
+            border-radius: 10px;
+            z-index: 1;
+        }
+        .ear-left { left: 12px; transform: rotate(-10deg); }
+        .ear-right { right: 12px; transform: rotate(10deg); }
+
+        /* Clock Hand (Minute) */
+        .clock-hand {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            width: 4px;
+            height: 15px;
+            background-color: #F8F8F8; /* Contrast color */
+            transform-origin: bottom center;
+            transform: translateX(-50%) rotate(45deg);
+            z-index: 3;
+            border-radius: 2px;
+        }
+
+        .btn-primary {
+            background-color: #FF0033;
+            color: white;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 4px 4px 0px #000;
+        }
+        .btn-primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
+        }
+
+        .chapter-btn.active-chapter {
+            border-left-color: #FF0033;
+            background-color: #111;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="bg-brand-black text-white sticky top-0 z-50 shadow-lg border-b-4 border-brand-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-black italic tracking-tighter text-white font-grendels">LOST <span class="text-brand-red">MINUTE</span></span>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#intro" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">Intro</a>
+                        <a href="#dashboard" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">DNA</a>
+                        <a href="#tov" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">ToV</a>
+                        <a href="#visual" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">Visual Identity</a>
+                        <a href="#personas" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">Target</a>
+                        <a href="#narrative" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">Narrativa</a>
+                        <a href="#strategy" class="hover:text-brand-red px-3 py-2 rounded-md text-sm font-bold uppercase transition">Strategy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 01 INTRODUZIONE -->
+    <header id="intro" class="bg-white relative overflow-hidden border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center relative z-10">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-4 block">01 \ Introduzione</span>
+            <h1 class="text-5xl md:text-7xl font-black text-brand-black mb-8 leading-none tracking-tight font-grendels">
+                OLTRE IL BOOKING:<br>
+                <span class="text-brand-red">LA CONQUISTA DEL LUSSO.</span>
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-800 font-bold uppercase leading-relaxed">
+                Dove l'esclusività non si prenota, si vince.
+            </p>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 font-medium">
+                LOST MINUTE È L'ECOSISTEMA DIGITALE CHE TRASFORMA IL GIOCO IN ASSET D'ÉLITE - VILLE, YACHT E SUPERCAR - IN UNA SFIDA CONTRO IL TEMPO.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#narrative" class="btn-primary px-10 py-4 rounded text-lg text-center">
+                    Entra nel Portale
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 02 MISSION & VISION -->
+    <section id="dashboard" class="py-16 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-8 block">02 \ Mission and Vision</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Vision -->
+                <div class="bg-white p-10 rounded shadow-xl border-t-8 border-brand-black">
+                    <h3 class="text-4xl font-black text-brand-black mb-6 uppercase font-grendels">Vision</h3>
+                    <p class="text-gray-800 font-bold text-lg mb-4 uppercase leading-snug">
+                        Trasformare il lusso da privilegio statico a conquista dinamica accessibile a tutti.
+                    </p>
+                    <p class="text-gray-600 text-base">
+                        Vogliamo ridefinire i confini dell'esclusività, diventando il primo ecosistema mondiale di gamified luxury dove il prestigio non appartiene a chi aspetta, ma a chi ha l'istinto di afferrarlo.
+                    </p>
+                </div>
+
+                <!-- Mission -->
+                <div class="bg-white p-10 rounded shadow-xl border-t-8 border-brand-red">
+                    <h3 class="text-4xl font-black text-brand-red mb-6 uppercase font-grendels">Mission</h3>
+                    <p class="text-gray-800 font-bold text-lg mb-4 uppercase leading-snug">
+                        Connettiamo gli asset più esclusivi con una nuova generazione di utenti.
+                    </p>
+                    <p class="text-gray-600 text-base">
+                        Utilizzando il meccanismo dell'asta inversa e la psicologia della FOMO per trasformare ogni prenotazione in una vittoria contro il tempo e contro gli altri utenti. Il brivido dell'urgenza.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 TOV (SEPARATED) -->
+    <section id="tov" class="py-20 bg-brand-black text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-12">
+                <div>
+                    <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-2 block">03 \ ToV</span>
+                    <h2 class="text-5xl font-black text-white uppercase font-grendels">Dare Voce<br>Alla Caccia</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- The Do's -->
+                <div class="space-y-8">
+                    <div class="border-l-4 border-brand-yellow pl-6">
+                        <h4 class="text-2xl font-black text-brand-yellow uppercase mb-2">Lusso Provocatorio</h4>
+                        <p class="text-gray-300 font-medium uppercase">Linguaggio d'élite che sfida l'utente, mescolando eleganza e audacia.</p>
+                    </div>
+                    <div class="border-l-4 border-brand-red pl-6">
+                        <h4 class="text-2xl font-black text-brand-red uppercase mb-2">Urgenza Magnetica!</h4>
+                        <p class="text-gray-300 font-medium uppercase">Il ritmo è serrato: ogni parola evoca la caccia e la sfida del tempo.</p>
+                    </div>
+                    <div class="border-l-4 border-brand-blue pl-6">
+                        <h4 class="text-2xl font-black text-brand-blue uppercase mb-2">Mentalità Vincente</h4>
+                        <p class="text-gray-300 font-medium uppercase">Non parliamo di risparmio ma di vittoria. L'utente batte il sistema.</p>
+                    </div>
+                </div>
+
+                <!-- The Don'ts -->
+                <div class="bg-neutral-900 p-8 rounded border border-neutral-800">
+                    <h4 class="text-2xl font-black text-white uppercase mb-6 border-b border-gray-700 pb-4">Cosa Evitare (The Don'ts)</h4>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <span class="text-brand-red text-xl mr-4">✖</span>
+                            <div>
+                                <strong class="text-white uppercase block">Sconto / Risparmio</strong>
+                                <span class="text-gray-400 text-sm uppercase">Distruggono il prestigio.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brand-red text-xl mr-4">✖</span>
+                            <div>
+                                <strong class="text-white uppercase block">Economico / Saldi</strong>
+                                <span class="text-gray-400 text-sm uppercase">Attirano il target errato.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 VISUAL IDENTITY (LINK ONLY) -->
+    <section id="visual" class="py-20 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-4 block">04 \ Visual Identity</span>
+            <h2 class="text-4xl font-black text-brand-black uppercase mb-8 font-grendels">Esplora la Visual Identity</h2>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Accedi alla presentazione completa per scoprire tutti i dettagli su loghi, tipografia, palette colori e linee guida del brand.
+            </p>
+            <a href="https://docs.google.com/presentation/d/1Wwq86WUdp--udRoa4nkxn90RuC1etxJ1Q8NTTNossvQ/edit?usp=sharing" target="_blank" class="btn-primary px-10 py-5 rounded text-lg inline-flex items-center gap-3">
+                <span>Vedi Presentazione Completa</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- 05 TARGET AUDIENCE -->
+    <section id="personas" class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-8 block">05 \ Target Audience</span>
+            <h2 class="text-3xl font-black text-brand-black uppercase mb-12">A Chi Ci Rivolgiamo?</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- Status Seeker -->
+                <div class="bg-white p-8 rounded shadow-lg border-l-8 border-brand-yellow">
+                    <h3 class="text-2xl font-black text-brand-black mb-1">THE STATUS SEEKER</h3>
+                    <span class="text-sm font-bold text-gray-400 uppercase mb-4 block">(L'Aspirazionale)</span>
+                    
+                    <p class="font-bold text-gray-800 uppercase mb-4">Punta a elevare il proprio profilo sociale tramite il prestigio.</p>
+                    <p class="text-gray-600 mb-6 uppercase text-sm">Cerca l'accesso a un mondo d'élite per trasformare ogni esperienza in un trofeo da mostrare.</p>
+                    
+                    <div class="bg-gray-100 p-4 rounded mb-4">
+                        <strong class="text-brand-black text-sm uppercase block mb-1">Driver:</strong>
+                        <span class="text-gray-600 text-sm uppercase">Riconoscimento sociale, invidia positiva, accesso facilitato a un club esclusivo.</span>
+                    </div>
+
+                    <div class="text-sm mb-6">
+                        <strong class="uppercase text-brand-black">Cosa cerca nell'App:</strong><br>
+                        <span class="text-gray-500 uppercase">La foto perfetta sullo yacht, la villa a Ibiza, il tag in una location d'élite.</span>
+                    </div>
+                    
+                    <!-- NEW QUESTIONS SECTION -->
+                    <div class="border-t border-gray-200 pt-4">
+                        <strong class="text-brand-red text-sm uppercase block mb-3">Le Domande (User Questions)</strong>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm">
+                                <span class="text-brand-yellow mr-2">➜</span>
+                                <span class="text-gray-600 uppercase italic">"Questo servizio è riservato a tutti?"</span>
+                            </li>
+                            <li class="flex items-start text-sm">
+                                <span class="text-brand-yellow mr-2">➜</span>
+                                <span class="text-gray-600 uppercase italic">"Le location sono davvero spettacolari come appaiono?"</span>
+                            </li>
+                            <li class="flex items-start text-sm">
+                                <span class="text-brand-yellow mr-2">➜</span>
+                                <span class="text-gray-600 uppercase italic">"Esiste un modo elegante per mostrare il mio trofeo d'élite al mio network?"</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Smart Strategist -->
+                <div class="bg-white p-8 rounded shadow-lg border-l-8 border-brand-blue">
+                    <h3 class="text-2xl font-black text-brand-black mb-1">THE SMART STRATEGIST</h3>
+                    <span class="text-sm font-bold text-gray-400 uppercase mb-4 block">(Il Cacciatore)</span>
+                    
+                    <p class="font-bold text-gray-800 uppercase mb-4">Punta a dominare le dinamiche di mercato tramite l'istinto.</p>
+                    <p class="text-gray-600 mb-6 uppercase text-sm">Cerca il brivido della sfida strategica per dimostrare di essere più veloce e lucido degli altri.</p>
+                    
+                    <div class="bg-gray-100 p-4 rounded mb-4">
+                        <strong class="text-brand-black text-sm uppercase block mb-1">Driver:</strong>
+                        <span class="text-gray-600 text-sm uppercase">Adrenalina, intelligenza finanziaria, piacere della competizione.</span>
+                    </div>
+
+                    <div class="text-sm mb-6">
+                        <strong class="uppercase text-brand-black">Cosa cerca nell'App:</strong><br>
+                        <span class="text-gray-500 uppercase">Il momento esatto in cui il prezzo tocca il fondo prima di essere preso da altri.</span>
+                    </div>
+                    
+                    <!-- NEW QUESTIONS SECTION -->
+                    <div class="border-t border-gray-200 pt-4">
+                        <strong class="text-brand-red text-sm uppercase block mb-3">Le Domande (User Questions)</strong>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-sm">
+                                <span class="text-brand-blue mr-2">➜</span>
+                                <span class="text-gray-600 uppercase italic">"La discesa del prezzo è garantita e trasparente?"</span>
+                            </li>
+                            <li class="flex items-start text-sm">
+                                <span class="text-brand-blue mr-2">➜</span>
+                                <span class="text-gray-600 uppercase italic">"Qual è il limite minimo oltre cui l'asta si ferma?"</span>
+                            </li>
+                            <li class="flex items-start text-sm">
+                                <span class="text-brand-blue mr-2">➜</span>
+                                <span class="text-gray-600 uppercase italic">"Come posso assicurarmi di essere più veloce degli altri sulla piattaforma?"</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 NARRATIVA (FULLY EXPANDED) -->
+    <section id="narrative" class="py-20 bg-brand-black text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-8 block">06 \ Narrativa</span>
+            <h2 class="text-4xl font-black text-white uppercase font-grendels mb-2">Il Mondo di Lost e Minute</h2>
+            <p class="text-gray-400 uppercase mb-12 tracking-widest text-sm">L'Orizzonte Sospeso</p>
+
+            <!-- 1. I PROTAGONISTI -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-brand-yellow uppercase mb-6 border-b border-gray-800 pb-2">I Protagonisti</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-neutral-900 p-6 rounded border border-neutral-800">
+                        <h4 class="text-xl font-black text-white uppercase">LOST (Il Bianco)</h4>
+                        <p class="text-gray-400 text-sm mt-2 uppercase">Eleganza, Ricerca, Desiderio.</p>
+                        <p class="mt-4 text-gray-300">Coniglio bianco, elegante, con un occhio costantemente rivolto all'orizzonte. Rappresenta la ricerca, il desiderio, l'ambizione. È colui che ti guida.</p>
+                    </div>
+                    <div class="bg-neutral-900 p-6 rounded border border-neutral-800">
+                        <h4 class="text-xl font-black text-brand-yellow uppercase">MINUTE (L'Oro)</h4>
+                        <p class="text-gray-400 text-sm mt-2 uppercase">Opportunità, Tempo, Valore.</p>
+                        <p class="mt-4 text-gray-300">Coniglio d'oro, rapido, quasi etereo. Rappresenta l'opportunità, l'attimo fuggente, il valore che scivola via. Minute è sempre un passo avanti.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. IL CONCEPT NARRATIVO -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-brand-red uppercase mb-6 border-b border-gray-800 pb-2">Il Concept Narrativo: Dov'è Minute?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 border-l-4 border-brand-yellow">
+                        <strong class="block text-white uppercase mb-2">L'Incidente (The Trigger)</strong>
+                        <p class="text-sm text-gray-400">Nel mondo del lusso, il tempo è il bene più prezioso. Un battito di ciglia e Minute scompare tra le ville di Dubai o i ponti di uno yacht a Ibiza.</p>
+                    </div>
+                    <div class="p-4 border-l-4 border-brand-red">
+                        <strong class="block text-white uppercase mb-2">La Sfida (The Gameplay)</strong>
+                        <p class="text-sm text-gray-400">Lost non può farcela da solo. Ha bisogno del tuo intuito per setacciare le location e ritrovare Minute prima che l'orologio segni lo zero.</p>
+                    </div>
+                    <div class="p-4 border-l-4 border-brand-blue">
+                        <strong class="block text-white uppercase mb-2">Il Ritrovamento (The Win)</strong>
+                        <p class="text-sm text-gray-400">Quando blocchi il prezzo, catturi Minute. La villa si apre, il coniglio d'oro è ora tuo, hai vinto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. LA STORIA (CHAPTERS) -->
+            <div class="mb-16">
+                 <h3 class="text-2xl font-bold text-white uppercase mb-6 border-b border-gray-800 pb-2">La Storia</h3>
+                 <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Navigation -->
+                    <div class="lg:w-1/3 space-y-2">
+                        <button onclick="showChapter(0)" class="chapter-btn active-chapter w-full text-left p-4 rounded transition border-l-4 border-transparent uppercase font-bold text-sm">I. Il Regno del Tempo Fermo</button>
+                        <button onclick="showChapter(1)" class="chapter-btn w-full text-left p-4 rounded bg-neutral-800 hover:bg-neutral-700 transition border-l-4 border-transparent text-gray-400 uppercase font-bold text-sm">II. La Grande Frattura</button>
+                        <button onclick="showChapter(2)" class="chapter-btn w-full text-left p-4 rounded bg-neutral-800 hover:bg-neutral-700 transition border-l-4 border-transparent text-gray-400 uppercase font-bold text-sm">III. Il Portale dei Cacciatori</button>
+                        <button onclick="showChapter(3)" class="chapter-btn w-full text-left p-4 rounded bg-neutral-800 hover:bg-neutral-700 transition border-l-4 border-transparent text-gray-400 uppercase font-bold text-sm">IV. La Cattura: Il Trofeo</button>
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="lg:w-2/3 bg-neutral-900 p-8 rounded border border-neutral-800 min-h-[300px] flex items-center">
+                        <div id="chapterContent" class="uppercase leading-relaxed tracking-wide">
+                            <!-- Content injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. INTEGRAZIONE UX/UI -->
+            <div>
+                <h3 class="text-2xl font-bold text-gray-300 uppercase mb-6 border-b border-gray-800 pb-2">Integrazione UX/UI: Il Riferimento a "Wally"</h3>
+                <p class="text-gray-400 mb-6 uppercase text-sm">Per l'interfaccia, il concetto di "Dov'è Wally?" diventa una meccanica di discovery.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-neutral-800 p-4 rounded">
+                        <strong class="text-brand-yellow block text-sm mb-1">HOME PAGE (The Map)</strong>
+                        <p class="text-xs text-gray-400">Invece di una lista piatta, l'utente vede una "Luxury Map" densa di dettagli. Si intravedono le orecchie dorate di Minute che si nasconde.</p>
+                    </div>
+                    <div class="bg-neutral-800 p-4 rounded">
+                        <strong class="text-brand-red block text-sm mb-1">PRODUCT PAGE (The Search)</strong>
+                        <p class="text-xs text-gray-400">Mentre il prezzo scende, l'animazione di Lost si fa più frenetica. Micro-copy: "Minute è stato avvistato tra questi marmi. Fermalo ora."</p>
+                    </div>
+                    <div class="bg-neutral-800 p-4 rounded">
+                        <strong class="text-white block text-sm mb-1">CHECKOUT (The Capture)</strong>
+                        <p class="text-xs text-gray-400">Il tasto di acquisto non dice "Paga", ma "CATTURA MINUTE".</p>
+                    </div>
+                    <div class="bg-neutral-800 p-4 rounded">
+                        <strong class="text-brand-blue block text-sm mb-1">SUCCESS SCREEN (The Reunion)</strong>
+                        <p class="text-xs text-gray-400">Animazione di Lost e Minute insieme. Messaggio: "Minute è salvo. La villa è tua. Benvenuto nell'ideale."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 STRATEGY (UPDATED) -->
+    <section id="strategy" class="py-16 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-sm mb-8 block">07 \ Strategy e Campaign</span>
+            
+            <div class="bg-gray-50 p-8 rounded shadow border border-gray-200">
+                <h3 class="text-2xl font-black text-brand-black uppercase mb-4">Il Concept: "Minute" è il coniglio sfuggente</h3>
+                <p class="text-gray-600 mb-8 uppercase font-medium">Simbolo dell'occasione persa o ritrovata.</p>
+
+                <h4 class="text-brand-red font-bold uppercase mb-4 text-lg">Perché usare la domanda "Dov'è Minute?"?</h4>
+                <ul class="list-disc list-inside space-y-4 text-gray-800 uppercase font-bold">
+                    <li>Crea un gap di curiosità immediato ("Chi è Minute? Cosa ho perso?").</li>
+                    <li>Trasforma la città in un tabellone di gioco: vedere il coniglio significa che un'offerta è vicina.</li>
+                    <li>Sposta l'attenzione dallo "Sconto" (Cheap) alla "Ricerca" (Esclusivo).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black text-white py-12 border-t-8 border-brand-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-3xl font-black italic tracking-tighter font-grendels">LOST <span class="text-brand-red">MINUTE</span></span>
+                <p class="text-gray-500 text-xs mt-2 uppercase">By Mirai | Alessandro Carrozzi</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-gray-400 text-sm uppercase">Brand Identity & Strategy</p>
+                <p class="text-gray-500 text-xs mt-1 uppercase">©️ 2026 Lost Minute.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // --- NARRATIVE LOGIC (UPDATED TEXTS) ---
+        const chapters = [
+            {
+                title: "I. Il Regno del Tempo Fermo",
+                text: "Esiste un luogo, oltre i confini del mondo ordinario, dove la perfezione non è un'ambizione, ma la norma. In questo regno gli orologi non hanno ragione di esistere: il tempo è scandito solo dal battito del cuore e dal riflesso del sole sui marmi specchiati delle ville.<br><br>Qui regnavano due spiriti gemelli, architetti dell'esclusività: Lost, il coniglio dal manto bianco, custode della visione e dei desideri più profondi; e Minute, il coniglio d'oro, il cui tocco trasformava l'istante in realtà.<br><br>Insieme, erano l'equilibrio: Lost scovava il prestigio, Minute lo rendeva eterno."
+            },
+            {
+                title: "II. La Grande Frattura",
+                text: "Ma nel cuore del lusso, anche la perfezione può diventare una sfida. Un giorno, attratto da un bagliore più intenso tra le vette di vetro delle capitali del lifestyle, Minute scelse di correre. Non una corsa comune, ma un inseguimento folle contro il proprio riflesso.<br><br>Lost cercò di trattenerlo, ma l'equilibrio si era spezzato. Minute si disperse nelle pieghe del mondo, frammentandosi tra i ponti degli yacht e i saloni delle residenze più segrete. Da quel giorno, il tempo smise di essere un alleato e tornò a scorrere, implacabile.<br><br>Lost rimase solo sulla soglia del regno, con un'unica ossessione a tormentare il silenzio: 'Dov'è Minute?'."
+            },
+            {
+                title: "III. Il Portale dei Cacciatori",
+                text: "Lost comprese che la ricerca richiedeva più di una semplice attesa. Il tempo era diventato una preda veloce, sfuggente, riservata solo a chi possiede l'istinto del predatore.<br><br>Per questo, ha aperto il Portale - l'applicazione - con un unico scopo: catapultare nell'orizzonte sospeso i veri cacciatori di sogni.<br><br>Ogni volta che accedi, non stai navigando in un catalogo: stai entrando in una caccia. Setacci le mappe, sorvoli ville sospese e supercar che sfidano la gravità. Mentre osservi il prezzo cadere, più Minute scivola via dalle tue mani, rischiando di vederlo tra le braccia di un altro cacciatore."
+            },
+            {
+                title: "IV. La Cattura: Il Trofeo d'Oro",
+                text: "Ma nel momento in cui il tuo intuito vince sull'esitazione e premi il tasto della vittoria, la magia si compie.<br><br>Il countdown si spezza. Il tempo si arrende. Lost e Minute si ritrovano.<br><br>In quell'istante Minute ti consegna le chiavi del suo impero. Quella villa, quello yacht, quell'auto... sono il tuo trofeo.<br><br>La prova indiscutibile che sei stato abbastanza lucido, abbastanza veloce e abbastanza audace da catturare l'eterno in un solo, decisivo minuto. Hai trovato il coniglio d'oro. Il regno è tuo."
+            }
+        ];
+
+        function showChapter(index) {
+            const contentDiv = document.getElementById('chapterContent');
+            const btns = document.querySelectorAll('.chapter-btn');
+            
+            // Update buttons styling
+            btns.forEach(btn => {
+                btn.classList.remove('active-chapter', 'bg-neutral-900', 'text-white');
+                btn.classList.add('bg-neutral-800', 'text-gray-400');
+            });
+            
+            const activeBtn = btns[index];
+            activeBtn.classList.remove('bg-neutral-800', 'text-gray-400');
+            activeBtn.classList.add('active-chapter', 'bg-neutral-900', 'text-white');
+
+            // Update Content
+            contentDiv.style.opacity = 0;
+            setTimeout(() => {
+                contentDiv.innerHTML = `
+                    <h3 class="text-3xl font-bold text-brand-yellow mb-6 uppercase font-grendels">${chapters[index].title}</h3>
+                    <p class="text-lg text-gray-300 font-medium">${chapters[index].text}</p>
+                `;
+                contentDiv.style.opacity = 1;
+            }, 200);
+        }
+        
+        // Style transition for content
+        document.getElementById('chapterContent').style.transition = "opacity 0.3s ease-in-out";
+        
+        // Init Chapter 0
+        showChapter(0);
+
+    </script>
+</body>
+</html>
