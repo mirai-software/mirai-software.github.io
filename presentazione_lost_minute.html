@@ -662,7 +662,7 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'it' ? 'en' : 'it';
-            document.body.className = ⁠ font-sans antialiased selection:bg-brand-red selection:text-white lang-${currentLang} ⁠;
+            document.body.className = `font-sans antialiased selection:bg-brand-red selection:text-white lang-${currentLang}`;
             renderChapters(0); // Refresh chapters in new language
         }
 
@@ -679,7 +679,7 @@
                     ? 'active-chapter bg-neutral-900 text-white' 
                     : 'bg-neutral-800 text-gray-400 hover:bg-neutral-700';
                     
-                navHtml += ⁠ <button onclick="renderChapters(${index})" class="chapter-btn w-full text-left p-4 rounded transition border-l-4 border-transparent uppercase font-bold text-sm mb-2 ${activeClass}">${chap.title}</button> ⁠;
+                navHtml += `<button onclick="renderChapters(${index})" class="chapter-btn w-full text-left p-4 rounded transition border-l-4 border-transparent uppercase font-bold text-sm mb-2 ${activeClass}">${chap.title}</button>`;
             });
             navContainer.innerHTML = navHtml;
 
