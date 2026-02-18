@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labmec.it | Report Visibilità Online — Feb 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #F9BF01;
+            --brand-dark: #B8860B;
+            --brand-light: rgba(249,191,1,0.08);
+            --brand-border: rgba(249,191,1,0.25);
+            --bg: #FFFFFF;
+            --bg-card: #F8F8F9;
+            --bg-surface: #F0F0F2;
+            --border: #E4E4E7;
+            --border-light: #ECECEE;
+            --text: #18181B;
+            --text2: #52525B;
+            --text3: #71717A;
+            --text4: #A1A1AA;
+            --green: #16A34A;
+            --green-bg: rgba(22,163,74,0.07);
+            --green-border: rgba(22,163,74,0.15);
+            --err: #DC2626;
+            --err-bg: rgba(220,38,38,0.06);
+            --err-border: rgba(220,38,38,0.15);
+            --blue: #2563EB;
+            --blue-bg: rgba(37,99,235,0.06);
+            --blue-border: rgba(37,99,235,0.15);
+            --orange: #EA580C;
+            --orange-bg: rgba(234,88,12,0.06);
+            --orange-border: rgba(234,88,12,0.15);
+            --purple: #7C3AED;
+            --purple-bg: rgba(124,58,237,0.06);
+            --purple-border: rgba(124,58,237,0.15);
+            /* Source colors */
+            --gsc: #4285F4;
+            --gsc-bg: rgba(66,133,244,0.06);
+            --gsc-border: rgba(66,133,244,0.18);
+            --ga4: #E37400;
+            --ga4-bg: rgba(227,116,0,0.06);
+            --ga4-border: rgba(227,116,0,0.18);
+            --sem: #FF622D;
+            --sem-bg: rgba(255,98,45,0.06);
+            --sem-border: rgba(255,98,45,0.18);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; -webkit-font-smoothing:antialiased; }
+        .container { max-width:980px; margin:0 auto; padding:0 24px; }
+        .mono { font-family:'JetBrains Mono',monospace; }
+
+        /* ── HEADER ── */
+        .header { padding:48px 0 28px; border-bottom:2px solid var(--border); margin-bottom:48px; }
+        .header-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+        .logo-area { display:flex; align-items:center; gap:14px; }
+        .logo-area img { width:48px; height:48px; border-radius:12px; }
+        .logo-text h1 { font-size:24px; font-weight:700; letter-spacing:-0.5px; }
+        .logo-text span { font-size:13px; color:var(--text3); }
+        .header-right { text-align:right; }
+        .date-badge { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--brand-dark); background:var(--brand-light); padding:6px 14px; border-radius:6px; border:1px solid var(--brand-border); }
+        .header-right .author { font-size:11px; color:var(--text4); margin-top:6px; }
+        .header-sub { font-size:15px; color:var(--text3); margin-top:4px; }
+        .header-sub strong { color:var(--text); }
+
+        /* ── SECTIONS ── */
+        .section { margin-bottom:56px; }
+        .section-header { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+        .section-title { font-size:20px; font-weight:700; letter-spacing:-0.3px; }
+        .section-desc { font-size:14px; color:var(--text3); margin-bottom:24px; line-height:1.6; }
+
+        /* ── SOURCE BADGE ── */
+        .src-badge { font-size:10px; font-weight:700; padding:3px 10px; border-radius:5px; text-transform:uppercase; letter-spacing:0.5px; white-space:nowrap; }
+        .src-gsc { color:var(--gsc); background:var(--gsc-bg); border:1px solid var(--gsc-border); }
+        .src-ga4 { color:var(--ga4); background:var(--ga4-bg); border:1px solid var(--ga4-border); }
+        .src-sem { color:var(--sem); background:var(--sem-bg); border:1px solid var(--sem-border); }
+        .src-multi { color:var(--text3); background:var(--bg-surface); border:1px solid var(--border); }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background:var(--bg-surface); border:1px solid var(--border); border-radius:10px;
+            padding:14px 18px; font-size:13px; color:var(--text3); line-height:1.6; margin-bottom:24px;
+        }
+        .info-box strong { color:var(--text2); }
+
+        /* ── HERO CARDS ── */
+        .hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+        .hero {
+            background:var(--bg-card); border:1px solid var(--border);
+            border-radius:14px; padding:24px 20px; text-align:center;
+            position:relative; overflow:hidden;
+        }
+        .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+        .hero.brand::before { background:var(--brand); }
+        .hero.green::before { background:var(--green); }
+        .hero.blue::before { background:var(--blue); }
+        .hero.orange::before { background:var(--sem); }
+        .hero-src { font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
+        .hero-val { font-size:36px; font-weight:700; letter-spacing:-2px; line-height:1; }
+        .hero-label { font-size:13px; color:var(--text2); margin-top:8px; }
+        .hero-change { font-family:'JetBrains Mono',monospace; font-size:12px; display:inline-block; padding:3px 8px; border-radius:5px; margin-top:8px; }
+        .hero-change.up { color:var(--green); background:var(--green-bg); }
+        .hero-change.down { color:var(--err); background:var(--err-bg); }
+        .hero-change.flat { color:var(--text4); background:var(--bg-surface); }
+        .hero-note { font-size:10px; color:var(--text4); margin-top:6px; }
+
+        /* ── KPI ROW ── */
+        .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+        .kpi-mini { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:16px; }
+        .kpi-mini-label { font-size:11px; color:var(--text4); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:4px; }
+        .kpi-mini-val { font-size:22px; font-weight:700; letter-spacing:-0.5px; }
+        .kpi-mini-sub { font-size:11px; color:var(--text4); margin-top:2px; }
+
+        /* ── INSIGHT ── */
+        .insight { background:var(--brand-light); border:1px solid var(--brand-border); border-radius:12px; padding:20px 24px; margin-bottom:24px; font-size:14px; color:var(--text2); line-height:1.7; }
+        .insight strong { color:var(--brand-dark); }
+        .insight-title { font-size:13px; font-weight:700; color:var(--brand-dark); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
+        .insight.alert { background:var(--err-bg); border-color:var(--err-border); }
+        .insight.alert strong { color:var(--err); }
+        .insight.alert .insight-title { color:var(--err); }
+
+        /* ── TABLE ── */
+        .tw { background:var(--bg); border:1px solid var(--border); border-radius:12px; overflow-x:auto; margin-bottom:20px; }
+        table { width:100%; border-collapse:collapse; }
+        thead th { font-size:11px; text-transform:uppercase; letter-spacing:0.4px; color:var(--text4); padding:14px 16px; text-align:left; border-bottom:1px solid var(--border); background:var(--bg-surface); font-weight:500; }
+        thead th:not(:first-child) { text-align:right; }
+        tbody td { padding:13px 16px; font-size:14px; border-bottom:1px solid var(--border-light); }
+        tbody td:not(:first-child) { text-align:right; font-family:'JetBrains Mono',monospace; font-size:13px; }
+        tbody tr:last-child td { border-bottom:none; }
+        tbody tr:hover { background:var(--bg-card); }
+        .cell-good { color:var(--green); }
+        .cell-bad { color:var(--err); }
+        .cell-muted { color:var(--text4); }
+        .cell-accent { color:var(--brand-dark); font-weight:600; }
+        .pos-badge { font-size:11px; font-weight:600; padding:3px 8px; border-radius:4px; display:inline-block; }
+        .pos-top3 { background:rgba(22,163,74,0.12); color:var(--green); }
+        .pos-top5 { background:var(--green-bg); color:var(--green); }
+        .pos-top10 { background:var(--blue-bg); color:var(--blue); }
+        .pos-low { background:var(--orange-bg); color:var(--orange); }
+        .nbadge { font-size:8px; background:var(--brand); color:#000; padding:2px 6px; border-radius:3px; font-weight:700; text-transform:uppercase; margin-left:6px; vertical-align:middle; }
+        .intent-badge { font-size:10px; padding:2px 6px; border-radius:3px; font-weight:600; }
+        .intent-i { background:var(--blue-bg); color:var(--blue); }
+        .intent-c { background:var(--orange-bg); color:var(--orange); }
+        .intent-t { background:var(--green-bg); color:var(--green); }
+        .intent-n { background:var(--purple-bg); color:var(--purple); }
+
+        /* ── DUAL ── */
+        .dual { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+        .triple { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:20px; }
+
+        /* ── CHART BOX ── */
+        .cbox { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:24px; }
+        .cbox-title { font-size:15px; font-weight:600; margin-bottom:4px; }
+        .cbox-desc { font-size:12px; color:var(--text4); margin-bottom:16px; }
+
+        /* ── BARS ── */
+        .bar-item { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+        .bar-name { font-size:13px; color:var(--text2); width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .bar-track { flex:1; height:8px; background:var(--bg-surface); border-radius:4px; overflow:hidden; }
+        .bar-fill { height:100%; border-radius:4px; }
+        .bar-val { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text3); width:50px; text-align:right; }
+
+        /* ── DONUT ── */
+        .donut-wrap { display:grid; grid-template-columns:100px 1fr; gap:16px; align-items:center; }
+        .donut-svg { width:100px; height:100px; }
+        .leg { display:flex; align-items:center; gap:8px; font-size:13px; margin-bottom:8px; color:var(--text2); }
+        .leg-dot { width:8px; height:8px; border-radius:3px; flex-shrink:0; }
+        .leg-val { margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text3); }
+
+        /* ── COMPETITOR ── */
+        .comp { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+        .comp-name { font-size:14px; font-weight:500; }
+        .comp-info { font-size:12px; color:var(--text3); }
+        .comp-right { display:flex; align-items:center; gap:12px; }
+        .comp-metric { text-align:right; }
+        .comp-metric-val { font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; }
+        .comp-metric-label { font-size:10px; color:var(--text4); }
+
+        /* ── HEALTH ── */
+        .health-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+        .health-card { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
+        .health-val { font-size:28px; font-weight:700; letter-spacing:-1px; }
+        .health-label { font-size:11px; color:var(--text4); margin-top:4px; }
+        .health-sub { font-size:10px; margin-top:4px; }
+
+        /* ── CHANNEL CARD ── */
+        .ch-card { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:18px; }
+        .ch-name { font-size:14px; font-weight:600; margin-bottom:2px; }
+        .ch-desc { font-size:12px; color:var(--text3); margin-bottom:10px; line-height:1.5; }
+        .ch-row { display:flex; justify-content:space-between; align-items:baseline; margin-top:6px; }
+        .ch-big { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:700; }
+        .ch-delta { font-family:'JetBrains Mono',monospace; font-size:12px; padding:2px 6px; border-radius:4px; }
+
+        /* ── FOOTER ── */
+        .footer { border-top:2px solid var(--border); padding:28px 0; margin-top:40px; display:flex; align-items:center; justify-content:space-between; }
+        .footer-l { display:flex; align-items:center; gap:10px; }
+        .footer-l img { width:24px; height:24px; border-radius:6px; }
+        .footer-t { font-size:11px; color:var(--text4); }
+        .footer-r { font-size:10px; color:var(--text4); font-family:'JetBrains Mono',monospace; }
+
+        @media (max-width:768px) {
+            .hero-grid { grid-template-columns:repeat(2,1fr); }
+            .kpi-row { grid-template-columns:repeat(2,1fr); }
+            .dual,.triple { grid-template-columns:1fr; }
+            .header-top { flex-direction:column; align-items:flex-start; gap:12px; }
+            .header-right { text-align:left; }
+            .health-grid { grid-template-columns:repeat(2,1fr); }
+            .bar-name { width:120px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="header">
+    <div class="header-top">
+        <div class="logo-area">
+            <img src="https://labmec.it/wp-content/uploads/2025/07/LABMEC_LOGO_1X1-2.png" alt="Labmec Logo">
+            <div class="logo-text">
+                <h1>LABMEC.IT</h1>
+                <span>Report Visibilità Online</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="date-badge">12 Febbraio 2026</div>
+            <div class="author">Report by Mirai Studio</div>
+        </div>
+    </div>
+    <p class="header-sub">Periodo analizzato: <strong>27 Gen – 9 Feb 2026</strong> confrontato con <strong>12 – 26 Gen 2026</strong></p>
+</header>
+
+<!-- ═══════════ FONTI ═══════════ -->
+<div class="section">
+    <div class="info-box">
+        Questo report incrocia <strong>3 fonti di dati diverse</strong>, ognuna con un ruolo specifico:<br>
+        <span class="src-badge src-gsc" style="margin-top:8px;display:inline-block;">Google Search Console</span> Misura <strong>solo il traffico organico</strong> — quante persone trovano il sito cercando su Google (senza contare le pubblicità).<br>
+        <span class="src-badge src-ga4" style="margin-top:4px;display:inline-block;">Google Analytics 4</span> Misura <strong>tutto il traffico</strong> — organico, Google Ads, YouTube, accessi diretti, social. I dati di sessioni e pagine viste includono anche chi arriva dalle campagne pubblicitarie.<br>
+        <span class="src-badge src-sem" style="margin-top:4px;display:inline-block;">Semrush</span> Stima il posizionamento organico basandosi sulle <strong>posizioni delle keyword</strong>. Non misura i click reali, ma indica come il sito si posiziona rispetto alla concorrenza e quanto traffico <em>potrebbe</em> generare.
+    </div>
+</div>
+
+<!-- ═══════════ 01 — NUMERI CHIAVE ═══════════ -->
+<div class="section">
+    <h2 class="section-title">I numeri chiave</h2>
+    <p class="section-desc">Il quadro generale della visibilità online di LabMec, visto dalle 3 fonti.</p>
+
+    <div class="hero-grid">
+        <div class="hero brand">
+            <div class="hero-src" style="color:var(--gsc);">Google Search Console</div>
+            <div class="hero-val">456</div>
+            <div class="hero-label">Click da Google (organici)</div>
+            <div class="hero-change up">+20,3%</div>
+            <div class="hero-note">erano 379</div>
+        </div>
+        <div class="hero green">
+            <div class="hero-src" style="color:var(--gsc);">Google Search Console</div>
+            <div class="hero-val">9,8</div>
+            <div class="hero-label">Posizione media</div>
+            <div class="hero-change up">▲ era 10,3</div>
+            <div class="hero-note">Prima pagina raggiunta</div>
+        </div>
+        <div class="hero blue">
+            <div class="hero-src" style="color:var(--ga4);">Google Analytics</div>
+            <div class="hero-val">724</div>
+            <div class="hero-label">Sessioni totali (tutti i canali)</div>
+            <div class="hero-change up">+2,3%</div>
+            <div class="hero-note">erano 708</div>
+        </div>
+        <div class="hero orange">
+            <div class="hero-src" style="color:var(--sem);">Semrush</div>
+            <div class="hero-val">505</div>
+            <div class="hero-label">Keyword posizionate</div>
+            <div class="hero-change up">+1,8%</div>
+            <div class="hero-note">15 in top 3 · 41 in top 10</div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ 02 — DA DOVE ARRIVA IL TRAFFICO ═══════════ -->
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">Da dove arriva il traffico</h2>
+        <span class="src-badge src-ga4">Google Analytics</span>
+    </div>
+    <p class="section-desc">GA4 misura tutto il traffico — incluse le campagne pubblicitarie. Ecco i canali principali e cosa significano.</p>
+
+    <div class="triple">
+        <div class="ch-card" style="border-left:3px solid var(--blue);">
+            <div class="ch-name">🔍 Ricerca Google (organico)</div>
+            <div class="ch-desc">Persone che hanno cercato qualcosa su Google e hanno cliccato sul sito <strong>senza</strong> passare da un annuncio.</div>
+            <div class="ch-row">
+                <span class="ch-big">235</span>
+                <span class="ch-delta" style="color:var(--green);background:var(--green-bg);">+5,9%</span>
+            </div>
+            <div style="font-size:11px;color:var(--text4);margin-top:4px;">Coinvolgimento: 93,2% · Durata: 2m 38s</div>
+        </div>
+        <div class="ch-card" style="border-left:3px solid var(--text3);">
+            <div class="ch-name">🏠 Accesso diretto</div>
+            <div class="ch-desc">Persone che hanno scritto labmec.it nella barra del browser, o di cui il sistema non ha tracciato la provenienza.</div>
+            <div class="ch-row">
+                <span class="ch-big">147</span>
+                <span class="ch-delta" style="color:var(--green);background:var(--green-bg);">+12,2%</span>
+            </div>
+            <div style="font-size:11px;color:var(--text4);margin-top:4px;">Coinvolgimento: 92,5% · Durata: 29s</div>
+        </div>
+        <div class="ch-card" style="border-left:3px solid #EA4335;">
+            <div class="ch-name">💰 Google Ads (ricerca)</div>
+            <div class="ch-desc">Click sugli annunci a pagamento che appaiono nei risultati di ricerca Google.</div>
+            <div class="ch-row">
+                <span class="ch-big">124</span>
+                <span class="ch-delta" style="color:var(--text3);background:var(--bg-surface);">budget ridotto</span>
+            </div>
+            <div style="font-size:11px;color:var(--text4);margin-top:4px;">Coinvolgimento: 95,2% · Durata: 1m 01s</div>
+        </div>
+    </div>
+
+    <div class="dual">
+        <div class="ch-card" style="border-left:3px solid #FBBC04;">
+            <div class="ch-name">📺 Cross-network (YouTube Ads)</div>
+            <div class="ch-desc">Traffico generato da campagne video su YouTube e rete display Google, che poi portano l'utente al sito.</div>
+            <div class="ch-row">
+                <span class="ch-big">110</span>
+                <span class="ch-delta" style="color:var(--brand-dark);background:var(--brand-light);">da 4 a 110</span>
+            </div>
+            <div style="font-size:11px;color:var(--text4);margin-top:4px;">Canale nuovo — quasi inesistente nel periodo precedente</div>
+        </div>
+        <div class="ch-card" style="border-left:3px solid #34A853;">
+            <div class="ch-name">📊 Altri canali</div>
+            <div class="ch-desc">Display Ads (44), Social (25, <strong>+88%</strong>), Referral (26, +31%), e altri canali minori.</div>
+            <div class="ch-row">
+                <span class="ch-big">144</span>
+                <span class="ch-delta cell-muted" style="background:var(--bg-surface);">misto</span>
+            </div>
+            <div style="font-size:11px;color:var(--text4);margin-top:4px;">Il Social raddoppia ma resta piccolo in numeri assoluti</div>
+        </div>
+    </div>
+
+    <div class="insight">
+        <div class="insight-title">Il traffico organico è il più prezioso</div>
+        Chi arriva dalla <strong>ricerca Google</strong> resta sul sito <strong>2 minuti e 38 secondi</strong> — 5 volte più a lungo di chi arriva da accesso diretto. Il coinvolgimento organico è al <strong>93,2%</strong>, il più alto tra tutti i canali. Le campagne <strong>Cross-network (YouTube)</strong> sono un canale nuovo che ha portato <strong>110 sessioni da zero</strong>, ampliando la visibilità del brand su nuovi segmenti di pubblico.
+    </div>
+</div>
+
+<!-- ═══════════ 03 — VISIBILITÀ ORGANICA GSC ═══════════ -->
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">Visibilità organica su Google</h2>
+        <span class="src-badge src-gsc">Search Console</span>
+    </div>
+    <p class="section-desc">Questi dati mostrano <strong>solo il traffico organico</strong> — le persone che trovano LabMec cercando su Google, senza le pubblicità.</p>
+
+    <div class="kpi-row">
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Click organici</div>
+            <div class="kpi-mini-val" style="color:var(--green);">456</div>
+            <div class="kpi-mini-sub" style="color:var(--green);">+20,3% vs 379</div>
+        </div>
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Impressioni</div>
+            <div class="kpi-mini-val">31.900</div>
+            <div class="kpi-mini-sub">stabile (era 33.800)</div>
+        </div>
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">CTR medio</div>
+            <div class="kpi-mini-val" style="color:var(--green);">1,4%</div>
+            <div class="kpi-mini-sub" style="color:var(--green);">+0,3 punti vs 1,1%</div>
+        </div>
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Posizione media</div>
+            <div class="kpi-mini-val" style="color:var(--green);">9,8</div>
+            <div class="kpi-mini-sub" style="color:var(--green);">↑ era 10,3</div>
+        </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:4px;">Keyword — cosa cercano le persone</h3>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:16px;">Le parole digitate su Google quando trovano LabMec. Dati: click reali misurati da Google.</p>
+
+    <div class="tw">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cosa cercano</th>
+                    <th>Click</th>
+                    <th>Differenza</th>
+                    <th>Posizione GSC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>labmec</td>
+                    <td>84</td>
+                    <td class="cell-good">+29</td>
+                    <td><span class="pos-badge pos-top3">1,7</span></td>
+                </tr>
+                <tr>
+                    <td>pantografo</td>
+                    <td>17</td>
+                    <td class="cell-muted">stabile</td>
+                    <td><span class="pos-badge pos-top10">7,3</span></td>
+                </tr>
+                <tr>
+                    <td>lab mec</td>
+                    <td>12</td>
+                    <td class="cell-good">+4</td>
+                    <td><span class="pos-badge pos-top3">1,5</span></td>
+                </tr>
+                <tr>
+                    <td>pantografo cnc</td>
+                    <td>11</td>
+                    <td class="cell-muted">0</td>
+                    <td><span class="pos-badge pos-top5">4,9</span></td>
+                </tr>
+                <tr>
+                    <td>pantografo legno</td>
+                    <td>6</td>
+                    <td class="cell-muted">0</td>
+                    <td><span class="pos-badge pos-top10">7,2</span></td>
+                </tr>
+                <tr>
+                    <td>pantografo cnc usato</td>
+                    <td>4</td>
+                    <td class="cell-muted">0</td>
+                    <td><span class="pos-badge pos-top10">6,7</span></td>
+                </tr>
+                <tr>
+                    <td>labmec cnc</td>
+                    <td>4</td>
+                    <td class="cell-muted">-4</td>
+                    <td><span class="pos-badge pos-top3">1,0</span></td>
+                </tr>
+                <tr>
+                    <td>cnc</td>
+                    <td>2</td>
+                    <td class="cell-muted">-6</td>
+                    <td><span class="pos-badge pos-low">10,5</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:4px;margin-top:28px;">Pagine — quali portano più visite organiche</h3>
+    <div class="tw" style="margin-top:12px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pagina</th>
+                    <th>Click</th>
+                    <th>Diff.</th>
+                    <th>Posizione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Homepage</td>
+                    <td>115</td>
+                    <td class="cell-good">+20</td>
+                    <td><span class="pos-badge pos-top5">5,3</span></td>
+                </tr>
+                <tr>
+                    <td>Pantografo CNC: Come Funziona</td>
+                    <td>46</td>
+                    <td class="cell-good">+7</td>
+                    <td><span class="pos-badge pos-top10">7,2</span></td>
+                </tr>
+                <tr>
+                    <td>Fresatura Legno CNC</td>
+                    <td>26</td>
+                    <td class="cell-good">+9</td>
+                    <td><span class="pos-badge pos-top10">10,0</span></td>
+                </tr>
+                <tr>
+                    <td>Guida Pantografo Legno</td>
+                    <td>24</td>
+                    <td class="cell-muted">-4</td>
+                    <td><span class="pos-badge pos-top10">6,8</span></td>
+                </tr>
+                <tr>
+                    <td>Bando NIDI Finanziamenti</td>
+                    <td>23</td>
+                    <td class="cell-good">+12</td>
+                    <td><span class="pos-badge pos-top10">5,9</span></td>
+                </tr>
+                <tr>
+                    <td>Macchine CNC (categoria) <span class="nbadge">⚡</span></td>
+                    <td>20</td>
+                    <td class="cell-accent">+15</td>
+                    <td><span class="pos-badge pos-top5">4,2</span></td>
+                </tr>
+                <tr>
+                    <td>Macchine CNC: Guida Completa</td>
+                    <td>14</td>
+                    <td class="cell-good">+3</td>
+                    <td><span class="pos-badge pos-low">12,6</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ═══════════ 04 — POSIZIONAMENTO SEMRUSH ═══════════ -->
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">Posizionamento organico</h2>
+        <span class="src-badge src-sem">Semrush</span>
+    </div>
+    <p class="section-desc">Semrush analizza le posizioni di LabMec su Google e stima quante visite mensili ogni keyword potrebbe portare — <strong>solo traffico organico</strong>, senza pubblicità.</p>
+
+    <div class="kpi-row">
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Traffico mensile stimato</div>
+            <div class="kpi-mini-val">1.600</div>
+            <div class="kpi-mini-sub">visite/mese (stima Semrush)</div>
+        </div>
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Valore traffico</div>
+            <div class="kpi-mini-val">€686</div>
+            <div class="kpi-mini-sub">quanto costerebbe in Ads</div>
+        </div>
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Authority Score</div>
+            <div class="kpi-mini-val">11</div>
+            <div class="kpi-mini-sub" style="color:var(--green);">+1 punto (era 10)</div>
+        </div>
+        <div class="kpi-mini">
+            <div class="kpi-mini-label">Backlink</div>
+            <div class="kpi-mini-val">119</div>
+            <div class="kpi-mini-sub">da 77 domini diversi</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        💡 Semrush e Google Search Console misurano il traffico in modo diverso. GSC misura i <strong>click reali</strong> (+20%), mentre Semrush fa una <strong>stima statistica</strong> basata sulle posizioni. Le due fonti possono dare risultati diversi — i click reali di Google sono il dato più affidabile per valutare la visibilità effettiva.
+    </div>
+
+    <!-- Branded vs Non-Branded -->
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:4px;">Chi vi cerca per nome vs chi vi trova per argomento</h3>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:16px;">Il traffico "branded" sono persone che già conoscono LabMec. Il "non-branded" sono persone nuove che cercano un argomento generico.</p>
+
+    <div class="dual">
+        <div class="cbox">
+            <div class="donut-wrap">
+                <svg class="donut-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#E4E4E7" stroke-width="14"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--blue)" stroke-width="14"
+                        stroke-dasharray="207 239" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--brand)" stroke-width="14"
+                        stroke-dasharray="32 239" stroke-dashoffset="-207" transform="rotate(-90 50 50)"/>
+                    <text x="50" y="48" text-anchor="middle" fill="var(--text)" font-size="16" font-weight="700" font-family="DM Sans">87%</text>
+                    <text x="50" y="60" text-anchor="middle" fill="var(--text3)" font-size="7" font-family="DM Sans">NON-BRAND</text>
+                </svg>
+                <div>
+                    <div class="leg"><span class="leg-dot" style="background:var(--blue)"></span> Nuovi (non-branded) <span class="leg-val">1.400</span></div>
+                    <div class="leg"><span class="leg-dot" style="background:var(--brand)"></span> Vi conoscono (branded) <span class="leg-val">214</span></div>
+                </div>
+            </div>
+            <div style="font-size:12px;color:var(--text4);margin-top:12px;">Traffico branded stabile — il nome LabMec si sta consolidando nelle ricerche</div>
+        </div>
+
+        <div class="cbox">
+            <div class="cbox-title">Cosa cercano (intento)</div>
+            <div class="cbox-desc">Perché le persone cercano queste parole</div>
+            <div style="margin-top:8px;">
+                <div class="bar-item">
+                    <div class="bar-name">📚 Informarsi</div>
+                    <div class="bar-track"><div class="bar-fill" style="width:68.7%;background:var(--blue)"></div></div>
+                    <div class="bar-val">68,7%</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-name">💳 Comprare</div>
+                    <div class="bar-track"><div class="bar-fill" style="width:16.3%;background:var(--green)"></div></div>
+                    <div class="bar-val">16,3%</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-name">🔍 Confrontare</div>
+                    <div class="bar-track"><div class="bar-fill" style="width:12.4%;background:var(--orange)"></div></div>
+                    <div class="bar-val">12,4%</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-name">🏷 Navigazionale</div>
+                    <div class="bar-track"><div class="bar-fill" style="width:2.7%;background:var(--purple)"></div></div>
+                    <div class="bar-val">2,7%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top keyword Semrush -->
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:4px;margin-top:28px;">Le keyword che portano più traffico</h3>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:16px;">Posizioni e traffico stimato da Semrush — solo organico, senza Ads. Il "Volume" è quante volte al mese la keyword viene cercata in Italia.</p>
+
+    <div class="tw">
+        <table>
+            <thead>
+                <tr>
+                    <th>Keyword</th>
+                    <th>Intento</th>
+                    <th>Posizione</th>
+                    <th>Volume /mese</th>
+                    <th>Traffico stimato</th>
+                    <th>% totale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>pantografo</strong></td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top10">7</span></td>
+                    <td>9.900</td>
+                    <td>217</td>
+                    <td>13,8%</td>
+                </tr>
+                <tr>
+                    <td><strong>labmec</strong></td>
+                    <td><span class="intent-badge intent-n">Brand</span></td>
+                    <td><span class="pos-badge pos-top10">9</span></td>
+                    <td>260</td>
+                    <td>208</td>
+                    <td>13,2%</td>
+                </tr>
+                <tr>
+                    <td>pantografo in legno</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top10">7</span></td>
+                    <td>1.600</td>
+                    <td>105</td>
+                    <td>6,7%</td>
+                </tr>
+                <tr>
+                    <td>pompa a vuoto</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top10">8</span></td>
+                    <td>2.400</td>
+                    <td>98</td>
+                    <td>6,2%</td>
+                </tr>
+                <tr>
+                    <td>pantografo legno</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top10">7</span></td>
+                    <td>1.300</td>
+                    <td>85</td>
+                    <td>5,4%</td>
+                </tr>
+                <tr>
+                    <td>pantografo (come-funziona)</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top5">5</span></td>
+                    <td>9.900</td>
+                    <td>69</td>
+                    <td>4,4%</td>
+                </tr>
+                <tr>
+                    <td>pantografo da legno</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top10">—</span></td>
+                    <td>1.600</td>
+                    <td>52</td>
+                    <td>3,3%</td>
+                </tr>
+                <tr>
+                    <td>cnc cnc cnc</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top5">4</span></td>
+                    <td>3.600</td>
+                    <td>46</td>
+                    <td>2,9%</td>
+                </tr>
+                <tr>
+                    <td>cnc significato</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top3">3</span></td>
+                    <td>1.600</td>
+                    <td>38</td>
+                    <td>2,4%</td>
+                </tr>
+                <tr>
+                    <td>pantografo cnc</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top3">3</span></td>
+                    <td>590</td>
+                    <td>38</td>
+                    <td>2,4%</td>
+                </tr>
+                <tr>
+                    <td>fresatura cnc legno</td>
+                    <td><span class="intent-badge intent-i">Info</span></td>
+                    <td><span class="pos-badge pos-top3">1</span></td>
+                    <td>90</td>
+                    <td>22</td>
+                    <td>1,4%</td>
+                </tr>
+                <tr>
+                    <td>braccio meccanico</td>
+                    <td><span class="intent-badge intent-t">Trans</span></td>
+                    <td><span class="pos-badge pos-top10">—</span></td>
+                    <td>590</td>
+                    <td>19</td>
+                    <td>1,2%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Cluster Pantografo vs Macchine CNC -->
+<!-- ═══════════ 05 — PAGINE GA4 ═══════════ -->
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">Pagine più viste</h2>
+        <span class="src-badge src-ga4">Google Analytics</span>
+    </div>
+    <p class="section-desc">Visualizzazioni totali da <strong>tutti i canali</strong> (organico + Ads + diretto + social). La crescita di Ares e Zeus è trainata dalle campagne Cross-network.</p>
+
+    <div class="tw">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pagina</th>
+                    <th>Views</th>
+                    <th>Variazione</th>
+                    <th>Utenti attivi</th>
+                    <th>Durata media</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Homepage</td>
+                    <td>467</td>
+                    <td class="cell-muted">stabile</td>
+                    <td>114</td>
+                    <td>1m 08s</td>
+                </tr>
+                <tr>
+                    <td>/macchine-cnc/ (categoria)</td>
+                    <td>237</td>
+                    <td class="cell-muted">stabile</td>
+                    <td>73</td>
+                    <td>1m 12s</td>
+                </tr>
+                <tr>
+                    <td>/le-nostre-macchine/</td>
+                    <td>236</td>
+                    <td class="cell-muted">stabile</td>
+                    <td>81</td>
+                    <td>55s</td>
+                </tr>
+                <tr>
+                    <td>/macchina/ares/ <span class="nbadge">Ads</span></td>
+                    <td>225</td>
+                    <td class="cell-accent">+281%</td>
+                    <td>87</td>
+                    <td>1m 09s</td>
+                </tr>
+                <tr>
+                    <td>/macchina/zeus/ <span class="nbadge">Ads</span></td>
+                    <td>157</td>
+                    <td class="cell-accent">+336%</td>
+                    <td>17</td>
+                    <td>1m 20s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="insight">
+        <div class="insight-title">Le schede prodotto funzionano</div>
+        Le pagine <strong>Ares (+281%)</strong> e <strong>Zeus (+336%)</strong> sono esplose in visualizzazioni grazie alla sinergia tra contenuti organici e campagne <strong>Cross-network</strong> (YouTube/Display). Gli utenti che arrivano restano sul sito oltre <strong>1 minuto</strong> — un segnale di interesse concreto verso i prodotti. Le campagne stanno portando il pubblico giusto sulle pagine giuste.
+    </div>
+</div>
+
+<!-- ═══════════ 06 — CONCORRENZA ═══════════ -->
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">Concorrenza organica</h2>
+        <span class="src-badge src-sem">Semrush</span>
+    </div>
+    <p class="section-desc">I siti che competono con LabMec per le stesse keyword su Google. Il "livello di competizione" indica quante keyword avete in comune.</p>
+
+    <div class="tw">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concorrente</th>
+                    <th>Keyword comuni</th>
+                    <th>Sovrapposizione</th>
+                    <th>Keyword totali</th>
+                    <th>Traffico stimato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>sidaccnc.it</strong></td>
+                    <td>36</td>
+                    <td>25%</td>
+                    <td>243</td>
+                    <td>854</td>
+                </tr>
+                <tr>
+                    <td><strong>assistec.cc</strong></td>
+                    <td>34</td>
+                    <td>24%</td>
+                    <td>310</td>
+                    <td class="cell-accent">3.000</td>
+                </tr>
+                <tr>
+                    <td>pantografiamma.it</td>
+                    <td>34</td>
+                    <td>18%</td>
+                    <td>573</td>
+                    <td>1.800</td>
+                </tr>
+                <tr>
+                    <td>meckatronic.it</td>
+                    <td>32</td>
+                    <td>22%</td>
+                    <td>116</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>essetre.com</td>
+                    <td>28</td>
+                    <td>17%</td>
+                    <td>406</td>
+                    <td>1.300</td>
+                </tr>
+                <tr style="background:var(--brand-light);">
+                    <td><strong>labmec.it (voi)</strong></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>505</td>
+                    <td>1.600</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="insight">
+        <div class="insight-title">LabMec tra i primi nel settore</div>
+        Con <strong>505 keyword posizionate</strong>, LabMec è tra i siti più visibili nel settore CNC/pantografi in Italia — secondi solo a pantografiamma.it (573). La <strong>sovrapposizione</strong> con i competitor è bassa (17-25%), il che significa che LabMec presidia keyword uniche dove i concorrenti non ci sono. L'Authority Score è salito a <strong>11 (+1)</strong> e il sito ha <strong>119 backlink</strong> da 77 domini diversi.
+    </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+    <div class="footer-l">
+        <img src="https://labmec.it/wp-content/uploads/2025/07/LABMEC_LOGO_1X1-2.png" alt="Labmec">
+        <span class="footer-t">© 2026 Labmec SRL — Report by Mirai Studio</span>
+    </div>
+    <div class="footer-r">Feb 2026 · v3</div>
+</footer>
+
+</div>
+</body>
+</html>
