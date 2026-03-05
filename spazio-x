@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spazio X | Content Strategy by Mirai Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f8f7f4; 
+            --text-main: #1a1a1a;
+            --accent: #d1d1d1;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            letter-spacing: -0.01em;
+        }
+
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .nav-scrolled {
+            background-color: rgba(248, 247, 244, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+        }
+
+        .ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #888;
+            border: 1px solid #eee;
+            padding: 4px 10px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .ref-link:hover {
+            color: #000;
+            border-color: #000;
+            background: #fff;
+        }
+
+        /* Script Paper Style */
+        .script-box {
+            background-color: #fff;
+            border-left: 4px solid #000;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        .script-scene {
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 1.5rem;
+            display: block;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .script-meta {
+            color: #999;
+            font-family: monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-label {
+            display: inline-block;
+            padding: 6px 16px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin-bottom: 2.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-500 py-8 px-6 md:px-12 flex justify-between items-center">
+        <div class="font-display font-bold text-2xl tracking-[-0.05em] flex items-center">
+            <span>SPAZIO X</span>
+            <span class="w-1.5 h-1.5 bg-black rounded-full ml-1"></span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 text-[10px] uppercase tracking-[0.25em] font-bold">
+            <a href="#obiettivo" class="nav-link">01 Obiettivo</a>
+            <a href="#tov" class="nav-link">02 ToV & Stile</a>
+            <a href="#strategia" class="nav-link">03 Strategia</a>
+            <a href="#contenuti" class="nav-link">04 Contenuti</a>
+            <a href="#casting" class="nav-link">05 Casting</a>
+            <div class="h-4 w-[1px] bg-gray-300"></div>
+            <span class="text-gray-400 font-medium tracking-[0.1em]">Mirai Studio</span>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="min-h-[60vh] flex flex-col justify-end pb-24 px-6 md:px-12 max-w-7xl mx-auto border-b border-gray-100">
+        <div class="overflow-hidden">
+            <h1 class="text-7xl md:text-[11rem] font-bold tracking-tighter leading-[0.82] animate-fade">
+                STRATEGIA<br>CONTENT
+            </h1>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 md:px-12">
+        
+        <!-- 01 / Obiettivo -->
+        <section id="obiettivo" class="py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+                <div class="lg:col-span-2">
+                    <h2 class="text-xs text-gray-400 mb-4 uppercase tracking-[0.3em] font-bold">01 / Obiettivo</h2>
+                    <h3 class="text-4xl font-bold mb-6 tracking-tight uppercase">Valore del Business</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed font-light">
+                        Non vendiamo abbigliamento, <strong class="font-bold text-black italic">vendiamo un business</strong>. La nostra comunicazione deve dimostrare al retailer che <strong class="text-black font-semibold">con Spazio X può far guadagnare il suo punto vendita</strong> attraverso <strong class="text-black font-semibold uppercase tracking-tight">affidabilità e stile.</strong>
+                    </p>
+                </div>
+                <div class="lg:col-span-3">
+                    <div class="bg-white border border-gray-100 p-10 shadow-sm">
+                        <h4 class="text-[10px] font-bold text-gray-400 tracking-[0.3em] mb-8 uppercase text-center">Analisi Competitiva</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div class="space-y-2">
+                                <span class="text-[10px] font-mono text-gray-300 uppercase">01</span>
+                                <p class="text-sm font-bold uppercase tracking-tight">Stile Contemporaneo</p>
+                                <p class="text-xs text-gray-500 font-light">Design allineati ai trend internazionali streetwear.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <span class="text-[10px] font-mono text-gray-300 uppercase">02</span>
+                                <p class="text-sm font-bold uppercase tracking-tight">Fiducia Operativa</p>
+                                <p class="text-xs text-gray-500 font-light">Trasparenza totale su stock e magazzino.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <span class="text-[10px] font-mono text-gray-300 uppercase">03</span>
+                                <p class="text-sm font-bold uppercase tracking-tight">Dettaglio Tecnico</p>
+                                <p class="text-xs text-gray-500 font-light">Composizione del capo validata macroscopicamente.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <span class="text-[10px] font-mono text-gray-300 uppercase">04</span>
+                                <p class="text-sm font-bold uppercase tracking-tight">Market Fit</p>
+                                <p class="text-xs text-gray-500 font-light">Prodotto progettato per la rotazione rapida in store.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 / ToV e Stile -->
+        <section id="tov" class="py-32 border-t border-gray-200">
+            <div class="mb-20">
+                <h2 class="text-xs text-gray-400 mb-4 uppercase tracking-[0.3em] font-bold">02 / ToV & Stile</h2>
+                <h3 class="text-4xl font-bold mb-6 tracking-tight uppercase">Estetica & Linguaggio</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ambassador Pillar -->
+                <div class="p-8 bg-white border border-gray-100 card-hover md:col-span-2">
+                    <div class="flex justify-between items-start mb-6 border-b border-gray-100 pb-4">
+                        <h5 class="text-sm font-bold uppercase tracking-widest text-black">The Ambassador</h5>
+                        <span class="text-[9px] font-mono text-gray-400 uppercase tracking-widest">Expertise & Trust</span>
+                    </div>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed mb-8">
+                        Il <strong class="text-black uppercase text-[10px]">garante tecnico</strong> della qualità. Ci mette la faccia nei contenuti parlati e nelle sessioni showroom, portando competenza tecnica e autorità nel rapporto B2B.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://www.instagram.com/reel/DVgxUYXjIzm/" target="_blank" class="ref-link">Ref 1: Talking</a>
+                        <a href="https://www.instagram.com/behind_numb_world" target="_blank" class="ref-link">Ref 2: Behind Numb</a>
+                    </div>
+                </div>
+                
+                <div class="p-8 bg-white border border-gray-100 card-hover">
+                    <h5 class="text-sm font-bold mb-4 uppercase tracking-widest border-b border-gray-100 pb-4">Technical Easy</h5>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Competenza tecnica unita a un'attitudine moderna. L'esperto che comunica valore senza barriere.</p>
+                </div>
+                <div class="p-8 bg-white border border-gray-100 card-hover">
+                    <h5 class="text-sm font-bold mb-4 uppercase tracking-widest border-b border-gray-100 pb-4">Urgenza Velata</h5>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Scarsità strategica focalizzata sulla domanda di mercato superiore all'offerta disponibile.</p>
+                </div>
+                <div class="p-8 bg-white border border-gray-100 card-hover">
+                    <h5 class="text-sm font-bold mb-4 uppercase tracking-widest border-b border-gray-100 pb-4">Dualismo Visivo</h5>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Contrapposizione tra foto indossato (fit/styling) e foto a capo singolo (tecnica/precisione).</p>
+                </div>
+                <div class="p-8 bg-white border border-gray-100 card-hover">
+                    <h5 class="text-sm font-bold mb-4 uppercase tracking-widest border-b border-gray-100 pb-4">Ritmo Seriale</h5>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Editing cinetico, tagli < 2s e sound identity ricercata (Deep-house/Lo-fi).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 / Strategia -->
+        <section id="strategia" class="py-32 border-t border-gray-200">
+            <div class="mb-20">
+                <h2 class="text-xs text-gray-400 mb-4 uppercase tracking-[0.3em] font-bold">03 / Strategia Funnel</h2>
+                <h3 class="text-4xl font-bold mb-6 tracking-tight uppercase">Le Fasi del Lancio</h3>
+            </div>
+            
+            <div class="space-y-12">
+                <div class="bg-white border border-gray-200 overflow-hidden">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/3 bg-black text-white p-12 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest opacity-50 font-mono text-gray-400">Phase 01</span>
+                                <h4 class="text-3xl font-bold mt-4 uppercase leading-tight">Pre-Drop<br>Hype & Awareness</h4>
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3 p-12 flex flex-col justify-center">
+                            <p class="text-sm text-gray-500 font-light leading-relaxed mb-6">Generazione di attesa tramite asset virali. Far girare il video teaser incentivando <strong class="text-black uppercase text-[10px]">repost e condivisioni</strong>.</p>
+                            <div class="flex gap-2">
+                                <span class="text-[9px] border border-gray-200 px-2 py-1 uppercase font-bold text-gray-400">HYPE</span>
+                                <span class="text-[9px] border border-gray-200 px-2 py-1 uppercase font-bold text-gray-400">VIRAL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 overflow-hidden">
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="lg:w-1/3 bg-gray-100 p-12 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest font-mono text-gray-400">Phase 02</span>
+                                <h4 class="text-3xl font-bold mt-4 uppercase leading-tight">Drop Day<br>Conversion</h4>
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3 p-12 flex flex-col justify-center">
+                            <p class="text-sm text-gray-500 font-light leading-relaxed mb-6">Chiusura della vendita tramite pragmaticità e messaggi di scarsità velata.</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-3 border-l-2 border-black bg-gray-50 italic text-[11px] font-light uppercase tracking-tight text-gray-600">"Solo 100 pezzi rimasti"</div>
+                                <div class="p-3 border-l-2 border-black bg-gray-50 italic text-[11px] font-light uppercase tracking-tight text-gray-600">"Prodotti perfetti per il tuo negozio"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 / Contenuti (FULL SCRIPTS) -->
+        <section id="contenuti" class="py-32 border-t border-gray-200">
+            <div class="mb-20">
+                <h2 class="text-xs text-gray-400 mb-4 uppercase tracking-[0.3em] font-bold">04 / Contenuti</h2>
+                <h3 class="text-4xl font-bold mb-6 tracking-tight uppercase">Asset Production Plan</h3>
+            </div>
+            
+            <!-- 4.1 FASE PRE-DROP -->
+            <div class="mb-40">
+                <span class="phase-label bg-black text-white">Fase 1: Pre-Drop (Hype & Awareness)</span>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="p-8 bg-white border border-gray-100 card-hover">
+                            <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Video 1: The Drop Message</h4>
+                            <p class="text-xs text-gray-500 font-light mb-8 italic">Stile: POV, grafiche stile iOS, tagli veloci (jump-cuts).</p>
+                            <a href="https://www.instagram.com/reel/DHJgbexN9Cu/" target="_blank" class="ref-link">Ref Style</a>
+                        </div>
+                        <div class="p-8 bg-white border border-gray-100 card-hover">
+                            <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Grafica 1: Launch Tease</h4>
+                            <p class="text-xs text-gray-500 font-light">Visual editoriale data/countdown. Pulizia iOS style.</p>
+                        </div>
+                        <div class="p-8 bg-white border border-gray-100 card-hover">
+                            <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Lead Gen Profilata (Anticipata)</h4>
+                            <div class="bg-yellow-50 border border-yellow-100 p-6 rounded-sm text-center">
+                                <p class="text-[9px] font-bold text-yellow-700 uppercase mb-3">Interazione Storie</p>
+                                <p class="text-md font-bold text-gray-800 uppercase">"Hai un negozio?"</p>
+                                <div class="flex justify-center gap-3 mt-4">
+                                    <span class="px-6 py-1.5 bg-white border border-gray-200 text-[10px] font-bold rounded-full text-black">SI</span>
+                                    <span class="px-6 py-1.5 bg-white border border-gray-200 text-[10px] font-bold rounded-full text-black">NO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <!-- SCRIPT 1 FULL -->
+                        <div class="script-box shadow-sm space-y-12">
+                            <span class="script-scene">Copione Video 1 (Hype Launch)</span>
+                            
+                            <div>
+                                <span class="script-meta">SCENA 1: HOOK</span>
+                                <p class="text-gray-600 text-sm mb-4">L’inquadratura è ravvicinata su Francesco. All'improvviso prende il telefono.</p>
+                                <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Notifica a comparsa: "Messaggio da Spazio X 🚀".</span></p>
+                                <p class="text-gray-800 text-sm font-semibold mb-4">Audio: <span class="font-normal">SFX classico "ding" di notifica iPhone.</span></p>
+                                <p class="text-gray-500 text-[11px] uppercase font-mono mb-4">Azione: Francesco prende il telefono, e apre la chat.</p>
+                                <div class="bg-gray-50 p-6 rounded-sm border-l-4 border-blue-400 font-mono text-[12px] space-y-2">
+                                    <p class="text-blue-600">Spazio X: “Ci sei?”</p>
+                                    <p class="text-gray-800">Francesco: “Si bro, ma quanto ci vuole ancora?”</p>
+                                    <p class="text-blue-600">Spazio X: Tranquillo, ci siamo quasi… ⏳</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="script-meta">SCENA 2: IL BRAND AMBASSADOR (LA RISPOSTA)</span>
+                                <p class="text-gray-600 text-sm mb-4">L'inquadratura cambia bruscamente. Passiamo al Brand Ambassador, all'interno dello stock di Spazio X (si devono intravedere i rack di vestiti o i pacchi pronti).</p>
+                                <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Il Brand Ambassador parla diretto in camera.</span></p>
+                                <p class="text-gray-800 text-sm font-bold bg-black text-white px-4 py-3 rounded mt-2">
+                                    "Ci siamo. Avvisa tutti. Se hai un negozio di abbigliamento questo video è per te!"
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="script-meta">SCENA 3: IL RITORNO A FRANCESCO</span>
+                                <p class="text-gray-600 text-sm mb-4">Torniamo su Francesco. Guarda in camera, fa un cenno d'intesa o un sorriso complice, come a dire "avete sentito?".</p>
+                                <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Francesco preme il pulsante di uno stereo che funge da transizione per il drop.</span></p>
+                                <p class="text-gray-800 text-sm font-semibold mb-4">Audio: <span class="font-normal">Il beat della colonna sonora esplode e diventa protagonista.</span></p>
+                            </div>
+
+                            <div>
+                                <span class="script-meta">SCENA 4: IL PRODOTTO (L’INDOSSATO)</span>
+                                <p class="text-gray-600 text-sm mb-4">Una sequenza di 5-6 tagli rapidissimi (0.5 secondi l'uno) seguendo il ritmo del beat.</p>
+                                <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Dettagli del capo indossato (probabilmente da Francesco o riprese di dettaglio dinamiche).</span></p>
+                            </div>
+
+                            <div class="pt-8 border-t border-gray-100">
+                                <span class="script-meta">SCENA 5: CHIUSURA & CTA</span>
+                                <p class="text-gray-600 text-sm mb-4">Schermata finale pulita.</p>
+                                <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Logo Spazio X al centro. Sotto compare la scritta: "Accesso Riservato ai Retailer".</span></p>
+                                <p class="text-gray-800 text-sm font-semibold mb-4">Audio: <span class="font-normal">Il beat sfuma con un effetto eco.</span></p>
+                                <p class="font-bold text-black uppercase text-[12px] tracking-[0.2em] mt-4">CTA: "SEGUICI PER RIMANERE AGGIORNATO"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.2 FASE DROP -->
+            <div class="mb-20">
+                <span class="phase-label bg-gray-200 text-black">Fase 2: Drop (Consideration & Conversion)</span>
+                
+                <div class="space-y-24">
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-4 space-y-6">
+                            <div class="p-8 bg-white border border-gray-100 card-hover">
+                                <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Video 2: Technical Deep Dive</h4>
+                                <p class="text-xs text-gray-500 font-light mb-8 italic">Focus: Specifiche tecniche, autorità Brand Ambassador, esclusività B2B.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.instagram.com/blanks.it/" target="_blank" class="ref-link">Ref 1</a>
+                                    <a href="https://www.instagram.com/reel/DUK1TUAiEnA/" target="_blank" class="ref-link">Ref Style</a>
+                                </div>
+                            </div>
+                            <div class="p-8 bg-white border border-gray-100 card-hover">
+                                <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Video Campagna: Collection Clips</h4>
+                                <p class="text-xs text-gray-500 font-light mb-6">Montaggio cinetico focalizzato sul movimento.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://www.instagram.com/reel/DP0qLI4jeu1/" target="_blank" class="ref-link">Clip 1</a>
+                                    <a href="https://www.instagram.com/reel/DPJWGKhigqR/" target="_blank" class="ref-link">Clip 2</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-8">
+                            <!-- SCRIPT 2 FULL -->
+                            <div class="script-box shadow-sm space-y-12">
+                                <span class="script-scene">Copione Video 2 (Technical Deep Dive)</span>
+                                
+                                <div>
+                                    <span class="script-meta">L'AGGANCIO (00-03S)</span>
+                                    <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Il Brand Ambassador è in primo piano, sfondo pulito (studio o magazzino ordinato). Tiene in mano il capo protagonista del drop.</span></p>
+                                    <p class="text-gray-800 text-sm font-bold bg-black text-white px-4 py-3 rounded mt-2">
+                                        "Se hai un negozio di abbigliamento, questo video è per te. Fermati un secondo."
+                                    </p>
+                                    <p class="text-red-500 font-bold text-[10px] mt-2 uppercase">Testo Overlay: ATTENZIONE⚠️</p>
+                                </div>
+
+                                <div>
+                                    <span class="script-meta">IL LANCIO (03-08S)</span>
+                                    <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">Cambio inquadratura (piano medio). L'Ambassador apre il capo per mostrarne l'ampiezza.</span></p>
+                                    <p class="text-gray-800 text-sm font-bold px-4 py-2 border-l-2 border-black italic">
+                                        "Siamo ufficialmente fuori con il primo drop di Spazio X. Non è la solita fornitura: è il pezzo che mancava nel tuo store."
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span class="script-meta">L'ANALISI TECNICA (08-20S)</span>
+                                    <p class="text-gray-800 text-sm font-semibold mb-4">Visivo: <span class="font-normal">Sequenza di tagli rapidi. Mentre l'Ambassador parla, vediamo scatti dell'indossato e dettagli macro della pulizia del capo.</span></p>
+                                    <p class="text-gray-800 text-sm font-bold leading-relaxed">
+                                        "Parliamo di sostanza. Fit Boxy, spalle cadenti, esattamente quello che i tuoi clienti cercano oggi."
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span class="script-meta">IL VANTAGGIO BUSINESS (20-25S)</span>
+                                    <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">L'Ambassador guarda fisso in camera, tono più confidenziale ma autorevole.</span></p>
+                                    <p class="text-gray-800 text-sm font-bold px-4 py-3 bg-gray-50 border border-gray-200">
+                                        "Sappiamo che cerchi un prodotto facile da vendere. Con Spazio X portiamo uno stile moderno nel tuo store e garantiamo il tuo margine."
+                                    </p>
+                                </div>
+
+                                <div class="pt-8 border-t border-gray-100">
+                                    <span class="script-meta">CHIUSURA E CTA (25-30S)</span>
+                                    <p class="text-gray-800 text-sm font-semibold mb-2">Visivo: <span class="font-normal">L'Ambassador lancia il capo verso la camera (transizione a nero o logo).</span></p>
+                                    <p class="text-gray-800 text-sm font-bold mb-4">
+                                        "Il catalogo del primo drop è disponibile. Scrivici ora per saperne di più."
+                                    </p>
+                                    <p class="font-bold text-black uppercase text-[11px] tracking-widest bg-gray-100 p-2 inline-block">Overlay: SPAZIO X - FIRST DROP NOW AVAILABLE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="p-8 bg-white border border-gray-100 card-hover">
+                            <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Asset Fotografici (Dualismo)</h4>
+                            <p class="text-sm text-gray-500 mb-8 font-light">Reference: @rueporter (Indossato e Non Indossato)</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-6 bg-gray-50 border border-gray-200">
+                                    <p class="text-xs font-bold uppercase mb-4">Foto Indossato</p>
+                                    <a href="https://www.instagram.com/rueporter/" target="_blank" class="ref-link">Ref Style</a>
+                                </div>
+                                <div class="p-6 bg-gray-50 border border-gray-200">
+                                    <p class="text-xs font-bold uppercase mb-4">Foto Non Indossato</p>
+                                    <a href="https://www.instagram.com/rueporter/" target="_blank" class="ref-link">Ref Style</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-white border border-gray-100 card-hover">
+                            <h4 class="text-xl font-bold uppercase mb-4 leading-tight">Grafica 2: Lead Gen Profilata</h4>
+                            <div class="bg-yellow-50 border border-yellow-100 p-8 rounded-sm text-center">
+                                <p class="text-lg font-bold text-gray-800 uppercase leading-none">"Hai un negozio?"</p>
+                                <div class="flex justify-center gap-4 mt-6">
+                                    <span class="px-8 py-2 bg-white border border-gray-200 text-xs font-bold rounded-full cursor-default text-black shadow-sm">SI</span>
+                                    <span class="px-8 py-2 bg-white border border-gray-200 text-xs font-bold rounded-full cursor-default text-black shadow-sm">NO</span>
+                                </div>
+                                <p class="text-[9px] text-gray-500 mt-6 uppercase tracking-widest italic">Trigger offerta DM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#111111] text-white p-12 rounded-sm relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 opacity-5 text-[10rem] font-display font-bold select-none">ASSET</div>
+                        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h4 class="text-xl font-bold uppercase tracking-tight mb-8">Stories Narrative Support</h4>
+                                <p class="text-sm text-gray-400 font-light leading-relaxed mb-8">Le storie costituiscono l'infrastruttura quotidiana che "scontorna" il drop. Mostrano il prodotto "al vivo" con narrazioni focalizzate sull'urgenza velata.</p>
+                                <ul class="space-y-4">
+                                    <li class="text-[10px] uppercase tracking-[0.2em] flex items-center gap-4 font-bold text-gray-300"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Backstage Spedizioni & Magazzino</li>
+                                    <li class="text-[10px] uppercase tracking-[0.2em] flex items-center gap-4 font-bold text-gray-300"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Testimonianze Partner & Repost</li>
+                                </ul>
+                            </div>
+                            <div class="p-10 bg-white/5 border border-white/10 text-center">
+                                <h5 class="text-[9px] font-bold uppercase mb-4 tracking-[0.4em] text-gray-500 uppercase">Core Narrative</h5>
+                                <p class="text-3xl font-bold uppercase leading-tight italic text-balance">"STOCK IN CALO. SOLO POCHI PEZZI RIMASTI."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 / Casting -->
+        <section id="casting" class="py-32 border-t border-gray-200">
+            <div class="text-center mb-24">
+                <h2 class="text-xs text-gray-400 mb-4 uppercase tracking-[0.3em] font-bold">05 / Casting</h2>
+                <h3 class="text-4xl font-bold mb-6 tracking-tight uppercase leading-none">The Personas</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="card-hover bg-white border border-gray-100 p-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center text-2xl mb-8">&#128100;</div>
+                    <h4 class="text-lg font-bold mb-2 uppercase">The Ambassador</h4>
+                    <p class="text-[9px] font-mono text-gray-400 uppercase mb-6 uppercase tracking-widest text-balance">Expertise & Trust</p>
+                    <p class="text-xs text-gray-600 font-light leading-relaxed italic">Garante tecnico della qualità.</p>
+                </div>
+                <div class="card-hover bg-white border border-gray-100 p-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-gray-200 text-black rounded-full flex items-center justify-center text-2xl mb-8">&#129485;&#127995;</div>
+                    <h4 class="text-lg font-bold mb-2 uppercase text-[11px] tracking-tight">Urban Model</h4>
+                    <p class="text-[9px] font-mono text-gray-400 uppercase mb-6 uppercase tracking-widest text-balance">Fit & Style</p>
+                    <p class="text-xs text-gray-600 font-light leading-relaxed italic">Il ragazzo medio con stile naturale.</p>
+                </div>
+                <div class="card-hover bg-white border border-gray-100 p-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center text-2xl mb-8 border border-gray-800">&#129485;&#127999;</div>
+                    <h4 class="text-lg font-bold mb-2 uppercase text-[11px] tracking-tight text-balance uppercase">High-End Model</h4>
+                    <p class="text-[9px] font-mono text-gray-400 uppercase mb-6 uppercase tracking-widest text-balance">Aspirations</p>
+                    <p class="text-xs text-gray-600 font-light leading-relaxed italic text-balance uppercase">Eleva il valore percepito portando lo streetwear in una dimensione premium.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-black text-white py-24 px-6 mt-32">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="font-display font-bold text-4xl tracking-tighter uppercase flex items-center">
+                <span>SPAZIO X</span>
+                <span class="w-2 h-2 bg-white rounded-full ml-1"></span>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-[11px] font-mono text-gray-500 uppercase tracking-[0.4em] mb-4 uppercase">Content Strategy Portfolio</p>
+                <div class="text-xs text-gray-400 font-light space-y-2">
+                    <p>&copy; Spazio X Wholesale &bull; Proprietà Strategica Riservata</p>
+                    <p class="text-[10px] font-bold tracking-[0.25em] text-white pt-2 border-t border-gray-800 uppercase">BY MIRAI STUDIO</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
