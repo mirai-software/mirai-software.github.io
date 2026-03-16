@@ -3,1553 +3,527 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LabMec — Piano Editoriale Email Marketing Q2 2026</title>
+<title>LabMec — Piano Editoriale Semplificato Q2 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #0f1a2e;
-  --navy-light: #1a2d4d;
   --gold: #c8a44e;
-  --gold-light: #e8d5a0;
-  --gold-dim: rgba(200,164,78,0.12);
+  --gold-dim: rgba(200,164,78,0.10);
   --cream: #faf8f3;
-  --warm-white: #f5f2eb;
-  --stone: #e8e4d9;
+  --warm: #f5f2eb;
+  --stone: #e2ded5;
   --mid: #6b6860;
   --dark: #2c2a26;
-  --success: #2d8a5e;
-  --warning: #c87a2e;
-  --danger: #b84233;
-  --info: #3a6fa0;
+  --green: #2d7a4e;
+  --green-bg: #edf5f0;
+  --orange: #b8702a;
+  --orange-bg: #fdf4eb;
+  --purple: #6d4fa0;
+  --purple-bg: #f3eff8;
+  --blue: #2a5a8a;
+  --blue-bg: #edf2f7;
+  --red: #a63d2e;
   --radius: 10px;
-  --radius-sm: 6px;
-  --shadow: 0 2px 16px rgba(15,26,46,0.08);
-  --shadow-lg: 0 8px 40px rgba(15,26,46,0.12);
+  --shadow: 0 1px 8px rgba(15,26,46,0.06);
+  --shadow-md: 0 4px 20px rgba(15,26,46,0.08);
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Instrument Sans', sans-serif;
-  background: var(--cream);
-  color: var(--dark);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Instrument Sans',sans-serif; background:var(--cream); color:var(--dark); line-height:1.6; -webkit-font-smoothing:antialiased; }
 
 /* ── HERO ── */
-.hero {
-  background: var(--navy);
-  color: white;
-  padding: 60px 40px 50px;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(200,164,78,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-.hero-badge {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid rgba(200,164,78,0.3);
-  padding: 6px 16px;
-  border-radius: 40px;
-  margin-bottom: 20px;
-}
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 400;
-  line-height: 1.15;
-  margin-bottom: 16px;
-}
-.hero h1 em {
-  color: var(--gold);
-  font-style: italic;
-}
-.hero-sub {
-  font-size: 17px;
-  color: rgba(255,255,255,0.6);
-  max-width: 640px;
-  line-height: 1.7;
-}
-
-/* ── KPI STRIP ── */
-.kpi-strip {
-  max-width: 1200px;
-  margin: -30px auto 0;
-  padding: 0 40px;
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-}
-.kpi-card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow-lg);
-  border-top: 3px solid var(--gold);
-}
-.kpi-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--mid);
-  margin-bottom: 8px;
-}
-.kpi-value {
-  font-family: 'DM Serif Display', serif;
-  font-size: 32px;
-  color: var(--navy);
-}
-.kpi-note {
-  font-size: 12px;
-  color: var(--mid);
-  margin-top: 4px;
-}
+.hero { background:var(--navy); color:#fff; padding:48px 32px 40px; }
+.hero-inner { max-width:960px; margin:0 auto; }
+.hero-badge { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); border:1px solid rgba(200,164,78,.3); padding:5px 14px; border-radius:30px; display:inline-block; margin-bottom:16px; }
+.hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(28px,4.5vw,44px); font-weight:400; line-height:1.2; margin-bottom:12px; }
+.hero h1 em { color:var(--gold); font-style:italic; }
+.hero-sub { font-size:15px; color:rgba(255,255,255,.55); max-width:600px; }
 
 /* ── LAYOUT ── */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
+.wrap { max-width:960px; margin:0 auto; padding:0 32px; }
+section { padding:48px 0; }
+.section-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.section-title { font-family:'DM Serif Display',serif; font-size:26px; color:var(--navy); margin-bottom:8px; }
+.section-desc { font-size:14px; color:var(--mid); max-width:660px; margin-bottom:32px; line-height:1.7; }
+hr.sep { border:none; border-top:2px solid var(--stone); margin:0; }
 
-section {
-  padding: 60px 0;
-}
+/* ── OVERVIEW CARDS ── */
+.overview { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:-24px 0 0; position:relative; z-index:2; }
+.ov-card { background:#fff; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow-md); border-top:3px solid var(--gold); }
+.ov-label { font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+.ov-val { font-family:'DM Serif Display',serif; font-size:28px; color:var(--navy); }
+.ov-note { font-size:11px; color:var(--mid); margin-top:2px; }
 
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 36px;
-  border-bottom: 2px solid var(--stone);
-  padding-bottom: 16px;
-}
-.section-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 48px;
-  color: var(--gold);
-  line-height: 1;
-}
-.section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  color: var(--navy);
-}
-.section-desc {
-  color: var(--mid);
-  font-size: 15px;
-  max-width: 720px;
-  margin-bottom: 36px;
-  line-height: 1.75;
-}
+/* ── SETUP BOX ── */
+.setup-box { background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); border-left:4px solid var(--blue); margin-bottom:24px; }
+.setup-box h3 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+.setup-list { list-style:none; }
+.setup-list li { font-size:14px; color:var(--dark); padding:8px 0; border-bottom:1px solid var(--stone); display:flex; gap:10px; align-items:flex-start; }
+.setup-list li:last-child { border:none; }
+.setup-list .check { color:var(--blue); font-weight:700; flex-shrink:0; }
 
-/* ── TABS ── */
-.tabs {
-  display: flex;
-  gap: 4px;
-  border-bottom: 2px solid var(--stone);
-  margin-bottom: 32px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.tab-btn {
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 24px;
-  background: none;
-  border: none;
-  color: var(--mid);
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  white-space: nowrap;
-  transition: all 0.2s;
-}
-.tab-btn:hover { color: var(--navy); }
-.tab-btn.active {
-  color: var(--navy);
-  border-bottom-color: var(--gold);
-}
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
+/* ── CALENDAR TABLE ── */
+.cal-phase { margin-bottom:36px; }
+.phase-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.phase-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.phase-name { font-size:18px; font-weight:700; color:var(--navy); }
+.phase-sub { font-size:13px; color:var(--mid); font-weight:400; margin-left:4px; }
 
-/* ── TIMELINE ── */
-.timeline {
-  position: relative;
-  padding-left: 40px;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--gold), var(--stone));
-}
-.tl-item {
-  position: relative;
-  margin-bottom: 32px;
-  padding-left: 24px;
-}
-.tl-item::before {
-  content: '';
-  position: absolute;
-  left: -29px;
-  top: 8px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: 3px solid var(--cream);
-  box-shadow: 0 0 0 2px var(--gold);
-}
-.tl-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--gold);
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-.tl-card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--gold);
-}
-.tl-card h4 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-.tl-card p {
-  font-size: 14px;
-  color: var(--mid);
-  line-height: 1.65;
-}
-.tl-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 12px;
-}
-.tl-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-weight: 600;
-}
-.tl-tag.riatt { background: #fef3e2; color: var(--warning); }
-.tl-tag.nurt { background: #e6f2ec; color: var(--success); }
-.tl-tag.conv { background: #ece6f2; color: #6d4fa0; }
-.tl-tag.setup { background: #e2ecf6; color: var(--info); }
-.tl-tag.review { background: #fce8e6; color: var(--danger); }
+table.cal { width:100%; border-collapse:collapse; background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+table.cal thead th { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:var(--navy); padding:12px 14px; text-align:left; }
+table.cal tbody td { padding:14px; font-size:13px; border-bottom:1px solid var(--stone); vertical-align:top; }
+table.cal tbody tr:last-child td { border:none; }
+table.cal .col-date { width:110px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--mid); white-space:nowrap; }
+table.cal .col-id { width:44px; }
+table.cal .col-obj { width:150px; }
+table.cal .col-dest { width:160px; }
 
-/* ── EMAIL CARDS ── */
-.email-grid {
-  display: grid;
-  gap: 24px;
-}
-.email-card {
-  background: white;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-}
-.email-card:hover { box-shadow: var(--shadow-lg); }
-.email-header {
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.email-header.riatt { background: linear-gradient(135deg, #c87a2e, #d4943e); }
-.email-header.nurt { background: linear-gradient(135deg, #2d8a5e, #3da673); }
-.email-header.conv { background: linear-gradient(135deg, #6d4fa0, #8a68b8); }
+.email-badge { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px; display:inline-block; color:#fff; }
+.email-badge.r { background:var(--orange); }
+.email-badge.n { background:var(--green); }
+.email-badge.c { background:var(--purple); }
+.email-badge.v { background:var(--blue); }
 
-.email-id {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 22px;
-  font-weight: 700;
-  color: white;
-  background: rgba(255,255,255,0.2);
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  flex-shrink: 0;
-}
-.email-meta h3 {
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-}
-.email-meta span {
-  color: rgba(255,255,255,0.75);
-  font-size: 13px;
-}
-.email-body { padding: 24px; }
+.dest-link { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--blue); word-break:break-all; }
+.obj-tag { font-size:12px; display:inline-block; padding:3px 10px; border-radius:4px; font-weight:600; }
+.obj-tag.valore { background:var(--orange-bg); color:var(--orange); }
+.obj-tag.educa { background:var(--green-bg); color:var(--green); }
+.obj-tag.conv { background:var(--purple-bg); color:var(--purple); }
+.obj-tag.review { background:var(--blue-bg); color:var(--blue); }
 
-.meta-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 13px;
-}
-.meta-table td {
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--stone);
-  vertical-align: top;
-}
-.meta-table td:first-child {
-  font-weight: 700;
-  color: var(--navy);
-  width: 150px;
-  white-space: nowrap;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.meta-table td:last-child { color: var(--dark); }
+td .subj-a, td .subj-b { font-size:12px; line-height:1.5; margin-bottom:4px; }
+td .subj-a strong, td .subj-b strong { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.5px; text-transform:uppercase; }
+td .subj-a strong { color:var(--orange); }
+td .subj-b strong { color:var(--blue); }
 
-.ab-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.ab-option {
-  padding: 14px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--stone);
-  position: relative;
-}
-.ab-option .ab-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 6px;
-}
-.ab-option p {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.4;
-}
+/* ── AUTOMAZIONE ── */
+.auto-grid { display:grid; gap:14px; }
+.auto-card { background:#fff; border-radius:var(--radius); padding:20px 24px; box-shadow:var(--shadow); display:flex; gap:16px; align-items:flex-start; }
+.auto-num { font-family:'DM Serif Display',serif; font-size:32px; color:var(--gold); flex-shrink:0; line-height:1; width:36px; text-align:center; }
+.auto-body h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.auto-body p { font-size:13px; color:var(--mid); line-height:1.6; }
+.auto-logic { font-family:'JetBrains Mono',monospace; font-size:11px; background:var(--warm); padding:8px 12px; border-radius:6px; margin-top:8px; color:var(--dark); line-height:1.7; }
 
-.preview-text {
-  background: var(--gold-dim);
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 16px;
-  font-size: 13px;
-  color: var(--dark);
-  border-left: 3px solid var(--gold);
-}
-.preview-text strong {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: block;
-  margin-bottom: 4px;
-}
+/* ── TAGS ── */
+.tags-mini { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+.tag-m { font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 14px; border-radius:6px; font-weight:600; }
+.tag-m.a { background:var(--orange-bg); color:var(--orange); }
+.tag-m.b { background:var(--green-bg); color:var(--green); }
+.tag-m.c { background:var(--purple-bg); color:var(--purple); }
 
-.copy-block {
-  background: var(--warm-white);
-  border-radius: var(--radius-sm);
-  padding: 20px;
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--dark);
-}
-.copy-block p { margin-bottom: 12px; }
-.copy-block p:last-child { margin-bottom: 0; }
-.copy-block .cta-line {
-  display: inline-block;
-  background: var(--navy);
-  color: var(--gold);
-  font-weight: 700;
-  padding: 10px 28px;
-  border-radius: 6px;
-  margin: 12px 0;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-}
-.copy-block .firma {
-  color: var(--mid);
-  font-size: 13px;
-  border-top: 1px solid var(--stone);
-  padding-top: 12px;
-  margin-top: 16px;
-}
-.copy-block strong { color: var(--navy); }
-
-.tag-badge {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 600;
-  background: var(--navy);
-  color: var(--gold);
-  padding: 4px 12px;
-  border-radius: 4px;
-  margin: 2px 0;
-}
-
-/* ── SEGMENTATION ── */
-.seg-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
-}
-.seg-card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  border-top: 3px solid var(--navy);
-}
-.seg-card h4 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 10px;
-}
-.seg-condition {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  background: var(--warm-white);
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  color: var(--dark);
-  margin-bottom: 10px;
-  line-height: 1.6;
-  word-break: break-word;
-}
-.seg-condition .op { color: var(--danger); font-weight: 700; }
-.seg-condition .tag { color: var(--info); }
-.seg-use {
-  font-size: 13px;
-  color: var(--mid);
-  line-height: 1.6;
-}
-
-/* ── TAG TAXONOMY ── */
-.tag-group {
-  margin-bottom: 28px;
-}
-.tag-group-header {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.tag-group-header .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.tag-item {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: default;
-  transition: transform 0.15s;
-  position: relative;
-}
-.tag-item:hover {
-  transform: translateY(-2px);
-}
-.tag-item[data-tip]:hover::after {
-  content: attr(data-tip);
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--navy);
-  color: white;
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 12px;
-  padding: 8px 14px;
-  border-radius: 6px;
-  white-space: nowrap;
-  z-index: 10;
-  box-shadow: var(--shadow);
-  max-width: 300px;
-  white-space: normal;
-  line-height: 1.4;
-}
-.tag-item.origine { background: #e2ecf6; color: var(--info); }
-.tag-item.lead-magnet { background: #fef3e2; color: var(--warning); }
-.tag-item.settore { background: #e6f2ec; color: var(--success); }
-.tag-item.tech { background: #ece6f2; color: #6d4fa0; }
-.tag-item.fase { background: #fce8e6; color: var(--danger); }
-.tag-item.click { background: var(--gold-dim); color: #8a6d20; }
-
-/* ── FLOW MAP ── */
-.flow-container {
-  background: white;
-  border-radius: var(--radius);
-  padding: 32px;
-  box-shadow: var(--shadow);
-  overflow-x: auto;
-}
-.flow-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.flow-box {
-  padding: 14px 20px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  min-width: 140px;
-  flex-shrink: 0;
-}
-.flow-box.start { background: var(--navy); color: white; }
-.flow-box.riatt { background: #fef3e2; color: var(--warning); border: 2px solid var(--warning); }
-.flow-box.nurt { background: #e6f2ec; color: var(--success); border: 2px solid var(--success); }
-.flow-box.conv { background: #ece6f2; color: #6d4fa0; border: 2px solid #6d4fa0; }
-.flow-box.end { background: var(--gold); color: var(--navy); font-weight: 700; }
-.flow-arrow {
-  font-size: 20px;
-  color: var(--mid);
-  flex-shrink: 0;
-}
-.flow-condition {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--mid);
-  text-align: center;
-  display: block;
-  margin-top: 4px;
-}
-
-/* ── RULES ── */
-.rule-card {
-  display: flex;
-  gap: 16px;
-  background: white;
-  border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: var(--shadow);
-  margin-bottom: 16px;
-  align-items: flex-start;
-}
-.rule-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  color: var(--gold);
-  flex-shrink: 0;
-  width: 40px;
-  text-align: center;
-}
-.rule-content h4 {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 6px;
-}
-.rule-content p {
-  font-size: 13px;
-  color: var(--mid);
-  line-height: 1.65;
-}
-.rule-logic {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  background: var(--warm-white);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  margin-top: 8px;
-  color: var(--dark);
-  line-height: 1.6;
-}
-
-/* ── CHECKLIST ── */
-.checklist {
-  background: white;
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
-}
-.check-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--stone);
-  font-size: 14px;
-  color: var(--dark);
-}
-.check-item:last-child { border-bottom: none; }
-.check-box {
-  width: 22px;
-  height: 22px;
-  border: 2px solid var(--stone);
-  border-radius: 4px;
-  flex-shrink: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-  margin-top: 1px;
-}
-.check-box.checked {
-  background: var(--success);
-  border-color: var(--success);
-  color: white;
-}
+/* ── NOTES ── */
+.note-box { background:var(--gold-dim); border-left:3px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0; padding:16px 20px; margin:24px 0; font-size:13px; color:var(--dark); line-height:1.7; }
+.note-box strong { color:var(--navy); }
 
 /* ── FOOTER ── */
-footer {
-  background: var(--navy);
-  color: rgba(255,255,255,0.5);
-  text-align: center;
-  padding: 32px;
-  font-size: 13px;
-}
-footer strong { color: var(--gold); }
+footer { background:var(--navy); color:rgba(255,255,255,.45); text-align:center; padding:28px; font-size:12px; }
+footer strong { color:var(--gold); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .hero { padding: 40px 20px 36px; }
-  .container { padding: 0 20px; }
-  .kpi-strip { padding: 0 20px; grid-template-columns: repeat(2, 1fr); }
-  .ab-row { grid-template-columns: 1fr; }
-  .seg-grid { grid-template-columns: 1fr; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { transform: rotate(90deg); align-self: center; }
+@media(max-width:768px) {
+  .hero { padding:32px 20px 28px; }
+  .wrap { padding:0 16px; }
+  table.cal { display:block; overflow-x:auto; }
+  .overview { grid-template-columns:repeat(2,1fr); }
 }
-
 @media print {
-  .hero { padding: 30px 20px; }
-  .email-card, .seg-card, .rule-card, .flow-container, .checklist { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
-  .tabs { display: none; }
-  .tab-panel { display: block !important; margin-bottom: 40px; }
+  .hero { padding:24px 16px; }
+  table.cal, .auto-card, .setup-box { break-inside:avoid; box-shadow:none; border:1px solid #ddd; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
 <header class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">Documento Operativo &mdash; Q2 2026</div>
-    <h1>Piano Editoriale<br><em>Email Marketing</em></h1>
-    <p class="hero-sub">Architettura di segmentazione, copy completo delle 8 email, flussi di automazione GetResponse e calendario operativo. Pronto per il lancio.</p>
+    <div class="hero-badge">Piano Semplificato &mdash; Q2 2026</div>
+    <h1>Calendario Editoriale<br><em>Email Marketing</em></h1>
+    <p class="hero-sub">14 email in 7 settimane. 3 tag. 2 regole di automazione. Tutte le CTA puntano a risorse già online. Obiettivo: generare contatti.</p>
   </div>
 </header>
 
-<!-- ═══════════════════ KPI STRIP ═══════════════════ -->
-<div class="kpi-strip">
-  <div class="kpi-card">
-    <div class="kpi-label">Email Totali</div>
-    <div class="kpi-value">8</div>
-    <div class="kpi-note">3 Riattivazione + 3 Nurturing + 2 Conversione</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Target Open Rate</div>
-    <div class="kpi-value">&gt;25%</div>
-    <div class="kpi-note">Benchmark B2B industriale</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Target CTR</div>
-    <div class="kpi-value">&gt;3%</div>
-    <div class="kpi-note">Con A/B test continuo</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Durata Ciclo</div>
-    <div class="kpi-value">~8 sett.</div>
-    <div class="kpi-note">Dal primo invio alla CTA finale</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">Lead Magnet</div>
-    <div class="kpi-value">4</div>
-    <div class="kpi-note">ROI Calc · Energia · Manutenzione · Caso Studio</div>
+<div class="wrap">
+  <div class="overview">
+    <div class="ov-card">
+      <div class="ov-label">Email totali</div>
+      <div class="ov-val">14</div>
+      <div class="ov-note">2 invii / settimana</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-label">Durata Piano</div>
+      <div class="ov-val">7 sett.</div>
+      <div class="ov-note">+ 1 settimana di setup</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-label">Pagine di atterraggio</div>
+      <div class="ov-val">7</div>
+      <div class="ov-note">4 pillar + 3 tool (tutte live)</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-label">Tag GetResponse</div>
+      <div class="ov-val">3</div>
+      <div class="ov-note">Nessuna sovra-segmentazione</div>
+    </div>
+    <div class="ov-card">
+      <div class="ov-label">Obiettivo conversione</div>
+      <div class="ov-val">Form</div>
+      <div class="ov-note">Analisi gratuita / Call tecnica</div>
+    </div>
   </div>
 </div>
 
-<!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
-<div class="container">
+<div class="wrap">
 
-<!-- ────── SEZIONE 1: CALENDARIO ────── -->
+<!-- ═══════ SETUP ═══════ -->
 <section>
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <span class="section-title">Calendario Operativo</span>
+  <div class="section-label">Settimana 0</div>
+  <div class="section-title">Setup Pre-Lancio</div>
+  <p class="section-desc">Da completare prima del primo invio. Stima: 2-3 giorni di lavoro effettivo.</p>
+
+  <div class="setup-box">
+    <h3>Checklist di Avvio</h3>
+    <ul class="setup-list">
+      <li><span class="check">01</span> <span><strong>Pulizia database GetResponse.</strong> Rimuovere duplicati, email invalide, bounce noti. Se possibile, fare un invio di verifica con un servizio come ZeroBounce o NeverBounce prima del lancio.</span></li>
+      <li><span class="check">02</span> <span><strong>Creare 3 tag in GetResponse:</strong> <code>Attivo</code> (ha aperto/cliccato), <code>Ha_Usato_Tool</code> (ha cliccato verso un tool), <code>Contatto_Generato</code> (ha compilato un form). Nient'altro.</span></li>
+      <li><span class="check">03</span> <span><strong>Verificare autenticazione dominio.</strong> SPF, DKIM e DMARC configurati e verificati su GetResponse per il dominio @labmec.it.</span></li>
+      <li><span class="check">04</span> <span><strong>Verificare che i form su tutte le 7 pagine</strong> (4 pillar + 3 tool) siano collegati a GetResponse e assegnino il tag <code>Contatto_Generato</code> al submit.</span></li>
+      <li><span class="check">05</span> <span><strong>Configurare notifica al team commerciale</strong> per ogni nuovo contatto con tag <code>Contatto_Generato</code>.</span></li>
+      <li><span class="check">06</span> <span><strong>Test invio</strong> su 2-3 indirizzi interni per verificare rendering, link funzionanti e assegnazione tag.</span></li>
+    </ul>
   </div>
-  <p class="section-desc">Timeline dettagliata delle attività: dalla configurazione iniziale al lancio di ogni flusso, fino alle review dei KPI. Le date sono indicative e basate su un lancio previsto nella prima settimana di aprile 2026.</p>
 
-  <div class="timeline">
-    <!-- WEEK 1 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 1 &mdash; 1-4 APR 2026</div>
-      <div class="tl-card">
-        <h4>Setup Infrastruttura</h4>
-        <p>Creazione di tutti i tag in GetResponse (vedi Sezione 3). Configurazione segmenti dinamici. Autenticazione dominio mittente (SPF, DKIM, DMARC). Collegamento form WordPress &rarr; GetResponse con assegnazione tag automatica. Import database storico con tag <code>Fase_Freddo</code> + <code>Origine_Database_Storico</code>.</p>
-        <div class="tl-tags">
-          <span class="tl-tag setup">SETUP</span>
-          <span class="tl-tag setup">GETRESPONSE</span>
-          <span class="tl-tag setup">WORDPRESS</span>
-        </div>
+  <div class="note-box">
+    <strong>Attività parallela &mdash; Caso Studio.</strong> Durante le settimane 1-4, raccogliere dal team LabMec i dati di almeno 1 cliente reale: situazione prima, soluzione installata, risultati dopo (tempi, scarti, risparmio). Non serve un documento lungo: bastano 5-6 numeri concreti. Questo materiale verrà usato a partire dalla Settimana 5 del piano e potrà diventare una pagina dedicata sul sito.
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════ TAGS ═══════ -->
+<section>
+  <div class="section-label">Infrastruttura Minima</div>
+  <div class="section-title">3 Tag, 2 Regole &mdash; Basta Così</div>
+  <p class="section-desc">Nessuna segmentazione complessa. Tre tag che coprono tutto il funnel: chi è attivo, chi ha usato un tool, chi ha chiesto un contatto. Due regole di automazione che lavorano in background.</p>
+
+  <div class="tags-mini">
+    <span class="tag-m a">Attivo</span>
+    <span class="tag-m b">Ha_Usato_Tool</span>
+    <span class="tag-m c">Contatto_Generato</span>
+  </div>
+
+  <div class="auto-grid">
+    <div class="auto-card">
+      <div class="auto-num">1</div>
+      <div class="auto-body">
+        <h4>Tag automatico: Attivo</h4>
+        <p>Quando un contatto apre o clicca su una qualsiasi email del piano, GetResponse gli assegna il tag <code>Attivo</code>. Questo ti permette di sapere chi è "vivo" nel database e, in futuro, di inviare contenuti solo a chi interagisce.</p>
+        <div class="auto-logic">QUANDO: Apertura O Click su qualsiasi email<br>ALLORA: Assegna tag <code>Attivo</code></div>
       </div>
     </div>
-
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 1 &mdash; 3-4 APR 2026</div>
-      <div class="tl-card">
-        <h4>Creazione Landing Page</h4>
-        <p>Messa online delle 5 landing page necessarie: <code>/calcolatore-roi-cnc</code>, <code>/calcolo-consumo-energia</code>, <code>/guida-manutenzione-preventiva</code>, <code>/analisi-gratuita</code>, <code>/prenota-call-tecnica</code>. Ogni LP ha un form collegato a GetResponse con tag automatico.</p>
-        <div class="tl-tags">
-          <span class="tl-tag setup">LANDING PAGE</span>
-          <span class="tl-tag setup">FORM</span>
-        </div>
+    <div class="auto-card">
+      <div class="auto-num">2</div>
+      <div class="auto-body">
+        <h4>Notifica commerciale: Contatto Generato</h4>
+        <p>Quando un contatto compila un form su una qualsiasi pagina del sito (pillar o tool), riceve il tag <code>Contatto_Generato</code> e il team commerciale riceve una notifica email immediata con i dati del contatto.</p>
+        <div class="auto-logic">QUANDO: Form compilato su qualsiasi pagina labmec.it<br>ALLORA: Assegna tag <code>Contatto_Generato</code> → Invia notifica al commerciale</div>
       </div>
     </div>
+  </div>
 
-    <!-- WEEK 2 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 2 &mdash; 7 APR 2026 (LUN)</div>
-      <div class="tl-card">
-        <h4>🔶 Lancio Flusso Riattivazione &mdash; Email R1</h4>
-        <p><strong>Calcolatore ROI CNC.</strong> Prima email inviata all'intero database freddo. Split A/B al 50% sugli oggetti. Obiettivo: rompere il silenzio e ottenere il primo segnale di vita (apertura/click).</p>
-        <div class="tl-tags">
-          <span class="tl-tag riatt">RIATTIVAZIONE</span>
-          <span class="tl-tag riatt">R1</span>
-          <span class="tl-tag setup">A/B TEST</span>
-        </div>
-      </div>
+  <div class="note-box" style="margin-top:24px;">
+    <strong>Il tag <code>Ha_Usato_Tool</code></strong> si assegna manualmente in GetResponse guardando chi ha cliccato sui link verso i 3 tool (Calcolatore ROI, Calcolo Energia, Guida Manutenzione). In alternativa, si può automatizzare con un workflow: "Se clicca un link che contiene /calcolatore OR /calcolo-consumo OR /guida-manutenzione → assegna tag". Questo tag serve per sapere chi ha mostrato interesse concreto e per le email di conversione delle ultime settimane.
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════ CALENDARIO ═══════ -->
+<section>
+  <div class="section-label">Il Piano</div>
+  <div class="section-title">Calendario Editoriale &mdash; 14 Email in 7 Settimane</div>
+  <p class="section-desc">Ogni email ha: data di invio, obiettivo, 2 varianti di oggetto per A/B test, pagina di destinazione e la CTA. Invii il martedì e il giovedì. Logica del piano: prima dai valore con i tool, poi educa con le pillar, poi converti con la call tecnica.</p>
+
+  <!-- FASE 1 -->
+  <div class="cal-phase">
+    <div class="phase-header">
+      <span class="phase-dot" style="background:var(--orange)"></span>
+      <span class="phase-name">Fase 1: Riattivazione</span>
+      <span class="phase-sub">&mdash; Settimane 1-2 &mdash; Svegliare la lista con valore puro</span>
     </div>
+    <table class="cal">
+      <thead><tr>
+        <th>Data</th><th>#</th><th>Obiettivo</th><th>A/B Oggetti</th><th>Destinazione CTA</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="col-date">MAR 7 Apr</td>
+          <td class="col-id"><span class="email-badge r">R1</span></td>
+          <td class="col-obj"><span class="obj-tag valore">Valore</span><br><span style="font-size:12px;color:var(--dark);">Rompere il silenzio con il Calcolatore ROI</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Quanto costa davvero NON automatizzare? I numeri parlano.</div>
+            <div class="subj-b"><strong>B:</strong> Calcola in 2 minuti il ritorno del tuo prossimo investimento CNC</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/calcolatore-roi-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Calcola il tuo ROI →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 10 Apr</td>
+          <td class="col-id"><span class="email-badge r">R2</span></td>
+          <td class="col-obj"><span class="obj-tag valore">Valore</span><br><span style="font-size:12px;color:var(--dark);">Attivare il focus sui costi energetici occulti</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Sai quanto consuma la tua macchina ogni mese? Il dato che nessuno controlla.</div>
+            <div class="subj-b"><strong>B:</strong> Tagliare i costi energetici in officina: il calcolo che dovresti fare oggi</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/calcolo-consumo-energia</span><br><span style="font-size:11px;color:var(--mid);">CTA: Calcola il tuo consumo →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">MAR 14 Apr</td>
+          <td class="col-id"><span class="email-badge r">R3</span></td>
+          <td class="col-obj"><span class="obj-tag valore">Valore</span><br><span style="font-size:12px;color:var(--dark);">Leva sul fermo macchina. Guida pratica.</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Fermo macchina: quanto ti costa ogni ora di stop?</div>
+            <div class="subj-b"><strong>B:</strong> La checklist che i migliori responsabili di produzione tengono accanto alla macchina</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/guida-manutenzione-preventiva</span><br><span style="font-size:11px;color:var(--mid);">CTA: Consulta la guida →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 17 Apr</td>
+          <td class="col-id"><span class="email-badge r">R4</span></td>
+          <td class="col-obj"><span class="obj-tag valore">Valore</span><br><span style="font-size:12px;color:var(--dark);">LabMec vs. Importazione: il costo che non vedi</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Il vero prezzo di una macchina CNC non è quello in fattura</div>
+            <div class="subj-b"><strong>B:</strong> Cosa succede quando il tuo fornitore è a 8.000 km e la macchina si ferma?</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/macchine-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Scopri il modello LabMec →</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 2 &mdash; 11 APR 2026 (VEN)</div>
-      <div class="tl-card">
-        <h4>🔶 Email R2 &mdash; Calcolo Consumo Energia</h4>
-        <p>Focus sui costi energetici occulti. Invio a chi è ancora <code>Fase_Freddo</code> o <code>Fase_Riattivato</code> senza click. +4 giorni da R1.</p>
-        <div class="tl-tags">
-          <span class="tl-tag riatt">RIATTIVAZIONE</span>
-          <span class="tl-tag riatt">R2</span>
-        </div>
-      </div>
+  <!-- FASE 2 -->
+  <div class="cal-phase">
+    <div class="phase-header">
+      <span class="phase-dot" style="background:var(--green)"></span>
+      <span class="phase-name">Fase 2: Educazione</span>
+      <span class="phase-sub">&mdash; Settimane 3-5 &mdash; Costruire autorità con le pillar page</span>
     </div>
-
-    <!-- WEEK 3 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 3 &mdash; 16 APR 2026 (MER)</div>
-      <div class="tl-card">
-        <h4>🔶 Email R3 &mdash; Guida Manutenzione Preventiva</h4>
-        <p>Leva sul terrore del fermo macchina. Invio a tutti i contatti ancora nel flusso, indipendentemente dall'apertura precedente. Ultima chance di riattivazione. +5 giorni da R2.</p>
-        <div class="tl-tags">
-          <span class="tl-tag riatt">RIATTIVAZIONE</span>
-          <span class="tl-tag riatt">R3</span>
-        </div>
-      </div>
+    <table class="cal">
+      <thead><tr>
+        <th>Data</th><th>#</th><th>Obiettivo</th><th>A/B Oggetti</th><th>Destinazione CTA</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="col-date">MAR 21 Apr</td>
+          <td class="col-id"><span class="email-badge n">E1</span></td>
+          <td class="col-obj"><span class="obj-tag educa">Educazione</span><br><span style="font-size:12px;color:var(--dark);">Focus Pantografo CNC: per chi cerca precisione + automazione</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Pantografo CNC: cosa cambia davvero nella produzione quotidiana</div>
+            <div class="subj-b"><strong>B:</strong> La macchina che sta sostituendo 3 passaggi manuali nelle falegnamerie italiane</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/pantografo-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Scopri i modelli →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 24 Apr</td>
+          <td class="col-id"><span class="email-badge n">E2</span></td>
+          <td class="col-obj"><span class="obj-tag educa">Educazione</span><br><span style="font-size:12px;color:var(--dark);">Focus Taglio Laser: velocità e finitura impeccabile</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Taglio laser: quando la velocità non deve compromettere la finitura</div>
+            <div class="subj-b"><strong>B:</strong> Perché sempre più officine stanno aggiungendo il laser alla propria linea</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/taglio-laser</span><br><span style="font-size:11px;color:var(--mid);">CTA: Esplora le soluzioni laser →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">MAR 28 Apr</td>
+          <td class="col-id"><span class="email-badge n">E3</span></td>
+          <td class="col-obj"><span class="obj-tag educa">Educazione</span><br><span style="font-size:12px;color:var(--dark);">Focus Taglio Plasma: potenza per la carpenteria</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Taglio plasma: la potenza di penetrazione che il laser non ti dà</div>
+            <div class="subj-b"><strong>B:</strong> Carpenteria metallica: come tagliare i tempi senza tagliare la qualità</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/taglio-plasma</span><br><span style="font-size:11px;color:var(--mid);">CTA: Scopri la linea plasma →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 1 Mag</td>
+          <td class="col-id"><span class="email-badge n">E4</span></td>
+          <td class="col-obj"><span class="obj-tag educa">Educazione</span><br><span style="font-size:12px;color:var(--dark);">Agevolazioni 4.0: il momento giusto per investire</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Il tuo prossimo macchinario CNC potrebbe costarti il 40% in meno</div>
+            <div class="subj-b"><strong>B:</strong> Credito d'imposta e bandi aperti: la finestra che si sta chiudendo</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/macchine-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Parla con un tecnico per capire a cosa puoi accedere →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">MAR 6 Mag</td>
+          <td class="col-id"><span class="email-badge n">E5</span></td>
+          <td class="col-obj"><span class="obj-tag educa">Educazione</span><br><span style="font-size:12px;color:var(--dark);">Assistenza Made in Italy: perché fa la differenza</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Assistenza post-vendita: la voce di costo che decide tutto</div>
+            <div class="subj-b"><strong>B:</strong> Quando si ferma la macchina, quanto conta avere il tecnico a 30 minuti?</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/macchine-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Scopri il modello di assistenza LabMec →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 8 Mag</td>
+          <td class="col-id"><span class="email-badge n">E6</span></td>
+          <td class="col-obj"><span class="obj-tag educa">Educazione</span><br><span style="font-size:12px;color:var(--dark);">Caso Studio* (se disponibile) o rilancio tool ROI con angolo diverso</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Da [X] ore a [Y] ore per commessa: il caso di un'officina come la tua</div>
+            <div class="subj-b"><strong>B:</strong> I numeri che hanno convinto [un imprenditore / un artigiano] a cambiare macchina</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/casi-studio <span style="color:var(--orange);">(o /calcolatore-roi-cnc se il caso studio non è pronto)</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-box" style="margin-top:16px;">
+      <strong>*Email E6 &mdash; Dipende dal caso studio.</strong> Se entro l'8 maggio il materiale del caso studio è pronto (anche in formato semplice: 5 numeri + una citazione del cliente), si usa quello. Altrimenti si rilancia il Calcolatore ROI con un angolo diverso: "Hai già fatto il calcolo? Ecco cosa stanno scoprendo gli imprenditori che lo usano."
     </div>
+  </div>
 
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 3 &mdash; 18 APR 2026</div>
-      <div class="tl-card">
-        <h4>📊 Prima Review KPI Riattivazione</h4>
-        <p>Analisi Open Rate, CTR e download dei 3 lead magnet. Confronto A/B test per determinare gli oggetti vincenti. Verifica deliverability e bounce rate (&lt;2%). Decisione: quali contatti promuovere a <code>Fase_Nurturing</code>, quali restano <code>Fase_Dormiente</code>.</p>
-        <div class="tl-tags">
-          <span class="tl-tag review">REVIEW</span>
-          <span class="tl-tag review">KPI</span>
-        </div>
-      </div>
+  <!-- FASE 3 -->
+  <div class="cal-phase">
+    <div class="phase-header">
+      <span class="phase-dot" style="background:var(--purple)"></span>
+      <span class="phase-name">Fase 3: Conversione</span>
+      <span class="phase-sub">&mdash; Settimane 6-7 &mdash; Generare il contatto</span>
     </div>
+    <table class="cal">
+      <thead><tr>
+        <th>Data</th><th>#</th><th>Obiettivo</th><th>A/B Oggetti</th><th>Destinazione CTA</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="col-date">MAR 13 Mag</td>
+          <td class="col-id"><span class="email-badge c">C1</span></td>
+          <td class="col-obj"><span class="obj-tag conv">Conversione</span><br><span style="font-size:12px;color:var(--dark);">Soft pitch: analisi gratuita della produzione</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Analisi gratuita della tua produzione: dove stai perdendo margine?</div>
+            <div class="subj-b"><strong>B:</strong> I nostri ingegneri hanno 30 minuti per analizzare il tuo processo. A costo zero.</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/macchine-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Richiedi la tua analisi gratuita →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 15 Mag</td>
+          <td class="col-id"><span class="email-badge v">V1</span></td>
+          <td class="col-obj"><span class="obj-tag valore">Rilancio Tool</span><br><span style="font-size:12px;color:var(--dark);">Rilancio Calcolo Energia con angolo diverso</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Il costo nascosto che nessun fornitore ti calcola: l'energia</div>
+            <div class="subj-b"><strong>B:</strong> Officina efficiente = officina che guadagna. Fai il calcolo.</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/calcolo-consumo-energia</span><br><span style="font-size:11px;color:var(--mid);">CTA: Fai il calcolo →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">MAR 20 Mag</td>
+          <td class="col-id"><span class="email-badge c">C2</span></td>
+          <td class="col-obj"><span class="obj-tag conv">Conversione</span><br><span style="font-size:12px;color:var(--dark);">Spinta gentile: perché parlarne adesso e non tra 3 mesi</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Una cosa che chi compra un CNC scopre sempre troppo tardi</div>
+            <div class="subj-b"><strong>B:</strong> Il tempo tra "ci sto pensando" e "sono in ritardo" è più breve di quanto credi</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/macchine-cnc</span><br><span style="font-size:11px;color:var(--mid);">CTA: Prenota 30 minuti con un tecnico →</span></td>
+        </tr>
+        <tr>
+          <td class="col-date">GIO 22 Mag</td>
+          <td class="col-id"><span class="email-badge c">C3</span></td>
+          <td class="col-obj"><span class="obj-tag conv">Conversione</span><br><span style="font-size:12px;color:var(--dark);">Hard pitch: scarsità slot produttivi. Mittente: Ing. Palmieri.</span></td>
+          <td>
+            <div class="subj-a"><strong>A:</strong> Gli slot di produzione per il prossimo trimestre si stanno esaurendo</div>
+            <div class="subj-b"><strong>B:</strong> Una precisazione importante sui tempi di consegna LabMec</div>
+          </td>
+          <td class="col-dest"><span class="dest-link">labmec.it/contatti</span><br><span style="font-size:11px;color:var(--mid);">CTA: Prenota una call con i nostri tecnici →<br>Mittente: Ing. Maurizio Palmieri</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <!-- WEEK 4 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 4 &mdash; 21 APR 2026 (LUN)</div>
-      <div class="tl-card">
-        <h4>🟢 Lancio Flusso Nurturing &mdash; Email N1</h4>
-        <p><strong>LabMec vs. Importazione (Assistenza & TCO).</strong> Parte automaticamente per ogni contatto che entra in <code>Fase_Nurturing</code>. Smonta l'obiezione "costa meno importare".</p>
-        <div class="tl-tags">
-          <span class="tl-tag nurt">NURTURING</span>
-          <span class="tl-tag nurt">N1</span>
-          <span class="tl-tag nurt">OBIEZIONE #1</span>
-        </div>
-      </div>
+  <!-- REVIEW -->
+  <div class="cal-phase">
+    <div class="phase-header">
+      <span class="phase-dot" style="background:var(--blue)"></span>
+      <span class="phase-name">Review</span>
+      <span class="phase-sub">&mdash; 2 checkpoint per aggiustare il tiro</span>
     </div>
+    <table class="cal">
+      <thead><tr>
+        <th>Data</th><th>#</th><th>Cosa Verificare</th><th colspan="2">Decisioni da Prendere</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="col-date">VEN 18 Apr</td>
+          <td class="col-id"><span class="obj-tag review">Rev 1</span></td>
+          <td>Open Rate, CTR, bounce rate delle prime 4 email (R1-R4). Quanti tag <code>Attivo</code> assegnati?</td>
+          <td colspan="2" style="font-size:13px;">Se Open Rate &lt; 15%: rivedere gli oggetti. Se bounce &gt; 2%: pulire di nuovo la lista. Se CTR &lt; 1%: le CTA non sono abbastanza chiare → rivedere il copy.</td>
+        </tr>
+        <tr>
+          <td class="col-date">LUN 26 Mag</td>
+          <td class="col-id"><span class="obj-tag review">Rev 2</span></td>
+          <td>Performance completa del piano. Quanti <code>Contatto_Generato</code>? Quali email hanno performato meglio? Quali pagine hanno convertito di più?</td>
+          <td colspan="2" style="font-size:13px;">Calcolo ROI del piano. Confronto pillar vs tool come destinazione. Decisione: cosa ripetere, cosa eliminare, cosa aggiungere nel Q3. Pulizia contatti mai attivati.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 4-5 &mdash; 28 APR 2026 (LUN)</div>
-      <div class="tl-card">
-        <h4>🟢 Email N2 &mdash; Caso Studio</h4>
-        <p><strong>Risultati concreti di un cliente reale.</strong> Numeri prima/dopo: 14h &rarr; 3h per commessa, scarti dal 10% al 2%. Invio a chi ha aperto N1. +7 giorni da N1.</p>
-        <div class="tl-tags">
-          <span class="tl-tag nurt">NURTURING</span>
-          <span class="tl-tag nurt">N2</span>
-          <span class="tl-tag nurt">SOCIAL PROOF</span>
-        </div>
+<hr class="sep">
+
+<!-- ═══════ STRUTTURA DI OGNI INVIO ═══════ -->
+<section>
+  <div class="section-label">Formato Standard</div>
+  <div class="section-title">Struttura di Ogni Email</div>
+  <p class="section-desc">Ogni email segue lo stesso schema. Questo mantiene il tono coerente e velocizza l'approvazione. Il copy specifico verrà scritto email per email seguendo questo modello.</p>
+
+  <div class="setup-box" style="border-left-color:var(--gold);">
+    <h3>Template Struttura Email</h3>
+    <ul class="setup-list">
+      <li><span class="check" style="color:var(--gold);">A</span> <span><strong>Apertura (1-2 righe):</strong> "Buongiorno," + frase che entra subito nel problema/dato concreto. Mai convenevoli, mai "sperando che stia bene". Diretti.</span></li>
+      <li><span class="check" style="color:var(--gold);">B</span> <span><strong>Corpo (3-4 paragrafi brevi):</strong> Il problema → il dato che lo rende urgente → la risorsa che LabMec offre per affrontarlo. Tono: da ingegnere a imprenditore. Numeri e margini, mai slogan.</span></li>
+      <li><span class="check" style="color:var(--gold);">C</span> <span><strong>CTA unica e chiara (1 bottone):</strong> Un solo link. Un solo invito all'azione. Testo del bottone che dice cosa ottieni, non cosa fai (es. "Calcola il tuo ROI" non "Clicca qui").</span></li>
+      <li><span class="check" style="color:var(--gold);">D</span> <span><strong>Chiusura (2 righe):</strong> "Buon lavoro," + firma "Il Team Tecnico LabMec — Carinaro (CE)". Per C3 (hard pitch): firma dell'Ing. Maurizio Palmieri.</span></li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    <strong>Regole tassative per ogni email:</strong> Massimo 120-150 parole nel corpo. Nessun emoji. Nessuno sconto fittizio. Nessun "Compra ora!". L'unica azione che chiediamo è visitare una pagina o compilare un form. Non vendiamo nella mail: portiamo le persone dove possono informarsi e, quando sono pronte, contattarci.
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════ RIEPILOGO VISIVO ═══════ -->
+<section>
+  <div class="section-label">Vista d'insieme</div>
+  <div class="section-title">Il Piano in Una Riga</div>
+  <p class="section-desc">Il percorso del contatto dal primo invio alla conversione.</p>
+
+  <div style="background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); overflow-x:auto;">
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; min-width:700px;">
+      <div style="background:var(--navy);color:#fff;padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;">
+        DB Freddo<br><span style="font-size:10px;font-weight:400;opacity:.7;">1.500-5.000</span>
       </div>
-    </div>
-
-    <!-- WEEK 6 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 6 &mdash; 5 MAG 2026 (LUN)</div>
-      <div class="tl-card">
-        <h4>🟢 Email N3 &mdash; Agevolazioni 4.0 / FESR</h4>
-        <p><strong>Smonta "non ho il budget".</strong> Focus su credito d'imposta, bandi regionali, Scuola 4.0. A tutti i <code>Fase_Nurturing</code>. +7 giorni da N2.</p>
-        <div class="tl-tags">
-          <span class="tl-tag nurt">NURTURING</span>
-          <span class="tl-tag nurt">N3</span>
-          <span class="tl-tag nurt">OBIEZIONE #2</span>
-        </div>
+      <span style="color:var(--mid);font-size:20px;">→</span>
+      <div style="background:var(--orange-bg);color:var(--orange);padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;border:2px solid var(--orange);">
+        R1→R4<br><span style="font-size:10px;font-weight:400;">Tool + Obiezione #1</span>
       </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 6 &mdash; 8 MAG 2026</div>
-      <div class="tl-card">
-        <h4>📊 Review Nurturing + Attivazione Flusso Conversione</h4>
-        <p>Analisi performance N1-N2-N3. Verifica quanti contatti sono stati promossi a <code>Fase_MQL</code>. Attivazione del workflow di conversione in GetResponse.</p>
-        <div class="tl-tags">
-          <span class="tl-tag review">REVIEW</span>
-          <span class="tl-tag conv">SETUP CONV.</span>
-        </div>
+      <span style="color:var(--mid);font-size:20px;">→</span>
+      <div style="background:var(--green-bg);color:var(--green);padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;border:2px solid var(--green);">
+        E1→E6<br><span style="font-size:10px;font-weight:400;">Pillar + Agevolazioni + Caso Studio</span>
       </div>
-    </div>
-
-    <!-- WEEK 7 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 7 &mdash; 11 MAG 2026 (LUN)</div>
-      <div class="tl-card">
-        <h4>🟣 Lancio Flusso Conversione &mdash; Email C1</h4>
-        <p><strong>Soft Pitch: Analisi Gratuita della Produzione.</strong> Parte automaticamente per ogni <code>Fase_MQL</code>. Approccio consulenziale: 30 minuti con un ingegnere, zero pressione commerciale.</p>
-        <div class="tl-tags">
-          <span class="tl-tag conv">CONVERSIONE</span>
-          <span class="tl-tag conv">C1</span>
-          <span class="tl-tag conv">SOFT PITCH</span>
-        </div>
+      <span style="color:var(--mid);font-size:20px;">→</span>
+      <div style="background:var(--purple-bg);color:var(--purple);padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;border:2px solid var(--purple);">
+        C1→C3<br><span style="font-size:10px;font-weight:400;">Analisi Gratuita + Call Tecnica</span>
       </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 7-8 &mdash; 18 MAG 2026 (LUN)</div>
-      <div class="tl-card">
-        <h4>🟣 Email C2 &mdash; Hard Pitch (Scarsità)</h4>
-        <p><strong>Urgenza sugli slot di produzione.</strong> Solo a chi NON ha compilato il form dopo C1. Mittente: Ing. Maurizio Palmieri (fondatore). +7 giorni da C1.</p>
-        <div class="tl-tags">
-          <span class="tl-tag conv">CONVERSIONE</span>
-          <span class="tl-tag conv">C2</span>
-          <span class="tl-tag conv">HARD PITCH</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- WEEK 8 -->
-    <div class="tl-item">
-      <div class="tl-date">SETTIMANA 8 &mdash; 25 MAG 2026</div>
-      <div class="tl-card">
-        <h4>📊 Review Finale Q2 &mdash; Analisi Completa</h4>
-        <p>ROI complessivo del piano. Contratti aperti da lead email. Confronto performance tra segmenti (Legno vs Metallo vs Scuole). Decisione allocazione budget Q3. Pulizia database: contatti <code>Fase_Dormiente</code> senza interazioni &rarr; rimozione o campagna re-engagement dedicata.</p>
-        <div class="tl-tags">
-          <span class="tl-tag review">REVIEW FINALE</span>
-          <span class="tl-tag review">ROI</span>
-          <span class="tl-tag review">PIANIFICAZIONE Q3</span>
-        </div>
+      <span style="color:var(--mid);font-size:20px;">→</span>
+      <div style="background:var(--gold);color:var(--navy);padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;">
+        FORM<br><span style="font-size:10px;font-weight:400;">→ Team Commerciale</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ────── SEZIONE 2: COPY DELLE EMAIL ────── -->
-<section>
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <span class="section-title">Copy Completo delle 8 Email</span>
-  </div>
-  <p class="section-desc">Ogni email è pronta per l'inserimento in GetResponse: 2 varianti oggetto per A/B test, preview text, corpo completo e tag di automazione. Seleziona il flusso per visualizzare le email.</p>
-
-  <div class="tabs" id="email-tabs">
-    <button class="tab-btn active" data-tab="riatt">🔶 Riattivazione (R1-R3)</button>
-    <button class="tab-btn" data-tab="nurt">🟢 Nurturing (N1-N3)</button>
-    <button class="tab-btn" data-tab="conv">🟣 Conversione (C1-C2)</button>
-  </div>
-
-  <!-- ═══ TAB: RIATTIVAZIONE ═══ -->
-  <div class="tab-panel active" id="tab-riatt">
-    <div class="email-grid">
-      <!-- R1 -->
-      <div class="email-card">
-        <div class="email-header riatt">
-          <div class="email-id">R1</div>
-          <div class="email-meta">
-            <h3>Il Calcolatore ROI CNC</h3>
-            <span>Giorno 0 &mdash; Rompere il silenzio con i numeri</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Rompere il silenzio offrendo uno strumento pratico. Posizionare LabMec come partner che ragiona in termini di margini.</td></tr>
-            <tr><td>Trigger</td><td>Invio automatico a tutti i contatti con Tag <span class="tag-badge">Fase_Freddo</span></td></tr>
-            <tr><td>Segmento</td><td>Database Storico completo &mdash; Giorno 0 del flusso</td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Download_Calcolatore_ROI</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/calcolatore-roi-cnc</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Quanto costa davvero NON automatizzare? I numeri parlano.</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Curiosità</div>
-              <p>Uno strumento gratuito per calcolare il ritorno del tuo prossimo investimento CNC</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Il calcolatore che i tuoi concorrenti stanno già usando.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>c'è un dato che molti imprenditori ignorano: il costo della non automazione. Ogni pezzo lavorato a mano, ogni errore di taglio ripetuto, ogni ora di un operatore qualificato impegnata in operazioni ripetitive ha un prezzo preciso. Solo che non compare in nessuna fattura.</p>
-            <p>Abbiamo costruito un <strong>Calcolatore ROI</strong> specifico per le lavorazioni CNC. Inserisci i tuoi volumi di produzione, i costi orari e il tipo di lavorazione: in 2 minuti ottieni un'analisi chiara di quanto margine stai lasciando sul tavolo ogni mese.</p>
-            <p>Nessun obbligo, nessun contatto commerciale. Solo numeri.</p>
-            <span class="cta-line">CALCOLA IL TUO ROI &rarr;</span>
-            <p>Lo abbiamo progettato con i nostri ingegneri, sulla base di dati reali raccolti in oltre 10 anni di installazioni su legno, metallo e materie plastiche.</p>
-            <div class="firma">Buon lavoro,<br>Il Team Tecnico LabMec<br>Carinaro (CE) &mdash; labmec.it</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- R2 -->
-      <div class="email-card">
-        <div class="email-header riatt">
-          <div class="email-id">R2</div>
-          <div class="email-meta">
-            <h3>Calcolo Consumo Energia</h3>
-            <span>Giorno +4/5 &mdash; I costi occulti che erodono i margini</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Attivare l'attenzione sui costi energetici. Posizionare l'efficienza come leva competitiva.</td></tr>
-            <tr><td>Trigger</td><td>Giorno 4-5 del flusso. Tag <span class="tag-badge">Fase_Freddo</span> o <span class="tag-badge">Fase_Riattivato</span> senza click</td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Download_Calcolo_Energia</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/calcolo-consumo-energia</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Sai quanto consuma la tua macchina ogni mese? Il dato che nessuno controlla.</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Beneficio</div>
-              <p>Tagliare i costi energetici in officina: il calcolo che dovresti fare oggi</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Il consumo nascosto che erode i tuoi margini.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>il prezzo dell'energia è una variabile che incide direttamente sui margini di ogni lavorazione. Eppure, pochissime officine sanno con precisione quanto assorbono i propri macchinari CNC a regime e quanto disperdono in inefficienze meccaniche ed elettroniche.</p>
-            <p>Abbiamo preparato un modello di <strong>Calcolo Consumo Energia</strong> pensato per chi lavora con pantografi, laser o plasma. Ti permette di confrontare il costo energetico attuale con quello che otterresti con un macchinario di ultima generazione, a parità di output produttivo.</p>
-            <p>Il risultato spesso sorprende: la differenza non si misura in centesimi, ma in migliaia di euro l'anno.</p>
-            <span class="cta-line">SCARICA IL CALCOLO ENERGETICO &rarr;</span>
-            <p>I nostri macchinari sono progettati per massimizzare la resa minimizzando il consumo. Ma non devi crederci sulla parola: verifica con i tuoi dati.</p>
-            <div class="firma">Buon lavoro,<br>Il Team Tecnico LabMec<br>Carinaro (CE) &mdash; labmec.it</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- R3 -->
-      <div class="email-card">
-        <div class="email-header riatt">
-          <div class="email-id">R3</div>
-          <div class="email-meta">
-            <h3>Guida alla Manutenzione Preventiva</h3>
-            <span>Giorno +9/10 &mdash; Il terrore del fermo macchina</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Attivare la leva emotiva più forte nel manufacturing: il fermo macchina. Offrire una soluzione pratica.</td></tr>
-            <tr><td>Trigger</td><td>Giorno 9-10. A tutti i contatti ancora nel flusso (indipendentemente dall'apertura precedente)</td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Download_Guida_Manutenzione</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/guida-manutenzione-preventiva</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Fermo macchina: quanto ti costa ogni ora di stop? La guida per prevenirlo.</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Curiosità</div>
-              <p>La checklist che i migliori responsabili di produzione tengono accanto alla macchina</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Prevenire un fermo costa 10 volte meno che subirlo.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>un fermo macchina non programmato non è solo un'ora persa. È una commessa in ritardo, un cliente che chiama, un operatore fermo, un margine che evapora. Chi gestisce una produzione lo sa bene: il problema non è <em>se</em> accadrà, ma <em>quando</em>.</p>
-            <p>Abbiamo raccolto in una <strong>Guida alla Manutenzione Preventiva</strong> le procedure che i nostri tecnici applicano durante le installazioni e i controlli periodici. Non è teoria: è il protocollo che usiamo noi stessi con i nostri clienti per garantire che le macchine restino operative il più a lungo possibile.</p>
-            <p>All'interno trovi: checklist giornaliera pre-avvio, calendario interventi programmati per componenti critiche, segnali d'allarme da non ignorare mai.</p>
-            <span class="cta-line">SCARICA LA GUIDA MANUTENZIONE &rarr;</span>
-            <p>È applicabile a qualsiasi macchina CNC, non solo alle nostre. Consideriamolo un contributo al settore.</p>
-            <div class="firma">Buon lavoro,<br>Il Team Tecnico LabMec<br>Carinaro (CE) &mdash; labmec.it</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ TAB: NURTURING ═══ -->
-  <div class="tab-panel" id="tab-nurt">
-    <div class="email-grid">
-      <!-- N1 -->
-      <div class="email-card">
-        <div class="email-header nurt">
-          <div class="email-id">N1</div>
-          <div class="email-meta">
-            <h3>Assistenza: LabMec vs. Importazione</h3>
-            <span>Obiezione #1 &mdash; "Costa meno comprare dalla Cina"</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Spostare il confronto dal prezzo d'acquisto al Costo Totale di Proprietà (TCO). Demolire l'obiezione sull'importazione.</td></tr>
-            <tr><td>Trigger</td><td>Giorno 0 dal passaggio a <span class="tag-badge">Fase_Nurturing</span></td></tr>
-            <tr><td>Segmento</td><td>Tutti i contatti appena promossi a Fase_Nurturing</td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Click_Nurturing_Assistenza</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/assistenza-post-vendita</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Il vero prezzo di una macchina CNC non è quello in fattura</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Curiosità</div>
-              <p>Cosa succede quando la tua macchina si ferma e il fornitore è a 8.000 km?</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            La differenza tra un prezzo e un costo di proprietà.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>quando si valuta l'acquisto di un pantografo CNC, il prezzo in fattura è solo la prima riga del conto. La riga che pesa davvero è quella che compare dopo: il costo di ogni ora di fermo, di ogni ricambio che tarda ad arrivare, di ogni ticket di assistenza che finisce in una coda anonima.</p>
-            <p>Con una macchina d'importazione, i tempi di intervento medi superano le 2-3 settimane. La barriera linguistica complica la diagnosi. I ricambi viaggiano per migliaia di chilometri. Nel frattempo, la tua produzione è ferma.</p>
-            <p><strong>Con LabMec, il modello è diverso:</strong></p>
-            <p>I nostri tecnici &mdash; gli stessi che hanno progettato e assemblato la macchina &mdash; sono a Carinaro (CE). L'intervento avviene in ore, non in settimane. Ogni macchina esce con marcatura CE, manuali completi e la possibilità di assistenza remota immediata. Conosciamo ogni singolo componente perché lo abbiamo scelto, testato e montato noi.</p>
-            <p>Non è una questione di Made in Italy per orgoglio. È Made in Italy perché significa: tempi di risposta misurabili, ricambi disponibili, tecnici che parlano la tua lingua e conoscono il tuo settore.</p>
-            <span class="cta-line">SCOPRI IL NOSTRO MODELLO DI ASSISTENZA &rarr;</span>
-            <p>Se vuoi approfondire i nostri standard qualitativi (siamo in fase di accreditamento ISO 9001), la pagina dedicata li illustra nel dettaglio.</p>
-            <div class="firma">Buon lavoro,<br>Il Team Tecnico LabMec</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- N2 -->
-      <div class="email-card">
-        <div class="email-header nurt">
-          <div class="email-id">N2</div>
-          <div class="email-meta">
-            <h3>Caso Studio: Risultati Concreti</h3>
-            <span>Social Proof &mdash; Numeri reali, non promesse</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Dimostrare il valore con prove sociali reali. Trasformare un'affermazione aziendale in un fatto verificabile.</td></tr>
-            <tr><td>Trigger</td><td>Giorno +5/7 da N1. Inviare a chi ha aperto N1 oppure ha tag <span class="tag-badge">Download_CasoStudio</span></td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Click_Nurturing_CasoStudio</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/casi-studio</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Da 14 ore a 3 ore per commessa: il caso di un'officina come la tua</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Curiosità</div>
-              <p>Come un artigiano ha eliminato i colli di bottiglia (senza assumere personale)</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Numeri reali da un'azienda reale. Nessuna teoria.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>le specifiche tecniche sono importanti. Ma quello che conta davvero per un imprenditore è: <em>"Funzionerà nel MIO caso?"</em></p>
-            <p>Per questo vogliamo raccontarti un caso reale. [Nome Cliente / "Un'officina del settore legno in Campania"] aveva un problema concreto: commesse in crescita, ma tempi di lavorazione troppo lunghi. Ogni pezzo richiedeva passaggi manuali che moltiplicavano gli errori e comprimevano i margini.</p>
-            <p><strong>La situazione prima di LabMec:</strong><br>Tempo medio per commessa: 14 ore. Scarti di lavorazione: 8-10%. Operatore impegnato full-time su una singola macchina.</p>
-            <p><strong>La situazione dopo l'installazione:</strong><br>Tempo medio per commessa: 3 ore. Scarti ridotti al 2%. L'operatore gestisce in parallelo la programmazione della commessa successiva.</p>
-            <p>Il passaggio è avvenuto con un pantografo LabMec configurato ad hoc, con formazione tecnica inclusa e affiancamento nei primi 30 giorni.</p>
-            <span class="cta-line">LEGGI IL CASO STUDIO COMPLETO &rarr;</span>
-            <p>Se la tua situazione produttiva ha punti in comune, potrebbe valere la pena fare due conti insieme. Senza impegno.</p>
-            <div class="firma">Buon lavoro,<br>Il Team Tecnico LabMec</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- N3 -->
-      <div class="email-card">
-        <div class="email-header nurt">
-          <div class="email-id">N3</div>
-          <div class="email-meta">
-            <h3>Agevolazioni e Transizione 4.0</h3>
-            <span>Obiezione #2 &mdash; "Non è il momento / Non ho il budget"</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Smontare l'obiezione budget. Dimostrare che esistono strumenti finanziari che rendono l'investimento accessibile.</td></tr>
-            <tr><td>Trigger</td><td>Giorno +12/14 da ingresso in Nurturing. A tutti i <span class="tag-badge">Fase_Nurturing</span></td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Click_Nurturing_Agevolazioni</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/agevolazioni-industria-40</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Il tuo prossimo macchinario CNC potrebbe costarti il 40% in meno. Ecco come.</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Urgenza</div>
-              <p>Bandi aperti e credito d'imposta: la finestra che si sta chiudendo</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Le agevolazioni ci sono. La guida per accedervi anche.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>la domanda più frequente che riceviamo non è "La macchina è valida?". È: <em>"Il momento è quello giusto?"</em></p>
-            <p>La risposta, in termini di agevolazioni disponibili, è: probabilmente sì. Ecco il quadro attuale:</p>
-            <p><strong>Credito d'Imposta Industria 4.0 / Transizione 5.0:</strong> I macchinari CNC interconnessi rientrano tra i beni strumentali agevolabili. Il credito d'imposta può arrivare fino al 20% del valore dell'investimento, utilizzabile in compensazione.</p>
-            <p><strong>Bandi Regionali e FESR 2025:</strong> Per le imprese del Sud Italia, ci sono bandi specifici che possono coprire fino al 40-50% dell'investimento a fondo perduto. Le finestre di apertura sono limitate.</p>
-            <p><strong>Bando Scuola 4.0:</strong> Per gli istituti tecnici, la possibilità di dotarsi di laboratori CNC con fondi pubblici dedicati. LabMec ha già supportato diversi istituti in questo percorso.</p>
-            <p>Non siamo consulenti fiscali, ma abbiamo un'esperienza diretta nel supportare i nostri clienti durante la fase di accesso a queste agevolazioni: dalla documentazione tecnica richiesta alla certificazione di interconnessione.</p>
-            <span class="cta-line">SCOPRI LE AGEVOLAZIONI ATTIVE &rarr;</span>
-            <p>Se vuoi capire quali strumenti si applicano alla tua situazione specifica, possiamo organizzare un confronto tecnico senza impegno.</p>
-            <div class="firma">Buon lavoro,<br>Il Team Tecnico LabMec</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ TAB: CONVERSIONE ═══ -->
-  <div class="tab-panel" id="tab-conv">
-    <div class="email-grid">
-      <!-- C1 -->
-      <div class="email-card">
-        <div class="email-header conv">
-          <div class="email-id">C1</div>
-          <div class="email-meta">
-            <h3>Soft Pitch: Analisi Gratuita della Produzione</h3>
-            <span>Approccio consulenziale &mdash; zero pressione commerciale</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Invitare il decisore a un'analisi personalizzata. Il valore è nell'analisi stessa, non nella vendita.</td></tr>
-            <tr><td>Trigger</td><td>Giorno 0 dal passaggio a <span class="tag-badge">Fase_MQL</span></td></tr>
-            <tr><td>Segmento</td><td>Contatti con 2+ download lead magnet O visita pagina /preventivo</td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Click_Conversione_AnalisiGratuita</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/analisi-gratuita</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Analisi gratuita della tua produzione: dove stai perdendo margine?</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Beneficio</div>
-              <p>I nostri ingegneri hanno 30 minuti per analizzare il tuo processo. A costo zero.</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Non una vendita. Un'analisi tecnica dei tuoi numeri.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>abbiamo notato il tuo interesse per le soluzioni CNC e per l'efficienza produttiva. Non è casuale: chi cerca questi dati, di solito, ha già identificato un problema nella propria produzione.</p>
-            <p>Vogliamo offrirti qualcosa di concreto: un'<strong>Analisi Gratuita della tua produzione</strong>, condotta direttamente dai nostri ingegneri.</p>
-            <p><strong>Come funziona:</strong><br>
-            1. Compili un breve questionario (5 minuti) con i dati essenziali: volumi, materiali, lavorazioni principali.<br>
-            2. Un nostro tecnico analizza il tuo scenario e prepara un report personalizzato.<br>
-            3. In una call di 30 minuti ti restituiamo i risultati: dove stai perdendo efficienza, quali colli di bottiglia sono risolvibili, quale sarebbe l'impatto economico di un'automazione mirata.</p>
-            <p>Non è una chiamata commerciale. È un confronto tecnico tra chi conosce la produzione. Che tu decida poi di lavorare con noi o meno, quei dati restano tuoi.</p>
-            <span class="cta-line">PRENOTA LA TUA ANALISI GRATUITA &rarr;</span>
-            <p>I posti disponibili per questo trimestre sono limitati dalla capacità del nostro ufficio tecnico. Ti consigliamo di compilare il form per riservare il tuo slot.</p>
-            <div class="firma">A presto,<br>Il Team Tecnico LabMec<br>Carinaro (CE) &mdash; labmec.it</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- C2 -->
-      <div class="email-card">
-        <div class="email-header conv">
-          <div class="email-id">C2</div>
-          <div class="email-meta">
-            <h3>Hard Pitch: Urgenza sugli Slot di Produzione</h3>
-            <span>Scarsità operativa &mdash; mittente: Ing. Maurizio Palmieri</span>
-          </div>
-        </div>
-        <div class="email-body">
-          <table class="meta-table">
-            <tr><td>Obiettivo</td><td>Urgenza legittima basata su vincolo produttivo reale. Spingere il decisore alla call tecnica.</td></tr>
-            <tr><td>Trigger</td><td>Giorno +5/7 da C1. Condizione: NON ha tag <span class="tag-badge">Fase_SQL</span> (non ha compilato il form)</td></tr>
-            <tr><td>Mittente</td><td><strong>Ing. Maurizio Palmieri</strong> (non "Team LabMec") &mdash; Maggiore fiducia B2B</td></tr>
-            <tr><td>Tag al Click</td><td><span class="tag-badge">Click_Conversione_PrenotaCall</span></td></tr>
-            <tr><td>CTA Link</td><td><code>labmec.it/prenota-call-tecnica</code></td></tr>
-          </table>
-
-          <div class="ab-row">
-            <div class="ab-option">
-              <div class="ab-label">Oggetto A &mdash; Descrittivo</div>
-              <p>Gli slot di produzione per il Q3 si stanno esaurendo. Il punto sulla situazione.</p>
-            </div>
-            <div class="ab-option">
-              <div class="ab-label">Oggetto B &mdash; Urgenza</div>
-              <p>Una precisazione importante sui tempi di consegna LabMec</p>
-            </div>
-          </div>
-
-          <div class="preview-text">
-            <strong>Preview Text</strong>
-            Produzione Made in Italy = capacità limitata. Ecco cosa significa per te.
-          </div>
-
-          <div class="copy-block">
-            <p>Buongiorno,</p>
-            <p>ti scrivo per condividere un'informazione che potrebbe essere rilevante per le tue valutazioni.</p>
-            <p>LabMec produce internamente ogni macchina nel proprio stabilimento di Carinaro. Non assembliamo componenti importati: progettiamo, costruiamo e testiamo qui. Questo garantisce qualità e controllo totale, ma implica anche una <strong>capacità produttiva finita</strong>.</p>
-            <p><strong>La situazione attuale:</strong><br>Gli slot di produzione per il prossimo trimestre sono in fase di saturazione. Ogni macchina viene costruita su specifiche personalizzate, e il ciclo medio dalla conferma d'ordine alla consegna varia dalle 8 alle 14 settimane, a seconda della complessità.</p>
-            <p>Questo non è un artificio commerciale. È la conseguenza diretta di un modello produttivo artigianale e di qualità. E significa che chi prenota prima, produce prima.</p>
-            <p>Se stai valutando un investimento in un macchinario CNC per i prossimi mesi, il momento per iniziare il confronto tecnico è adesso, non quando avrai deciso. Perché la fase di analisi e configurazione richiede tempo e attenzione.</p>
-            <span class="cta-line">PRENOTA UNA CALL CON I NOSTRI TECNICI &rarr;</span>
-            <p>30 minuti con un ingegnere LabMec. Nessun impegno di acquisto. Solo chiarezza sui tempi, le soluzioni e i numeri.</p>
-            <div class="firma">A presto,<br><strong>Ing. Maurizio Palmieri</strong><br>Fondatore &mdash; LabMec Italia</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────── SEZIONE 3: SEGMENTAZIONE & TAG ────── -->
-<section>
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <span class="section-title">Architettura Segmentazione &amp; Tag</span>
-  </div>
-  <p class="section-desc">Sistema completo di tagging per GetResponse. Ogni tag segue la convenzione <code>Categoria_Dettaglio</code>. Passa il mouse su ogni tag per vedere la descrizione. I colori corrispondono alla categoria.</p>
-
-  <div class="tag-group">
-    <div class="tag-group-header"><span class="dot" style="background:var(--info)"></span>Tag di Origine</div>
-    <div class="tag-list">
-      <span class="tag-item origine" data-tip="Contatto acquisito al MADE Expo 2025">Origine_Fiera_MADE2025</span>
-      <span class="tag-item origine" data-tip="Template per ogni evento fieristico futuro">Origine_Fiera_[NomeFiera]</span>
-      <span class="tag-item origine" data-tip="Iscrizione tramite form generico del sito">Origine_SitoWeb_Form</span>
-      <span class="tag-item origine" data-tip="Download di un lead magnet dal sito">Origine_SitoWeb_LeadMagnet</span>
-      <span class="tag-item origine" data-tip="Lead da campagne LinkedIn">Origine_LinkedIn_Ads</span>
-      <span class="tag-item origine" data-tip="Contatti preesistenti da riattivare">Origine_Database_Storico</span>
-    </div>
-  </div>
-
-  <div class="tag-group">
-    <div class="tag-group-header"><span class="dot" style="background:var(--warning)"></span>Tag Lead Magnet (Download)</div>
-    <div class="tag-list">
-      <span class="tag-item lead-magnet" data-tip="Ha scaricato il Calcolatore ROI CNC">Download_Calcolatore_ROI</span>
-      <span class="tag-item lead-magnet" data-tip="Ha scaricato il Calcolo Consumo Energia">Download_Calcolo_Energia</span>
-      <span class="tag-item lead-magnet" data-tip="Ha scaricato la Guida Manutenzione Preventiva">Download_Guida_Manutenzione</span>
-      <span class="tag-item lead-magnet" data-tip="Ha scaricato uno specifico caso studio">Download_CasoStudio_[Nome]</span>
-    </div>
-  </div>
-
-  <div class="tag-group">
-    <div class="tag-group-header"><span class="dot" style="background:var(--success)"></span>Tag Settore Industriale</div>
-    <div class="tag-list">
-      <span class="tag-item settore" data-tip="Lavorazioni su legno / falegnameria">Settore_Legno</span>
-      <span class="tag-item settore" data-tip="Taglio plasma / carpenteria metallica">Settore_Metallo</span>
-      <span class="tag-item settore" data-tip="Fresatura materie plastiche">Settore_Plastica</span>
-      <span class="tag-item settore" data-tip="Istituti tecnici, bandi FESR / Scuola 4.0">Settore_Scuola</span>
-      <span class="tag-item settore" data-tip="Pannelli acustici, architettura sonora">Settore_SoundDesign</span>
-    </div>
-  </div>
-
-  <div class="tag-group">
-    <div class="tag-group-header"><span class="dot" style="background:#6d4fa0"></span>Tag Tecnologia</div>
-    <div class="tag-list">
-      <span class="tag-item tech" data-tip="Interesse per pantografi CNC (Atena, Zeus, Efesto, Hermes, Crono)">Tech_Pantografo_Fresatore</span>
-      <span class="tag-item tech" data-tip="Interesse per macchine laser (linea Prometeo)">Tech_Taglio_Laser</span>
-      <span class="tag-item tech" data-tip="Interesse per macchine plasma (linea Pegaso)">Tech_Taglio_Plasma</span>
-      <span class="tag-item tech" data-tip="Interesse per il manipolatore Manus">Tech_Manipolatore_Manus</span>
-      <span class="tag-item tech" data-tip="Interesse per lavorazioni profonde (Arianna)">Tech_Macchina_Arianna</span>
-    </div>
-  </div>
-
-  <div class="tag-group">
-    <div class="tag-group-header"><span class="dot" style="background:var(--danger)"></span>Tag Fase Ciclo di Vita</div>
-    <div class="tag-list">
-      <span class="tag-item fase" data-tip="Contatto inattivo o appena importato. Entra nella sequenza di riattivazione.">Fase_Freddo</span>
-      <span class="tag-item fase" data-tip="Ha interagito con almeno 1 email di riattivazione.">Fase_Riattivato</span>
-      <span class="tag-item fase" data-tip="Attivamente coinvolto: apre, clicca. Riceve contenuti educativi.">Fase_Nurturing</span>
-      <span class="tag-item fase" data-tip="Marketing Qualified Lead: 2+ download O visita pagina /preventivo.">Fase_MQL</span>
-      <span class="tag-item fase" data-tip="Ha compilato form analisi / prenotato call. Passato al commerciale.">Fase_SQL</span>
-      <span class="tag-item fase" data-tip="Ha acquistato. Flussi post-vendita (upsell, formazione).">Fase_Cliente</span>
-      <span class="tag-item fase" data-tip="Non apre email da 60+ giorni. Campagna re-engagement.">Fase_Dormiente</span>
-    </div>
-  </div>
-
-  <div class="tag-group">
-    <div class="tag-group-header"><span class="dot" style="background:#8a6d20"></span>Tag Click (Assegnati al Click CTA)</div>
-    <div class="tag-list">
-      <span class="tag-item click" data-tip="Click su CTA email N1 (Assistenza)">Click_Nurturing_Assistenza</span>
-      <span class="tag-item click" data-tip="Click su CTA email N2 (Caso Studio)">Click_Nurturing_CasoStudio</span>
-      <span class="tag-item click" data-tip="Click su CTA email N3 (Agevolazioni)">Click_Nurturing_Agevolazioni</span>
-      <span class="tag-item click" data-tip="Click su CTA email C1 (Analisi Gratuita)">Click_Conversione_AnalisiGratuita</span>
-      <span class="tag-item click" data-tip="Click su CTA email C2 (Prenota Call)">Click_Conversione_PrenotaCall</span>
-    </div>
-  </div>
-
-  <h3 style="font-family:'DM Serif Display',serif; color:var(--navy); font-size:22px; margin:40px 0 20px;">Segmenti Dinamici GetResponse</h3>
-
-  <div class="seg-grid">
-    <div class="seg-card">
-      <h4>Falegnami Attivi</h4>
-      <div class="seg-condition">(<span class="tag">Settore_Legno</span>) <span class="op">AND</span> (<span class="tag">Fase_Nurturing</span> <span class="op">OR</span> <span class="tag">Fase_MQL</span>)</div>
-      <p class="seg-use">Sequenze verticali dedicate al legno. Invio casi studio di falegnami. Promozione linea Zeus/Atena.</p>
-    </div>
-    <div class="seg-card">
-      <h4>Metallo &amp; Plasma</h4>
-      <div class="seg-condition">(<span class="tag">Settore_Metallo</span>) <span class="op">AND</span> (<span class="tag">Tech_Taglio_Plasma</span>)</div>
-      <p class="seg-use">Contenuti specifici sulla linea Pegaso. Lavorazioni metalliche e carpenteria.</p>
-    </div>
-    <div class="seg-card">
-      <h4>Scuole &amp; FESR</h4>
-      <div class="seg-condition">(<span class="tag">Settore_Scuola</span>)</div>
-      <p class="seg-use">Aggiornamenti su bandi attivi, soluzioni Educational, scadenze FESR e Scuola 4.0.</p>
-    </div>
-    <div class="seg-card">
-      <h4>Lead Caldi (MQL)</h4>
-      <div class="seg-condition">(<span class="tag">Fase_MQL</span>)</div>
-      <p class="seg-use">Ingresso automatico nel flusso di conversione (C1 → C2). Notifica al team commerciale.</p>
-    </div>
-    <div class="seg-card">
-      <h4>Dormienti da Risvegliare</h4>
-      <div class="seg-condition">(<span class="tag">Fase_Dormiente</span>) <span class="op">AND NOT</span> (<span class="tag">Fase_SQL</span> <span class="op">OR</span> <span class="tag">Fase_Cliente</span>)</div>
-      <p class="seg-use">Campagna re-engagement con lead magnet fresco o offerta formativa.</p>
-    </div>
-    <div class="seg-card">
-      <h4>Laser &amp; Precisione</h4>
-      <div class="seg-condition">(<span class="tag">Tech_Taglio_Laser</span>) <span class="op">AND</span> (<span class="tag">Fase_Nurturing</span> <span class="op">OR</span> <span class="tag">Fase_MQL</span>)</div>
-      <p class="seg-use">Contenuti sulla linea Prometeo. Settori elettronica, modellistica, precisione.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ────── SEZIONE 4: MAPPA FLUSSO ────── -->
-<section>
-  <div class="section-header">
-    <span class="section-num">04</span>
-    <span class="section-title">Mappa del Flusso &amp; Regole di Automazione</span>
-  </div>
-  <p class="section-desc">Il percorso completo di un contatto dal database freddo alla conversione. Ogni transizione è governata da regole automatiche in GetResponse.</p>
-
-  <div class="flow-container" style="margin-bottom:40px;">
-    <div class="flow-row">
-      <div class="flow-box start">
-        INGRESSO<br>
-        <span class="flow-condition">Database Storico / Form / Fiera</span>
-      </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box riatt">
-        R1 &rarr; R2 &rarr; R3<br>
-        <span class="flow-condition">RIATTIVAZIONE (10 giorni)</span>
-      </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box nurt">
-        N1 &rarr; N2 &rarr; N3<br>
-        <span class="flow-condition">NURTURING (14 giorni)</span>
-      </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box conv">
-        C1 &rarr; C2<br>
-        <span class="flow-condition">CONVERSIONE (7 giorni)</span>
-      </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box end">
-        SQL<br>
-        <span class="flow-condition" style="color:var(--navy)">Passaggio al commerciale</span>
-      </div>
-    </div>
-  </div>
-
-  <h3 style="font-family:'DM Serif Display',serif; color:var(--navy); font-size:22px; margin:0 0 20px;">Regole di Automazione GetResponse</h3>
-
-  <div class="rule-card">
-    <div class="rule-num">1</div>
-    <div class="rule-content">
-      <h4>Freddo &rarr; Riattivato</h4>
-      <p>Quando un contatto con <code>Fase_Freddo</code> apre una qualsiasi email del flusso di riattivazione.</p>
-      <div class="rule-logic">QUANDO: Apertura email (R1 OR R2 OR R3)<br>ALLORA: Rimuovi <code>Fase_Freddo</code> &rarr; Assegna <code>Fase_Riattivato</code></div>
-    </div>
-  </div>
-  <div class="rule-card">
-    <div class="rule-num">2</div>
-    <div class="rule-content">
-      <h4>Riattivato &rarr; Nurturing</h4>
-      <p>Quando un contatto <code>Fase_Riattivato</code> clicca un link (download lead magnet, link a pagina prodotto).</p>
-      <div class="rule-logic">QUANDO: Click su qualsiasi link email<br>ALLORA: Rimuovi <code>Fase_Riattivato</code> &rarr; Assegna <code>Fase_Nurturing</code> &rarr; Inserisci in flusso Nurturing</div>
-    </div>
-  </div>
-  <div class="rule-card">
-    <div class="rule-num">3</div>
-    <div class="rule-content">
-      <h4>Nurturing &rarr; MQL</h4>
-      <p>Quando un contatto accumula 2+ tag <code>Download_*</code> oppure visita la pagina /preventivo.</p>
-      <div class="rule-logic">QUANDO: (Count tag Download_* &ge; 2) OR (Visita pagina /preventivo)<br>ALLORA: Assegna <code>Fase_MQL</code> &rarr; Inserisci in flusso Conversione &rarr; Notifica team commerciale</div>
-    </div>
-  </div>
-  <div class="rule-card">
-    <div class="rule-num">4</div>
-    <div class="rule-content">
-      <h4>MQL &rarr; SQL (Uscita dal Marketing)</h4>
-      <p>Quando un contatto compila il form "Analisi Gratuita" o "Prenota Call Tecnica".</p>
-      <div class="rule-logic">QUANDO: Form compilato (Analisi OR Call)<br>ALLORA: Assegna <code>Fase_SQL</code> &rarr; Rimuovi da TUTTI i flussi di automazione &rarr; Notifica commerciale</div>
-    </div>
-  </div>
-  <div class="rule-card">
-    <div class="rule-num">5</div>
-    <div class="rule-content">
-      <h4>Retrocessione a Dormiente</h4>
-      <p>Quando un contatto non apre nessuna email per 60 giorni consecutivi.</p>
-      <div class="rule-logic">QUANDO: Nessuna apertura per 60 giorni AND NOT (<code>Fase_SQL</code> OR <code>Fase_Cliente</code>)<br>ALLORA: Assegna <code>Fase_Dormiente</code> &rarr; Inserisci in campagna re-engagement</div>
-    </div>
-  </div>
-</section>
-
-<!-- ────── SEZIONE 5: CHECKLIST ────── -->
-<section>
-  <div class="section-header">
-    <span class="section-num">05</span>
-    <span class="section-title">Checklist Pre-Lancio</span>
-  </div>
-  <p class="section-desc">Ogni voce deve essere completata prima del primo invio. Clicca per segnare come completata.</p>
-
-  <div class="checklist">
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Tutti i tag creati in GetResponse con nomenclatura <code>Categoria_Dettaglio</code></span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Segmenti dinamici configurati con le condizioni AND/OR della Sezione 3</span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>5 landing page attive: <code>/calcolatore-roi-cnc</code>, <code>/calcolo-consumo-energia</code>, <code>/guida-manutenzione-preventiva</code>, <code>/analisi-gratuita</code>, <code>/prenota-call-tecnica</code></span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Form WordPress collegati a GetResponse con assegnazione tag automatica al submit</span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>5 Workflow di automazione impostati (Regole 1-5 della Sezione 4)</span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Notifica email al team commerciale configurata per ogni nuovo <code>Fase_SQL</code></span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>A/B test attivato su ogni email (split 50/50 sulle varianti Oggetto A / Oggetto B)</span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Dominio mittente autenticato: SPF, DKIM e DMARC configurati e verificati</span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Lead magnet pronti e caricati: PDF Calcolatore ROI, Calcolo Energia, Guida Manutenzione, Caso Studio</span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Import database storico con tag <code>Fase_Freddo</code> + <code>Origine_Database_Storico</code></span></div>
-    <div class="check-item"><div class="check-box" onclick="this.classList.toggle('checked');this.innerHTML=this.classList.contains('checked')?'&#10003;':''"></div><span>Test invio completato su indirizzi interni (verifica rendering, link, tag assignment)</span></div>
-  </div>
-</section>
-
-</div><!-- /container -->
+</div>
 
 <footer>
   <strong>LabMec Italia</strong> &mdash; Piano Editoriale Email Marketing Q2 2026<br>
-  Documento operativo riservato &mdash; Carinaro (CE)
+  Documento operativo &mdash; Versione semplificata
 </footer>
-
-<script>
-// Tab switching
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-  });
-});
-</script>
 
 </body>
 </html>
