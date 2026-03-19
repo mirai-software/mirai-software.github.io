@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labmec: Strategia Settore Educational</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+        .spa-section { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .spa-section.active { display: block; opacity: 1; }
+        .nav-item.active { background-color: #f1f5f9; color: #0369a1; border-left-color: #0284c7; font-weight: 600; }
+        
+        .static-card {
+            transition: transform 0.2s;
+        }
+        .static-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+    <!-- Chosen Palette: Labmec Tech (Slate 50/800, Sky 600, Orange 600) -->
+    <!-- Application Structure Plan: La SPA utilizza un layout a dashboard con navigazione laterale. Per questa versione, l'architettura è stata "appiattita": i contenuti precedentemente nascosti dietro interazioni (clic/hover) sono ora tutti visibili immediatamente. Questo approccio è stato scelto per massimizzare la leggibilità e permettere al cliente di scorrere velocemente le informazioni senza barriere interattive, mantenendo comunque la suddivisione logica per sezioni strategiche. -->
+    <!-- Visualization & Content Choices: 
+         - Analisi Competitiva -> Goal: Confronto diretto -> Viz: Radar Chart (Chart.js) -> Metodo: Grafico dinamico per visualizzare il gap tecnico.
+         - Decision Maker -> Goal: Definizione target -> Viz: Layout a griglia statica -> Metodo: Blocchi testuali chiari per Prof, DSGA e Ministero.
+         - Pilastri -> Goal: Enfatizzare gli USP -> Viz: Griglia di card descrittive -> Metodo: Testo espanso senza emoji.
+         - Strategia PCTO -> Goal: Spiegazione processo -> Viz: Timeline verticale statica -> Metodo: Descrizione dettagliata delle 3 fasi. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col md:flex-row min-h-screen">
+
+    <nav class="w-full md:w-72 bg-white shadow-lg md:fixed md:h-full z-10 flex flex-col">
+        <div class="p-6 border-b border-slate-100 flex flex-col items-center gap-4">
+            <img src="https://labmec.it/wp-content/uploads/2025/07/LABMEC_LOGO_1X1-2.png" alt="Labmec Logo" class="h-20 w-auto object-contain">
+            <h1 class="text-lg font-bold tracking-tight text-slate-900 text-center">Divisione Educational</h1>
+        </div>
+        <div class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li><button data-target="overview" class="nav-item active w-full text-left px-6 py-3 border-l-4 border-transparent hover:bg-slate-50 text-slate-600 transition-colors uppercase text-xs tracking-wider">Visione e Obiettivi</button></li>
+                <li><button data-target="mercato" class="nav-item w-full text-left px-6 py-3 border-l-4 border-transparent hover:bg-slate-50 text-slate-600 transition-colors uppercase text-xs tracking-wider">Analisi competitiva</button></li>
+                <li><button data-target="decisori" class="nav-item w-full text-left px-6 py-3 border-l-4 border-transparent hover:bg-slate-50 text-slate-600 transition-colors uppercase text-xs tracking-wider">Decision Maker</button></li>
+                <li><button data-target="usp" class="nav-item w-full text-left px-6 py-3 border-l-4 border-transparent hover:bg-slate-50 text-slate-600 transition-colors uppercase text-xs tracking-wider">I pilastri Labmec</button></li>
+                <li><button data-target="pcto" class="nav-item w-full text-left px-6 py-3 border-l-4 border-transparent hover:bg-slate-50 text-slate-600 transition-colors uppercase text-xs tracking-wider">Possibile strategia PCTO</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="flex-1 md:ml-72 p-6 md:p-10 lg:p-12 overflow-x-hidden">
+        
+        <section id="overview" class="spa-section active max-w-5xl mx-auto">
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Visione e Obiettivi</h2>
+                <div class="bg-white rounded-xl shadow-sm p-8 border border-slate-200">
+                    <p class="text-xl text-slate-700 leading-relaxed font-medium mb-6">
+                        L'obiettivo primario di Labmec non è la semplice fornitura di macchine, ma l'evoluzione in un vero partner tecnologico.
+                    </p>
+                    <div class="h-1 w-20 bg-sky-600 mb-6"></div>
+                    <p class="text-slate-600 leading-relaxed">
+                        In un mercato saturo di rivenditori generalisti, Labmec si propone come l'unico interlocutore in grado di coniugare produzione industriale d'eccellenza e supporto formativo specifico per le scuole. La nostra missione è trasformare i laboratori scolastici in centri di innovazione reale, garantendo macchinari sicuri, performanti e perfettamente integrati nei percorsi didattici moderni.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-sky-600 p-8 rounded-xl text-white">
+                    <h4 class="text-lg font-bold mb-3">Partner, non Fornitori</h4>
+                    <p class="text-sky-100 text-sm leading-relaxed">Sostituiamo la logica della singola vendita con un supporto continuo che include installazione, assistenza e formazione docenti.</p>
+                </div>
+                <div class="bg-slate-800 p-8 rounded-xl text-white">
+                    <h4 class="text-lg font-bold mb-3">Eccellenza Tecnica</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">Portiamo nelle scuole la stessa precisione e robustezza richiesta dall'industria meccanica di precisione.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mercato" class="spa-section max-w-5xl mx-auto">
+            <div class="mb-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Analisi competitiva</h2>
+                <p class="text-lg text-slate-600 leading-relaxed border-l-4 border-sky-500 pl-4">
+                    Il mercato educational è attualmente presidiato da grandi vendor generalisti. Labmec si inserisce in questo spazio offrendo ciò che i "colossi" non possono garantire: competenza tecnica diretta.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-10">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">Profilo Competitivo: Labmec vs Big Vendors</h3>
+                    <div class="chart-container">
+                        <canvas id="competitorChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-400">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2">I Grandi Vendor (Sidal, Campus Store, L'ABCD)</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Aziende focalizzate sulla rivendita di volumi. Acquistano prodotti di fascia bassa da terzi, puntando tutto sul marketing e sulle relazioni commerciali aggressive.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-sky-500">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2">Il Posizionamento Labmec</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Produttore diretto con controllo totale sulla qualità. Offriamo assistenza reale e macchinari progettati per durare, non per essere sostituiti al primo guasto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="decisori" class="spa-section max-w-5xl mx-auto">
+            <div class="mb-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Decision Maker</h2>
+                <p class="text-lg text-slate-600 leading-relaxed border-l-4 border-sky-500 pl-4">
+                    La catena di acquisto nel settore scolastico coinvolge diversi attori. Ecco come Labmec risponde alle esigenze di ciascun decisore chiave.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-bold text-sky-600 mb-2">Il Professore</h3>
+                        <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">L'Utilizzatore</span>
+                    </div>
+                    <div class="md:w-2/3 border-l-0 md:border-l border-slate-100 md:pl-8">
+                        <p class="text-slate-600 mb-4">Cerca strumenti affidabili e moderni. Il suo obiettivo è migliorare realmente la qualità dell'istruzione senza combattere con macchine che non funzionano o prive di assistenza.</p>
+                        <div class="bg-sky-50 p-4 rounded text-sm text-sky-800 italic">
+                            Labmec risponde fornendo macchine professionali e formazione per renderlo autonomo e valorizzato.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Il DSGA</h3>
+                        <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Il Decisore Amministrativo</span>
+                    </div>
+                    <div class="md:w-2/3 border-l-0 md:border-l border-slate-100 md:pl-8">
+                        <p class="text-slate-600 mb-4">Gestisce il budget e i bandi. È il braccio destro del Preside. Spesso è il target delle "attenzioni" dei grandi vendor, ma il suo vero interesse è evitare problemi legali e sprechi di fondi.</p>
+                        <div class="bg-slate-50 p-4 rounded text-sm text-slate-700 italic">
+                            Labmec offre sicurezza certificata e la garanzia di un investimento duraturo, riducendo i rischi amministrativi.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Bandi e Ministero</h3>
+                        <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">L'Ente Finanziatore</span>
+                    </div>
+                    <div class="md:w-2/3 border-l-0 md:border-l border-slate-100 md:pl-8">
+                        <p class="text-slate-600 mb-4">I fondi arrivano tramite richieste dirette o bandi ministeriali (PNRR, Scuola 4.0). I requisiti devono essere tecnicamente ineccepibili.</p>
+                        <div class="bg-slate-50 p-4 rounded text-sm text-slate-700 italic">
+                            Labmec supporta la scuola nella definizione di capitolati tecnici precisi che premino il valore tecnologico reale.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usp" class="spa-section max-w-5xl mx-auto">
+             <div class="mb-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">I pilastri Labmec</h2>
+                <p class="text-lg text-slate-600 leading-relaxed border-l-4 border-sky-500 pl-4">
+                    Le fondamenta su cui poggia la nostra offerta per il mondo della scuola.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 static-card">
+                    <h3 class="font-bold text-xl text-slate-800 mb-4">Identità Tecnica</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Siamo esperti che parlano a esperti. La capacità di dialogare tecnicamente con i professori crea una fiducia immediata, distinguendoci dai semplici venditori di catalogo.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 static-card">
+                    <h3 class="font-bold text-xl text-slate-800 mb-4">Produzione Su Misura</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Capacità di adattare le macchine agli spazi scolastici e alle specifiche necessità dei laboratori, garantendo un'integrazione perfetta nell'ambiente didattico.</p>
+                </div>
+
+                <div class="bg-orange-50 p-8 rounded-xl shadow-sm border border-orange-200 static-card md:col-span-2">
+                    <h3 class="font-bold text-xl text-orange-800 mb-4">Sicurezza Certificata</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        <strong>Focus Educational prioritario.</strong> Le macchine Labmec per le scuole sono sistemi industriali dotati di protocolli di sicurezza, pensati per studenti alle prime armi. La protezione dello studente è al centro di ogni nostra scelta progettuale.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 static-card">
+                    <h3 class="font-bold text-xl text-slate-800 mb-4">Assistenza Reale</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Garanzia di intervento e supporto tecnico post-vendita fornito direttamente da chi ha progettato e costruito la macchina. Zero tempi morti per i laboratori.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 static-card">
+                    <h3 class="font-bold text-xl text-slate-800 mb-4">Formazione Professionale</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Offriamo percorsi formativi (anche gratuiti) per i docenti. Questo abbatte la paura del non utilizzo e assicura che il macchinario diventi un asset didattico centrale.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="pcto" class="spa-section max-w-5xl mx-auto">
+            <div class="mb-10">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Possibile strategia PCTO</h2>
+                <p class="text-lg text-slate-600 leading-relaxed border-l-4 border-sky-500 pl-4">
+                    Il modello PCTO Ibrido è il nostro strumento per entrare nelle scuole come partner formativi.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-10 left-0 right-0 h-1 bg-sky-100 z-0"></div>
+                
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm z-10 relative">
+                    <div class="w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold mb-4">1</div>
+                    <h4 class="font-bold text-slate-800 mb-3 text-lg">Fase 1: Formazione Online</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Introduzione alla teoria e all'utilizzo dei software. Questa fase permette di formare un gran numero di studenti e docenti a distanza, familiarizzandoli con l'ecosistema Labmec.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm z-10 relative">
+                    <div class="w-10 h-10 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold mb-4">2</div>
+                    <h4 class="font-bold text-slate-800 mb-3 text-lg">Fase 2: Pratica in Presenza</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        L'attività si sposta in laboratorio. Gli studenti utilizzano fisicamente le macchine Labmec, testandone la facilità d'uso e i sistemi di sicurezza avanzati sotto la guida dei nostri tecnici.
+                    </p>
+                </div>
+
+                <div class="bg-orange-50 p-6 rounded-xl border border-orange-200 shadow-sm z-10 relative">
+                    <div class="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold mb-4">3</div>
+                    <h4 class="font-bold text-orange-800 mb-3 text-lg">Fase 3: Acquisizione</h4>
+                    <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                        Formando docenti e studenti <em>prima</em> della vendita, Labmec diventa lo standard di riferimento. La scuola richiederà poi le macchine su cui è già stata formata.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-slate-800 p-8 rounded-xl text-center text-white">
+                <h4 class="text-xl font-bold mb-2">Perché questa strategia funziona?</h4>
+                <p class="text-slate-300">
+                    Non entriamo a scuola come venditori, ma come esperti che abilitano i professori a fare meglio il proprio lavoro. La vendita è la conseguenza naturale di una fiducia tecnica già consolidata.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.spa-section');
+        let chartInstance = null;
+
+        function initChart() {
+            const ctx = document.getElementById('competitorChart').getContext('2d');
+            
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Qualità / Robustezza', 
+                        'Assistenza Post-Vendita', 
+                        'Competenza Tecnica', 
+                        'Sicurezza Certificata', 
+                        'Relazioni Commerciali'
+                    ],
+                    datasets: [{
+                        label: 'Labmec',
+                        data: [95, 100, 100, 95, 40],
+                        fill: true,
+                        backgroundColor: 'rgba(2, 132, 199, 0.2)',
+                        borderColor: 'rgb(2, 132, 199)',
+                        pointBackgroundColor: 'rgb(2, 132, 199)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(2, 132, 199)'
+                    }, {
+                        label: 'Grandi Vendor Generalisti',
+                        data: [45, 15, 25, 40, 95],
+                        fill: true,
+                        backgroundColor: 'rgba(234, 88, 12, 0.2)',
+                        borderColor: 'rgb(234, 88, 12)',
+                        pointBackgroundColor: 'rgb(234, 88, 12)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(234, 88, 12)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(nav => nav.classList.remove('active', 'border-sky-600'));
+                navItems.forEach(nav => nav.classList.add('border-transparent'));
+                this.classList.add('active');
+                this.classList.remove('border-transparent');
+                this.classList.add('border-sky-600');
+
+                const targetId = this.getAttribute('data-target');
+                
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                setTimeout(() => {
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.classList.add('active');
+                    if(targetId === 'mercato') {
+                        initChart();
+                    }
+                }, 50); 
+            });
+        });
+
+        // Initialize first section chart if needed
+        window.onload = function() {
+            // Se la sezione mercato è quella attiva all'inizio
+            if(document.getElementById('mercato').classList.contains('active')) {
+                initChart();
+            }
+        };
+
+    </script>
+</body>
+</html>
