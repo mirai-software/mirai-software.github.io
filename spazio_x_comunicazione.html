@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spazio X | Strategic Digital Canvas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#fdfbf7',
+                            surface: '#f7f5f0',
+                            dark: '#1c1917',
+                            muted: '#78716c',
+                            accent: '#ea580c',
+                            accentLight: '#ffedd5',
+                            border: '#e7e5e4'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fdfbf7; color: #1c1917; scroll-behavior: smooth; }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            height: 380px;
+        }
+
+        .nav-link.active {
+            color: #1c1917;
+            font-weight: 700;
+            border-bottom: 2px solid #ea580c;
+        }
+
+        .section-fade {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .script-card {
+            background: white;
+            border-left: 4px solid #1c1917;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .brand-pill {
+            transition: all 0.3s ease;
+        }
+        .brand-pill:hover {
+            background-color: #1c1917;
+            color: white;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <!-- Chosen Palette: Neutri caldi (Stone/Alabaster) con testo Charcoal e accenti Orange tecnico per richiamare il dinamismo streetwear. -->
+    
+    <!-- Application Structure Plan: Il sito è strutturato come una dashboard a scorrimento verticale con navigazione fissa. 
+         1. Hero: Posizionamento immediato.
+         2. Fondamenta: Analisi dinamica dei pillar B2B.
+         3. Ecosistema: Visualizzazione della gerarchia Showroom vs Brand.
+         4. Content Hub: Strategia Feed/Reel e script video integrali.
+         5. Stilistica: Restyling identitario.
+         6. ADV: Ricerca futura.
+         La scelta di un canvas interattivo permette ad Alessandro e al cliente di navigare la strategia come un prodotto digitale reale, testando la gerarchia delle informazioni. -->
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-brand-bg/95 border-b border-brand-border backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="font-display font-bold text-2xl tracking-tighter">BRAND STRATEGY<span class="text-brand-accent">.</span></div>
+            <div class="hidden md:flex space-x-8 text-[11px] uppercase tracking-widest font-bold">
+                <a href="#fondamenta" class="hover:text-brand-accent transition-colors">01 Fondamenta</a>
+                <a href="#ecosistema" class="hover:text-brand-accent transition-colors">02 Ecosistema</a>
+                <a href="#content" class="hover:text-brand-accent transition-colors">03 Content</a>
+                <a href="#stile" class="hover:text-brand-accent transition-colors">04 Identità</a>
+                <a href="#adv" class="hover:text-brand-accent transition-colors">05 ADV</a>
+            </div>
+            <div class="text-[10px] font-mono text-brand-muted uppercase">Mirai Studio &copy; 2026</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-6 py-24 md:py-32 section-fade">
+        <div class="max-w-4xl">
+            <h1 class="text-6xl md:text-8xl font-display font-bold tracking-tighter leading-tight">
+                STRATEGIA DI<br><span class="text-brand-accent italic">COMUNICAZIONE</span>
+            </h1>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 space-y-32 pb-32">
+
+        <!-- 01 / Fondamenta -->
+        <section id="fondamenta" class="pt-16 border-t border-brand-dark">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-4">
+                    <h2 class="text-[10px] font-mono uppercase tracking-[0.3em] font-bold text-brand-muted mb-4">01 / Fondamenta</h2>
+                    <h3 class="text-4xl font-display font-bold uppercase mb-6 leading-none tracking-tight">Valore del Business</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-8">
+                        L’obiettivo centrale è posizionarsi verso il retailer di fascia media attraverso la <strong class="text-brand-dark">concretezza tecnica</strong>, lo <strong class="text-brand-dark">stile contemporaneo</strong> e la <strong class="text-brand-dark">redditività</strong>.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="p-5 bg-brand-surface border border-brand-border">
+                            <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-dark mb-2">[ Technical Easy ]</h4>
+                            <p class="text-xs text-brand-muted">Linguaggio esperto ma accessibile. L'insider che parla ai professionisti del settore.</p>
+                        </div>
+                        <div class="p-5 bg-brand-surface border border-brand-border">
+                            <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-dark mb-2">[ Dualismo Visivo ]</h4>
+                            <p class="text-xs text-brand-muted">Contrasto netto tra styling (contesto indossato) e precisione costruttiva (focus flat lay).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-8">
+                    <div class="bg-white p-8 border border-brand-border shadow-sm">
+                        <div class="flex justify-between items-center border-b border-brand-border pb-4 mb-6">
+                            <span class="text-[10px] font-mono text-brand-muted uppercase tracking-widest">Matrice Strategica</span>
+                            <span class="text-[10px] font-mono text-brand-accent uppercase tracking-widest">Data Rendering</span>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="pillarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 / Ecosistema (Mappa Concettuale) -->
+        <section id="ecosistema" class="pt-16 border-t border-brand-dark">
+            <div class="mb-16 text-center">
+                <h2 class="text-[10px] font-mono uppercase tracking-[0.3em] font-bold text-brand-muted mb-4">02 / Ecosistema</h2>
+                <h3 class="text-4xl font-display font-bold uppercase leading-none tracking-tight">Brand Architecture</h3>
+                <p class="text-sm text-brand-muted mt-4 max-w-xl mx-auto">Mappatura gerarchica delle entità digitali. L'architettura prevede la creazione di due pagine Instagram dedicate ai singoli brand per verticalizzare l'audience. Questo split strategico posiziona inequivocabilmente Spazio X come l'hub distributivo (showroom), separando l'autorità corporate dall'offerta di prodotto.</p>
+            </div>
+            
+            <!-- Conceptual Tree Map -->
+            <div class="flex flex-col items-center">
+                <!-- Parent Node: Spazio X Hub -->
+                <div class="w-full max-w-sm bg-brand-dark text-white p-6 border border-brand-dark text-center z-10">
+                    <span class="text-[10px] font-mono tracking-[0.2em] text-brand-muted block mb-3">NODE 00 / DISTRIBUTION HUB</span>
+                    <h4 class="text-2xl font-bold uppercase tracking-tight mb-2">Spazio X</h4>
+                    <p class="text-[11px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-700 pt-3 mt-3">Pagina Ufficiale Showroom</p>
+                </div>
+                
+                <!-- Vertical Stem -->
+                <div class="w-px h-12 bg-brand-border"></div>
+                
+                <!-- Horizontal Branch -->
+                <div class="w-full max-w-3xl border-t border-brand-border relative">
+                    <!-- Drop lines -->
+                    <div class="absolute left-0 top-0 w-px h-8 bg-brand-border"></div>
+                    <div class="absolute right-0 top-0 w-px h-8 bg-brand-border"></div>
+                </div>
+                
+                <!-- Children Nodes -->
+                <div class="w-full max-w-3xl flex justify-between gap-16 mt-8">
+                    <!-- Myamy -->
+                    <div class="flex-1 bg-white border border-brand-border p-6 text-center hover:border-brand-dark transition-colors">
+                        <span class="text-[10px] font-mono tracking-[0.2em] text-brand-accent block mb-3">NODE 01 / CONTEMPORARY BRAND</span>
+                        <h4 class="text-xl font-bold uppercase tracking-tight mb-6">Myamy</h4>
+                        <div class="pt-4 border-t border-brand-border">
+                            <span class="text-[10px] font-mono text-brand-dark uppercase font-bold block">↳ Nuova Pagina IG Dedicata</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Seasonless -->
+                    <div class="flex-1 bg-white border border-brand-border p-6 text-center hover:border-brand-dark transition-colors">
+                        <span class="text-[10px] font-mono tracking-[0.2em] text-brand-accent block mb-3">NODE 02 / TECHNICAL ARCHIVE</span>
+                        <h4 class="text-xl font-bold uppercase tracking-tight mb-6">Seasonless</h4>
+                        <div class="pt-4 border-t border-brand-border">
+                            <span class="text-[10px] font-mono text-brand-dark uppercase font-bold block">↳ Nuova Pagina IG Dedicata</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TBD & Reference Block -->
+            <div class="mt-12 p-6 bg-brand-surface border border-brand-border w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-xs font-mono text-brand-muted leading-relaxed">
+                    <strong class="text-brand-dark">[ CONTENT STATUS: TBD ]</strong><br>
+                    Il trattamento editoriale, la direzione artistica e la gestione operativa delle pagine "Myamy" e "Seasonless" sono in fase di definizione.
+                </div>
+                <a href="https://www.instagram.com/research__kr/" target="_blank" rel="noopener noreferrer" class="shrink-0 px-5 py-3 bg-white border border-brand-dark text-[10px] font-mono font-bold uppercase tracking-widest text-brand-dark hover:bg-brand-dark hover:text-white transition-colors group flex items-center gap-2">
+                    Reference Visuale
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 03 / Content Hub (Mappa di Flusso) -->
+        <section id="content" class="pt-16 border-t border-brand-dark">
+            <div class="mb-12">
+                <h2 class="text-[10px] font-mono uppercase tracking-[0.3em] font-bold text-brand-muted mb-4">03 / Content Hub</h2>
+                <h3 class="text-4xl font-display font-bold uppercase leading-none tracking-tight">Pipeline di Comunicazione</h3>
+            </div>
+
+            <!-- Conceptual Flow Map -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-brand-border bg-white shadow-sm">
+                <!-- Step 1 -->
+                <div class="p-8 border-b md:border-b-0 md:border-r border-brand-border relative group hover:bg-brand-surface transition-colors">
+                    <div class="text-[10px] font-mono text-brand-accent mb-6">[ FASE 01 ]</div>
+                    <h4 class="text-lg font-bold uppercase mb-3 tracking-tight">The Feed</h4>
+                    <p class="text-xs text-brand-muted leading-relaxed mb-5">
+                        Vetrina clinica. Prodotto mostrato su sfondi neutri per permettere al retailer un'analisi visiva pura, simile allo sfoglio di un catalogo cartaceo.
+                    </p>
+                    <div class="pt-4 border-t border-brand-border">
+                        <span class="text-[9px] font-mono text-brand-dark uppercase block mb-3">Reference Estetica Feed:</span>
+                        <div class="flex flex-col gap-2">
+                            <a href="https://www.instagram.com/rueporter/" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono text-brand-muted hover:text-brand-accent transition-colors flex items-center gap-2">
+                                <span>→</span> Visualizza Reference 01 (@rueporter)
+                            </a>
+                            <a href="https://www.instagram.com/sweats/" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono text-brand-muted hover:text-brand-accent transition-colors flex items-center gap-2">
+                                <span>→</span> Visualizza Reference 02 (@sweats)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="p-8 relative group hover:bg-brand-surface transition-colors">
+                    <div class="text-[10px] font-mono text-brand-accent mb-6">[ FASE 02 ]</div>
+                    <h4 class="text-lg font-bold uppercase mb-3 tracking-tight">The Reel: Product & Tour</h4>
+                    <p class="text-xs text-brand-muted leading-relaxed mb-5">
+                        Formato video ibrido. Da un lato l'analisi tecnica: <strong class="text-brand-dark">Francesco nel ruolo di insider illustra le specifiche dei capi</strong> (focus macro, cuciture) supportato visivamente da un modello in scena per validare il fit; dall'altro il formato <strong class="text-brand-dark">"The Tour"</strong>, declinato in vlog operativi e riprese architettoniche dello showroom. L'obiettivo è certificare l'operatività reale e infondere fiducia istituzionale nel buyer.
+                    </p>
+                    <div class="pt-4 border-t border-brand-border">
+                        <span class="text-[9px] font-mono text-brand-dark uppercase block mb-3">Reference Product (Insider + Modello):</span>
+                        <div class="flex flex-col gap-2 mb-5">
+                            <a href="https://www.instagram.com/reel/DRoLpg4E5q1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono text-brand-muted hover:text-brand-accent transition-colors flex items-center gap-2">
+                                <span>→</span> Visualizza Reference 01 (Analisi e Fit)
+                            </a>
+                            <a href="https://www.instagram.com/reel/DA5j6CHhh9f/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono text-brand-muted hover:text-brand-accent transition-colors flex items-center gap-2">
+                                <span>→</span> Visualizza Reference 02 (Storytelling Tecnico)
+                            </a>
+                        </div>
+
+                        <span class="text-[9px] font-mono text-brand-dark uppercase block mb-3 border-t border-brand-border pt-4">Reference Formato Tour:</span>
+                        <div class="flex flex-col gap-2">
+                            <a href="https://www.instagram.com/reel/C-s7N9BxKdt/?igsh=MXpidmUxb3Z2cHd5" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono text-brand-muted hover:text-brand-accent transition-colors flex items-center gap-2">
+                                <span>→</span> Visualizza Reference 03 (Dinamismo Logistico)
+                            </a>
+                            <a href="https://www.instagram.com/tv/CSfm0KQCjPl/?igsh=b3p0cmo3OXpqaXNs" target="_blank" rel="noopener noreferrer" class="text-[10px] font-mono text-brand-muted hover:text-brand-accent transition-colors flex items-center gap-2">
+                                <span>→</span> Visualizza Reference 04 (Focus Spazi)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note Footer for References -->
+            <div class="p-5 border border-t-0 border-brand-border bg-brand-surface mb-16 flex flex-col md:flex-row md:items-start gap-3">
+                <span class="text-[10px] font-mono font-bold text-brand-dark uppercase tracking-widest shrink-0 mt-0.5">[ NEXT STEP ]</span>
+                <span class="text-xs font-mono text-brand-muted leading-relaxed">
+                    L'archivio delle reference verrà integrato con nuove direzioni visive a seguito della visione e valutazione tecnica dei prossimi capi in uscita. Sulla base dei volumi di release, verrà calibrata l'effettiva frequenza produttiva (da 1 a un massimo di 3 shooting mensili).
+                </span>
+            </div>
+
+            <div class="w-full">
+                <div class="bg-brand-dark text-white p-10 border border-brand-dark">
+                    <h4 class="text-xl font-bold uppercase mb-6 tracking-tight border-b border-stone-700 pb-4">Reel Evolution: Protocollo 2.0</h4>
+                    <p class="text-stone-400 text-sm leading-relaxed max-w-3xl">
+                        L'infrastruttura consolidata (spiegazione tecnica) si evolve verso un montaggio cinetico e ritmato, mantenendo autorevolezza ma elevando lo stile.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 / Identità -->
+        <section id="stile" class="pt-16 border-t border-brand-dark">
+            <div class="max-w-3xl">
+                <h2 class="text-[10px] font-mono uppercase tracking-[0.3em] font-bold text-brand-muted mb-4">04 / Identità Stilistica</h2>
+                <h3 class="text-4xl font-display font-bold uppercase mb-8 leading-none tracking-tight">Minimal Authority</h3>
+                <div class="space-y-4">
+                    <!-- Step 01: Logo -->
+                    <div class="p-6 border border-brand-border bg-white group hover:border-brand-dark transition-colors">
+                        <h4 class="font-bold uppercase text-sm mb-2 tracking-tight">01. Logo Refinement</h4>
+                        <p class="text-xs text-brand-muted font-light leading-relaxed">
+                            Aggiustamento dei dettagli geometrici del marchio attuale. Pulizia delle linee per garantire la massima leggibilità tecnica su tutti i touchpoint digitali e fisici.
+                        </p>
+                    </div>
+                    
+                    <!-- Step 02: Naming -->
+                    <div class="p-6 border border-brand-border bg-white group hover:border-brand-dark transition-colors">
+                        <h4 class="font-bold uppercase text-sm mb-2 tracking-tight">02. Naming & Handle</h4>
+                        <p class="text-xs text-brand-muted font-light leading-relaxed">
+                            Cambio del nome Instagram verso un naming puramente istituzionale (<span class="font-mono bg-brand-surface px-1 border border-brand-border text-brand-dark">SPAZIO X.</span>). Semplificazione assoluta per favorire l'indicizzazione e posizionamento corporate.
+                        </p>
+                    </div>
+
+                    <!-- Step 03: Verified -->
+                    <div class="p-6 border border-brand-border bg-brand-surface group hover:border-brand-dark transition-colors">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <div class="text-[10px] font-mono bg-brand-dark text-white px-2 py-1">[ VERIFIED ]</div>
+                            <h4 class="font-bold uppercase text-sm text-brand-dark tracking-tight">03. Status B2B</h4>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            L'account Meta Verified non risponde a logiche di vanità estetica, ma funziona come certificazione istituzionale per stabilire credibilità immediata durante le attività di outreach su nuovi prospect.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 / ADV -->
+        <section id="adv" class="pt-16 border-t border-brand-dark">
+            <div class="max-w-3xl mx-auto border border-brand-border bg-white p-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-[10px] font-mono uppercase tracking-[0.3em] font-bold text-brand-muted mb-4">05 / Advertising</h2>
+                    <h3 class="text-2xl font-display font-bold uppercase tracking-tight">Fase di Ricerca Inizializzata</h3>
+                </div>
+                <div class="bg-brand-surface p-6 font-mono text-xs text-brand-muted leading-relaxed border-l-2 border-brand-accent flex justify-center">
+                    <div>
+                        <span class="text-brand-dark font-bold">[ STATUS: IN PROGRESS ]</span>
+                        <span class="mx-2 text-brand-border">|</span>
+                        <span class="text-brand-dark font-bold">[ BUDGET: 30€ / DAY ]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+            <div>
+                <div class="font-display font-bold text-4xl tracking-tighter mb-4">SHOWROOM HUB<span class="text-brand-accent">.</span></div>
+                <p class="text-stone-400 max-w-xs text-sm font-light leading-relaxed">
+                    Showroom Hub per la distribuzione streetwear contemporanea.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 gap-16">
+                <div>
+                    <h5 class="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-6">Contatti</h5>
+                    <ul class="text-sm space-y-3 font-light text-stone-300">
+                        <li>Showroom Milano</li>
+                        <li>Showroom Roma</li>
+                        <li>sx.wholesale@info.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-6">Strategic Partner</h5>
+                    <div class="text-sm font-bold tracking-tight">MIRAI STUDIO</div>
+                    <p class="text-[10px] text-stone-500 mt-2">UX UI & Content Strategy</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart Implementation for Pillars
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('pillarChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['TECNICA', 'STILE', 'REDDITIVITÀ', 'LOGISTICA', 'AUTORITÀ'],
+                    datasets: [{
+                        label: 'Impact Strategico',
+                        // Valori impostati tutti a 100 per un pentagono perfettamente equilibrato
+                        data: [100, 100, 100, 100, 100],
+                        backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                        borderColor: '#ea580c',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#1c1917',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#ea580c'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(28, 25, 23, 0.1)' },
+                            grid: { color: 'rgba(28, 25, 23, 0.1)' },
+                            pointLabels: {
+                                font: {
+                                    family: "'Space Grotesk', sans-serif",
+                                    size: 10,
+                                    weight: 'bold'
+                                },
+                                color: '#78716c'
+                            },
+                            ticks: { display: false, min: 0, max: 100 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1c1917',
+                            titleFont: { family: "'Space Grotesk', sans-serif" },
+                            bodyFont: { family: "'Inter', sans-serif" },
+                            padding: 12,
+                            cornerRadius: 4
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
