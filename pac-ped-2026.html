@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta, Amore & Caffè | Strategia & UX Brand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- 
+        Palette UX:
+        Primary: #D32F2F (Call to Action / Alert)
+        Secondary: #388E3C (Success / Growth)
+        Accent: #FBC02D (Highlight / Warmth)
+        Neutral: #3E2723 (Text / Footer)
+        Bg: #FFFDE7 (Canvas)
+    -->
+
+    <style>
+        body { font-family: 'Lato', sans-serif; background-color: #FFFDE7; color: #3E2723; }
+        h1, h2, h3, .serif-font { font-family: 'Playfair Display', serif; }
+        
+        /* Chart Containers for Responsive UI */
+        .chart-container { position: relative; width: 100%; height: 350px; margin: 0 auto; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
+
+        /* Card Styling & Hover Effects */
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(62, 39, 35, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(62, 39, 35, 0.1);
+        }
+        
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#FBC02D] selection:text-[#3E2723]">
+
+    <!-- HERO SECTION: Premiumization -->
+    <header class="w-full bg-[#3E2723] text-[#FFFDE7] py-20 px-4 shadow-xl relative overflow-hidden">
+        <!-- Decorative bg element -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
+             style="background-image: radial-gradient(#FBC02D 2px, transparent 2px); background-size: 30px 30px;">
+        </div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 leading-tight serif-font">
+                Pasta, Amore <br/><span class="italic font-light text-[#FBC02D]">&</span> Caffè
+            </h1>
+            <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto opacity-90 leading-relaxed">
+                "Elevare il percepito. Raccontare l'origine. <br>Ispirare la community attraverso l'estetica."
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 gap-16">
+
+        <!-- SECTION 1: VISUAL BENCHMARK (NEW) -->
+        <section>
+            <div class="text-center mb-12">
+                <div class="inline-block bg-[#D32F2F] text-[#FFFDE7] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                    Analisi Competitor
+                </div>
+                <h2 class="text-4xl font-bold text-[#3E2723] mb-3">Visual Benchmark</h2>
+                <p class="text-xl opacity-60 serif-font italic max-w-2xl mx-auto">
+                    A chi ci ispiriamo per costruire un feed autorevole, premium e riconoscibile.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Benchmark 1: RUMMO -->
+                <div class="card p-8 border-t-8 border-[#3E2723] group flex flex-col justify-between">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-3xl font-bold text-[#3E2723] serif-font">Pasta Rummo</h3>
+                        <a href="https://www.instagram.com/pasta_rummo/" target="_blank" class="text-sm bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors">@pasta_rummo ↗️</a>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-100">
+                        <span class="text-xs font-bold uppercase text-[#D32F2F]">Takeaway per PAC:</span>
+                        <p class="text-sm italic mt-1">L'importanza dello Still Life d'autore per dare solennità al prodotto nudo.</p>
+                    </div>
+                </div>
+
+                <!-- Benchmark 2: SGAMBARO -->
+                <div class="card p-8 border-t-8 border-[#FBC02D] group flex flex-col justify-between">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-3xl font-bold text-[#3E2723] serif-font">Pasta Sgambaro</h3>
+                        <a href="https://www.instagram.com/pastasgambaro/" target="_blank" class="text-sm bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors">@pastasgambaro ↗️</a>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-100">
+                        <span class="text-xs font-bold uppercase text-[#D32F2F]">Takeaway per PAC:</span>
+                        <p class="text-sm italic mt-1">Focus per contenutistica caroselli / foto: valorizzare le "storie" e la community, mostrando il prodotto vivo ma senza perdere la pulizia visiva.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: Reference Generali Foto -->
+            <div class="mt-10 bg-white rounded-2xl shadow-lg border-l-8 border-[#FBC02D] p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition-transform hover:-translate-y-1">
+                <div>
+                    <h3 class="text-2xl font-bold text-[#3E2723] mb-2">Visual Reference: Foto</h3>
+                    <p class="text-sm opacity-70 max-w-md">Le reference per le foto saranno studiate per raccontare i prodotti presi in esame nelle caption e sfruttare i prossimi shooting per fotografare i prodotti direttamente all'interno dei contesti dei video. Inoltre, per questa prima fase, integreremo quando e dove possibile gli scatti di still life realizzati da Umberto Costa.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <a href="https://www.instagram.com/p/DVjQ7GdjJX9/?img_index=1" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#FBC02D] hover:bg-yellow-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">📷</span> Ref Foto 1 ↗️
+                    </a>
+                    <a href="https://www.instagram.com/p/DUV9sJNjLIJ/?img_index=1" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#FBC02D] hover:bg-yellow-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">📷</span> Ref Foto 2 ↗️
+                    </a>
+                </div>
+            </div>
+
+            <!-- NEW: Reference Generali Caroselli -->
+            <div class="mt-6 bg-white rounded-2xl shadow-lg border-l-8 border-[#D32F2F] p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition-transform hover:-translate-y-1">
+                <div>
+                    <h3 class="text-2xl font-bold text-[#3E2723] mb-2">Visual Reference: Caroselli</h3>
+                    <p class="text-sm opacity-70 max-w-md">Esempi stilistici e di impaginazione premium da cui prendere ispirazione per la nuova veste grafica.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <a href="https://www.instagram.com/p/DVwKq3DjN0I/?img_index=1" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#D32F2F] hover:text-[#D32F2F] hover:bg-red-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">📸</span> Ref 1 ↗️
+                    </a>
+                    <a href="https://www.instagram.com/p/DRMgNIGjj7S/" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#D32F2F] hover:text-[#D32F2F] hover:bg-red-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">📸</span> Ref 2 ↗️
+                    </a>
+                    <a href="https://www.instagram.com/p/DSDOCvADDDn/?img_index=1" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#D32F2F] hover:text-[#D32F2F] hover:bg-red-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">📸</span> Ref 3 ↗️
+                    </a>
+                </div>
+            </div>
+
+            <!-- NEW: Reference Generali Video -->
+            <div class="mt-6 bg-white rounded-2xl shadow-lg border-l-8 border-[#388E3C] p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition-transform hover:-translate-y-1">
+                <div>
+                    <h3 class="text-2xl font-bold text-[#3E2723] mb-2">Visual Reference: Video</h3>
+                    <p class="text-sm opacity-70 max-w-md">Per i contenuti video continueremo a seguire la linea stilistica adottata con successo fino ad ora, ispirandoci a questi format per il ritmo e il montaggio.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <a href="https://www.instagram.com/p/DTk2qWbEazQ/" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#388E3C] hover:text-[#388E3C] hover:bg-green-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">🎬</span> Ref Video 1 ↗️
+                    </a>
+                    <a href="https://www.instagram.com/p/DSIXqVsDGux/" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#388E3C] hover:text-[#388E3C] hover:bg-green-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">🎬</span> Ref Video 2 ↗️
+                    </a>
+                    <a href="https://www.instagram.com/p/DSVCjwmDH2X/" target="_blank" class="bg-gray-50 border border-gray-200 text-[#3E2723] px-4 py-3 rounded-xl text-sm font-bold hover:border-[#388E3C] hover:text-[#388E3C] hover:bg-green-50 transition-all shadow-sm flex items-center justify-center whitespace-nowrap">
+                        <span class="mr-2 text-lg">🎬</span> Ref Video 3 ↗️
+                    </a>
+                </div>
+            </div>
+
+            <!-- SECTION 3: CALENDARIO Q2 (Unified & Stacked) -->
+            <div class="text-center mb-16 relative z-10">
+                <div class="inline-block bg-[#D32F2F] text-[#FFFDE7] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                    Piano Operativo Unificato
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-[#3E2723] mb-4">Roadmap Q2 2026</h2>
+                
+                <!-- Info Badges Stack -->
+                <div class="mt-6 flex flex-col items-center gap-3">
+                    <div class="inline-block bg-white px-6 py-3 rounded-xl border border-gray-200 shadow-sm max-w-3xl text-left">
+                        <p class="text-sm text-[#3E2723] opacity-90">
+                            <span class="font-bold text-[#388E3C]">📱 Focus Storie:</span> Tutti i contenuti a feed saranno costantemente contornati da un piano di Storie quotidiane, strutturate sulla riga dello stile comunicativo e relazionale dei profili premium utilizzati come reference.
+                        </p>
+                    </div>
+                    <div class="inline-block bg-white px-6 py-3 rounded-xl border border-gray-200 shadow-sm max-w-3xl text-left">
+                        <p class="text-sm text-[#3E2723] opacity-90">
+                            <span class="font-bold text-[#F9A825]">🌟 Storie in Evidenza:</span> Struttureremo le raccolte (Highlights) seguendo la linea e le categorie dei profili reference, riutilizzando in modo strategico i contenuti postati in precedenza per creare una vetrina premium e sempre consultabile.
+                        </p>
+                    </div>
+                    <div class="inline-block bg-white px-6 py-3 rounded-xl border border-gray-200 shadow-sm max-w-3xl text-left">
+                        <p class="text-sm text-[#3E2723] opacity-90">
+                            <span class="font-bold text-[#3E2723]">🎨 Feed Visivo:</span> Le proposte di composizione e impaginazione del feed saranno puramente visive e verranno presentate direttamente a Giacomo per la validazione estetica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-12 relative z-10 max-w-5xl mx-auto">
+                
+                <!-- MESE: APRILE -->
+                <div class="bg-white rounded-2xl shadow-xl border-t-8 border-[#388E3C] overflow-hidden">
+                    <div class="bg-gray-50 p-6 md:px-10 border-b border-gray-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold font-serif text-[#3E2723]">Aprile 2026</h3>
+                            <p class="text-sm uppercase tracking-widest text-[#388E3C] font-bold mt-1">Rinascita & Tradizione</p>
+                        </div>
+                        <div class="text-4xl">🌿</div>
+                    </div>
+                    
+                    <!-- NEW: Note Operative Restyling -->
+                    <div class="px-6 md:px-10 pt-8 pb-0">
+                        <div class="bg-[#FBC02D]/10 rounded-xl p-4 border border-[#FBC02D]/30 flex items-start gap-3">
+                            <span class="text-lg mt-0.5">🎨</span>
+                            <p class="text-sm text-[#3E2723] opacity-90 leading-relaxed">
+                                <strong class="font-bold text-[#3E2723]">Task di Restyling:</strong> in questo mese andremo a restylizzare i template per i caroselli, la bio ed i piccoli elementi presentati fino ad ora, allineandoli alla nuova direzione visiva.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <!-- Settimana 1 -->
+                        <div class="relative pl-6 border-l-2 border-[#388E3C]/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#388E3C]"></div>
+                            <span class="text-xs font-bold text-[#388E3C] uppercase mb-3 block">Settimana 1</span>
+                            <ul class="space-y-4">
+                                <li class="text-sm"><strong class="text-[#3E2723]">1/04:</strong> Foto 1</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">3/04:</strong> Video 1</li>
+                                <li class="text-sm leading-tight">
+                                    <strong class="text-[#3E2723]">5/04:</strong> Carosello 1 (Ricetta)
+                                    <br><a href="https://www.instagram.com/p/DTIvlUOjGre/?img_index=1" target="_blank" class="inline-flex items-center mt-1.5 text-[10px] uppercase tracking-wider bg-gray-100 text-[#3E2723] px-2 py-0.5 rounded hover:bg-[#388E3C] hover:text-white transition-colors">Ref ↗️</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Settimana 2 -->
+                        <div class="relative pl-6 border-l-2 border-[#388E3C]/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#388E3C]"></div>
+                            <span class="text-xs font-bold text-[#388E3C] uppercase mb-3 block">Settimana 2</span>
+                            <ul class="space-y-4">
+                                <li class="text-sm"><strong class="text-[#3E2723]">8/04:</strong> Video 2</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">10/04:</strong> Foto 2</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">12/04:</strong> Video 3</li>
+                            </ul>
+                        </div>
+                        <!-- Settimana 3 -->
+                        <div class="relative pl-6 border-l-2 border-[#388E3C]/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#388E3C]"></div>
+                            <span class="text-xs font-bold text-[#388E3C] uppercase mb-3 block">Settimana 3</span>
+                            <ul class="space-y-4">
+                                <li class="text-sm"><strong class="text-[#3E2723]">15/04:</strong> Video 4</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">17/04:</strong> Video 5</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">19/04:</strong> Foto 3</li>
+                            </ul>
+                        </div>
+                        <!-- Settimana 4 -->
+                        <div class="relative pl-6 border-l-2 border-[#388E3C]/30">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#388E3C]"></div>
+                            <span class="text-xs font-bold text-[#388E3C] uppercase mb-3 block">Settimana 4</span>
+                            <ul class="space-y-4">
+                                <li class="text-sm leading-tight">
+                                    <strong class="text-[#3E2723]">22/04:</strong> Carosello 2 (Abbinamento Prodotti)
+                                    <br><a href="https://www.instagram.com/p/DNQDgy2u-H9/?img_index=1" target="_blank" class="inline-flex items-center mt-1.5 text-[10px] uppercase tracking-wider bg-gray-100 text-[#3E2723] px-2 py-0.5 rounded hover:bg-[#388E3C] hover:text-white transition-colors">Ref ↗️</a>
+                                </li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">24/04:</strong> Foto 4</li>
+                                <li class="text-sm"><strong class="text-[#3E2723]">26/04:</strong> Video 6</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MESE: MAGGIO -->
+                <div class="bg-white rounded-2xl shadow-xl border-t-8 border-[#FBC02D] overflow-hidden">
+                    <div class="bg-gray-50 p-6 md:px-10 border-b border-gray-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold font-serif text-[#3E2723]">Maggio 2026</h3>
+                            <p class="text-sm uppercase tracking-widest text-[#F9A825] font-bold mt-1">Luce, Purezza & Affetti</p>
+                        </div>
+                        <div class="text-4xl">☀️</div>
+                    </div>
+                    
+                    <div class="p-10 flex flex-col items-center justify-center text-center min-h-[250px] bg-white">
+                        <span class="text-5xl mb-4 opacity-40 grayscale">📈</span>
+                        <h4 class="text-xl font-bold text-[#3E2723]">Piano in revisione</h4>
+                    </div>
+                </div>
+
+                <!-- MESE: GIUGNO -->
+                <div class="bg-white rounded-2xl shadow-xl border-t-8 border-[#D32F2F] overflow-hidden">
+                    <div class="bg-gray-50 p-6 md:px-10 border-b border-gray-100 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold font-serif text-[#3E2723]">Giugno 2026</h3>
+                            <p class="text-sm uppercase tracking-widest text-[#D32F2F] font-bold mt-1">Vitalità, Colore & Estate</p>
+                        </div>
+                        <div class="text-4xl">🍅</div>
+                    </div>
+                    
+                    <div class="p-10 flex flex-col items-center justify-center text-center min-h-[250px] bg-white">
+                        <span class="text-5xl mb-4 opacity-40 grayscale">🎯</span>
+                        <h4 class="text-xl font-bold text-[#3E2723]">Piano in revisione</h4>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Visual Decoration Background -->
+            <div class="absolute -right-20 -bottom-20 w-[500px] h-[500px] bg-[#FBC02D] rounded-full opacity-10 blur-[100px] pointer-events-none"></div>
+            <div class="absolute -left-20 -top-20 w-[500px] h-[500px] bg-[#D32F2F] rounded-full opacity-5 blur-[100px] pointer-events-none"></div>
+        </section>
+
+        <!-- SECTION 4: NEXT STEPS & CONTENT CREATION -->
+        <section class="mt-8">
+            <div class="bg-[#3E2723] text-[#FFFDE7] rounded-[2rem] p-10 md:p-16 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
+                <!-- Decorative Circle -->
+                <div class="absolute left-0 top-0 w-64 h-64 bg-[#FBC02D] rounded-full opacity-10 blur-3xl pointer-events-none -ml-20 -mt-20"></div>
+                
+                <div class="md:w-1/4 flex justify-center relative z-10">
+                    <div class="text-7xl md:text-8xl opacity-90 drop-shadow-lg">✨</div>
+                </div>
+                
+                <div class="md:w-3/4 text-center md:text-left relative z-10">
+                    <div class="inline-block bg-[#D32F2F] text-[#FFFDE7] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                        Roadmap Q3/Q4
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#FBC02D] mb-5 serif-font">Creazione Prossimi Contenuti</h2>
+                    <p class="text-lg opacity-90 leading-relaxed font-light">
+                        Le idee per la produzione dei futuri <strong>video, post e caroselli a partire da Luglio 2026</strong> 
+                        seguiranno in modo coerente e rigoroso la linea comunicativa tracciata dalle reference proposte in questa strategia.
+                    </p>
+                    <p class="text-lg opacity-90 leading-relaxed font-light mt-4">
+                        Ogni nuovo contenuto farà tesoro dei dati raccolti, allineandosi visivamente e stilisticamente ai format di maggior successo testati e postati fino a quel momento. 
+                        L'obiettivo primario resta consolidare un'autorità visiva premium e fortemente riconoscibile.
+                    </p>
+                    <p class="text-lg opacity-90 leading-relaxed font-light mt-4">
+                        A supporto di tutte le pubblicazioni, l'intera strategia verrà costantemente affiancata da un piano narrativo dedicato alle <strong>Storie</strong>. Questo formato farà da vero e proprio "contorno" quotidiano ai contenuti del feed, seguendo fedelmente lo stile comunicativo e relazionale dei profili premium utilizzati come reference per ingaggiare e fidelizzare la community.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#FFFDE7] text-[#3E2723] pt-12 pb-8 text-center border-t-2 border-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-3 serif-font">Pasta, Amore & Caffè</h2>
+            <div class="flex justify-center gap-6 mb-6 text-xl">
+                <span class="opacity-70 font-light italic">Elevate Your Taste.</span>
+            </div>
+            <div class="text-xs opacity-50 font-bold tracking-widest uppercase">
+                &copy; PAC Digital Strategy 2026 | Visual Premiumization
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
