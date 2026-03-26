@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LabMec — Strategia Email Marketing Q2 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1a2e;
+  --gold: #c8a44e;
+  --gold-dim: rgba(200,164,78,0.10);
+  --cream: #faf8f3;
+  --warm: #f5f2eb;
+  --stone: #e2ded5;
+  --mid: #6b6860;
+  --dark: #2c2a26;
+  --green: #2d7a4e;
+  --green-bg: #edf5f0;
+  --orange: #b8702a;
+  --orange-bg: #fdf4eb;
+  --purple: #6d4fa0;
+  --purple-bg: #f3eff8;
+  --blue: #2a5a8a;
+  --blue-bg: #edf2f7;
+  --teal: #1a7a6d;
+  --teal-bg: #edf7f5;
+  --radius: 10px;
+  --shadow: 0 1px 8px rgba(15,26,46,0.06);
+  --shadow-md: 0 4px 20px rgba(15,26,46,0.08);
+  --shadow-lg: 0 8px 32px rgba(15,26,46,0.10);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Instrument Sans',sans-serif; background:var(--cream); color:var(--dark); line-height:1.7; -webkit-font-smoothing:antialiased; }
+
+/* ── HERO ── */
+.hero { background:var(--navy); color:#fff; padding:80px 32px 64px; position:relative; overflow:hidden; }
+.hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(to top, rgba(15,26,46,0.3), transparent); pointer-events:none; }
+.hero-inner { max-width:800px; margin:0 auto; position:relative; z-index:1; }
+.hero-badge { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); border:1px solid rgba(200,164,78,.3); padding:6px 16px; border-radius:30px; display:inline-block; margin-bottom:24px; }
+.hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(32px,5vw,52px); font-weight:400; line-height:1.15; margin-bottom:20px; }
+.hero h1 em { color:var(--gold); font-style:italic; }
+.hero-sub { font-size:16px; color:rgba(255,255,255,.55); max-width:560px; line-height:1.8; }
+
+/* ── LAYOUT ── */
+.wrap { max-width:880px; margin:0 auto; padding:0 32px; }
+section { padding:64px 0; }
+.section-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.section-title { font-family:'DM Serif Display',serif; font-size:clamp(24px,3.5vw,32px); color:var(--navy); margin-bottom:8px; line-height:1.25; }
+.section-desc { font-size:15px; color:var(--mid); max-width:640px; margin-bottom:40px; line-height:1.8; }
+hr.sep { border:none; border-top:1px solid var(--stone); margin:0; }
+
+/* ── OVERVIEW STRIP ── */
+.overview-strip { background:var(--navy); border-bottom:3px solid var(--gold); }
+.overview-inner { max-width:880px; margin:0 auto; padding:28px 32px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+.ov-item { text-align:center; flex:1; min-width:100px; }
+.ov-num { font-family:'DM Serif Display',serif; font-size:32px; color:var(--gold); }
+.ov-txt { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,.5); margin-top:2px; }
+
+/* ── REASON CARDS ── */
+.reasons { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+.reason { background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); }
+.reason-num { font-family:'DM Serif Display',serif; font-size:36px; color:var(--gold); margin-bottom:8px; line-height:1; }
+.reason h3 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.reason p { font-size:14px; color:var(--mid); line-height:1.7; }
+
+/* ── AUDIENCE ── */
+.audience-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+.persona { background:#fff; border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); border-top:3px solid var(--gold); }
+.persona h3 { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.persona p { font-size:13px; color:var(--mid); line-height:1.7; }
+.persona-tag { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; display:block; }
+
+/* ── APPROACH / PHASES OVERVIEW ── */
+.approach-flow { display:flex; align-items:stretch; gap:0; margin-bottom:40px; flex-wrap:wrap; }
+.approach-card { flex:1; min-width:200px; padding:28px 24px; text-align:center; position:relative; }
+.approach-card:first-child { border-radius:var(--radius) 0 0 var(--radius); }
+.approach-card:last-child { border-radius:0 var(--radius) var(--radius) 0; }
+.approach-card .phase-num { font-family:'DM Serif Display',serif; font-size:40px; line-height:1; margin-bottom:8px; }
+.approach-card h3 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.approach-card p { font-size:12px; line-height:1.6; opacity:.75; }
+.approach-card .dur { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; margin-top:10px; opacity:.6; }
+.approach-card.ph-r { background:var(--orange-bg); color:var(--orange); }
+.approach-card.ph-e { background:var(--green-bg); color:var(--green); }
+.approach-card.ph-c { background:var(--purple-bg); color:var(--purple); }
+.approach-arrow { display:flex; align-items:center; font-size:24px; color:var(--stone); padding:0 4px; }
+
+/* ── SEGMENTATION ── */
+.seg-box { background:#fff; border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); margin-bottom:24px; }
+.seg-box h3 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+.seg-box p { font-size:14px; color:var(--mid); line-height:1.8; margin-bottom:16px; }
+.seg-levels { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.seg-level { padding:18px; border-radius:8px; }
+.seg-level h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
+.seg-level p { font-size:12px; margin:0; line-height:1.6; }
+.seg-level.l1 { background:var(--orange-bg); color:var(--orange); }
+.seg-level.l2 { background:var(--green-bg); color:var(--green); }
+.seg-level.l3 { background:var(--purple-bg); color:var(--purple); }
+
+/* ── PHASE DETAIL ── */
+.phase-section { padding:48px 0; }
+.phase-section.bg-alt { background:var(--warm); }
+
+.phase-head { display:flex; align-items:center; gap:16px; margin-bottom:8px; }
+.phase-dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; }
+.phase-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; }
+.phase-info { font-size:13px; color:var(--mid); margin-bottom:28px; }
+
+.theme-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-bottom:24px; }
+.theme-card { background:#fff; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); display:flex; gap:14px; align-items:flex-start; }
+.phase-section.bg-alt .theme-card { background:var(--cream); }
+.theme-icon { width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'DM Serif Display',serif; font-size:16px; color:#fff; }
+.theme-body h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.theme-body p { font-size:12px; color:var(--mid); line-height:1.6; }
+.theme-body .product-name { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:.5px; }
+
+.phase-note { font-size:14px; color:var(--mid); line-height:1.8; padding:20px 24px; border-radius:var(--radius); margin-top:8px; }
+.phase-note strong { color:var(--navy); }
+.phase-note.gold-note { background:var(--gold-dim); border-left:3px solid var(--gold); }
+.phase-note.teal-note { background:var(--teal-bg); border-left:3px solid var(--teal); }
+
+/* ── JOURNEY ── */
+.journey-wrap { background:#fff; border-radius:var(--radius); padding:36px 28px; box-shadow:var(--shadow-md); overflow-x:auto; }
+.journey-flow { display:flex; align-items:center; gap:6px; min-width:820px; }
+.journey-step { padding:14px 16px; border-radius:8px; text-align:center; font-size:13px; font-weight:700; white-space:nowrap; }
+.journey-step span { display:block; font-size:10px; font-weight:400; margin-top:3px; opacity:.7; }
+.journey-arrow { color:var(--stone); font-size:20px; flex-shrink:0; }
+.journey-filter { border:2px dashed var(--orange); background:rgba(184,112,42,0.06); color:var(--orange); padding:14px 12px; border-radius:8px; text-align:center; font-size:11px; font-weight:700; }
+.journey-filter span { display:block; font-size:9px; font-weight:400; margin-top:3px; }
+
+/* ── CALENDAR ── */
+.cal-grid { display:grid; grid-template-columns:80px 1fr 1fr; gap:2px; background:var(--stone); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+.cal-header { background:var(--navy); color:#fff; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:12px 14px; text-align:center; }
+.cal-week { background:#fff; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--mid); padding:14px; display:flex; align-items:center; justify-content:center; text-align:center; }
+.cal-cell { background:#fff; padding:10px 14px; display:flex; align-items:center; gap:8px; }
+.cal-pill { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; padding:4px 10px; border-radius:5px; color:#fff; white-space:nowrap; }
+.cal-pill.r { background:var(--orange); }
+.cal-pill.e { background:var(--green); }
+.cal-pill.c { background:var(--purple); }
+.cal-pill.v { background:var(--blue); }
+.cal-pill.w { background:var(--navy); border:1px solid var(--gold); color:var(--gold); }
+.cal-pill.u { background:#8b5e3c; }
+.cal-theme { font-size:12px; color:var(--dark); }
+.cal-review { background:var(--blue-bg); grid-column:1 / -1; padding:12px 14px; font-size:12px; color:var(--blue); font-weight:600; text-align:center; }
+
+/* ── KPI ── */
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+.kpi-card { background:#fff; border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); text-align:center; border-bottom:3px solid var(--gold); }
+.kpi-card h3 { font-family:'DM Serif Display',serif; font-size:14px; color:var(--navy); margin-bottom:6px; }
+.kpi-card p { font-size:12px; color:var(--mid); line-height:1.6; }
+
+/* ── NEXT STEPS ── */
+.steps-list { list-style:none; counter-reset:step; }
+.steps-list li { background:#fff; border-radius:var(--radius); padding:20px 24px; box-shadow:var(--shadow); margin-bottom:12px; display:flex; gap:16px; align-items:flex-start; }
+.step-num { font-family:'DM Serif Display',serif; font-size:28px; color:var(--gold); flex-shrink:0; line-height:1; width:32px; text-align:center; }
+.step-body h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.step-body p { font-size:13px; color:var(--mid); line-height:1.7; }
+
+/* ── TONE QUOTE ── */
+.tone-block { background:var(--navy); color:#fff; border-radius:var(--radius); padding:32px; margin-top:24px; }
+.tone-block blockquote { font-family:'DM Serif Display',serif; font-size:20px; font-style:italic; color:var(--gold); line-height:1.5; margin-bottom:12px; }
+.tone-block p { font-size:13px; color:rgba(255,255,255,.55); line-height:1.7; }
+
+/* ── FOOTER ── */
+footer { background:var(--navy); color:rgba(255,255,255,.4); text-align:center; padding:36px 32px; font-size:12px; margin-top:0; }
+footer strong { color:var(--gold); }
+footer .footer-line { margin-top:8px; font-size:11px; opacity:.6; }
+
+@media(max-width:768px) {
+  .hero { padding:48px 20px 40px; }
+  .wrap { padding:0 20px; }
+  .overview-inner { padding:20px; }
+  .approach-flow { flex-direction:column; }
+  .approach-card:first-child, .approach-card:last-child { border-radius:var(--radius); }
+  .approach-arrow { transform:rotate(90deg); justify-content:center; padding:4px 0; }
+  .cal-grid { grid-template-columns:60px 1fr 1fr; }
+  .audience-grid { grid-template-columns:1fr; }
+}
+@media print {
+  .hero { padding:24px 16px; }
+  section { padding:32px 0; }
+  .theme-card, .reason, .persona, .kpi-card { break-inside:avoid; box-shadow:none; border:1px solid #ddd; }
+  .cal-grid { box-shadow:none; border:1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- HERO                                       -->
+<!-- ═══════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Proposta Strategica &mdash; Q2 2026</div>
+    <h1>Strategia di<br><em>Email Marketing</em></h1>
+    <p class="hero-sub">Un piano strutturato per trasformare il vostro database di contatti in richieste concrete di preventivo e consulenza. Nessuno spam, nessuna vendita aggressiva: solo contenuti utili che portano le persone giuste a contattarvi.</p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- OVERVIEW NUMBERS                           -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="overview-strip">
+  <div class="overview-inner">
+    <div class="ov-item">
+      <div class="ov-num">17</div>
+      <div class="ov-txt">Email totali</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num">9</div>
+      <div class="ov-txt">Settimane</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num">3</div>
+      <div class="ov-txt">Fasi progressive</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num">7</div>
+      <div class="ov-txt">Pagine di atterraggio</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-num">1</div>
+      <div class="ov-txt">Obiettivo: contatti</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PERCHÉ EMAIL MARKETING                     -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">Il contesto</div>
+  <div class="section-title">Perch&eacute; l'email marketing per LabMec</div>
+  <p class="section-desc">LabMec ha un database di contatti costruito nel tempo. Oggi quel database &egrave; fermo. L'email marketing lo trasforma in un canale di generazione contatti a costo contenuto e con risultati misurabili.</p>
+
+  <div class="reasons">
+    <div class="reason">
+      <div class="reason-num">1</div>
+      <h3>Il ciclo vendita CNC &egrave; lungo</h3>
+      <p>Chi acquista un macchinario CNC non decide in un giorno. Tra il primo interesse e la richiesta di preventivo passano settimane, a volte mesi. L'email &egrave; l'unico canale che mantiene viva la relazione in questo arco di tempo, senza costi pubblicitari ricorrenti.</p>
+    </div>
+    <div class="reason">
+      <div class="reason-num">2</div>
+      <h3>Il database &egrave; un asset dormiente</h3>
+      <p>LabMec ha gi&agrave; tra i 1.500 e i 5.000 contatti raccolti nel tempo. Sono persone che in qualche momento hanno mostrato interesse. Riattivare questo database con contenuti mirati &egrave; pi&ugrave; efficiente e meno costoso che trovare contatti nuovi da zero.</p>
+    </div>
+    <div class="reason">
+      <div class="reason-num">3</div>
+      <h3>Posizionamento, non vendita</h3>
+      <p>Le email non vendono direttamente. Portano il contatto a percepire LabMec come l'interlocutore competente e affidabile a cui rivolgersi quando sar&agrave; il momento di investire. Quando chiamer&agrave;, avr&agrave; gi&agrave; scelto voi.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- A CHI SCRIVIAMO                            -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">L'audience</div>
+  <div class="section-title">A chi scriviamo</div>
+  <p class="section-desc">Ogni email &egrave; pensata per parlare a persone reali con problemi concreti. Non scriviamo a &ldquo;un database&rdquo;: scriviamo a imprenditori, artigiani e responsabili di produzione che hanno bisogno di risposte.</p>
+
+  <div class="audience-grid">
+    <div class="persona">
+      <span class="persona-tag">Segmento primario</span>
+      <h3>Titolare PMI manifatturiera</h3>
+      <p>Gestisce un'azienda nel settore legno, metallo o materiali compositi. Cerca automazione per crescere ma ha un budget limitato rispetto ai brand premium tedeschi o giapponesi. Vuole un partner, non solo un fornitore.</p>
+    </div>
+    <div class="persona">
+      <span class="persona-tag">Segmento primario</span>
+      <h3>Artigiano specializzato</h3>
+      <p>Vuole fare il salto dal lavoro manuale al CNC. &Egrave; alla prima esperienza con l'automazione e ha bisogno di essere guidato nella scelta, nella formazione e nell'avviamento della macchina.</p>
+    </div>
+    <div class="persona">
+      <span class="persona-tag">Segmento primario</span>
+      <h3>Responsabile di produzione</h3>
+      <p>Deve ridurre tempi, scarti e fermi macchina. Ragiona in termini di ROI, efficienza energetica e costo-ora. Ha bisogno di numeri concreti per giustificare l'investimento alla direzione.</p>
+    </div>
+    <div class="persona">
+      <span class="persona-tag">Segmento secondario</span>
+      <h3>Scuole tecniche e ITS</h3>
+      <p>Cercano macchine CNC per i laboratori didattici. Operano con bandi FESR, PNRR e programmi Scuola 4.0. Hanno bisogno di formazione per i docenti e supporto nella fase di acquisto tramite bando.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COME SEGMENTIAMO                           -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">La segmentazione</div>
+  <div class="section-title">Come identifichiamo chi &egrave; davvero interessato</div>
+  <p class="section-desc">Non dividiamo il database in decine di categorie complesse. Con un database di questa dimensione, la segmentazione migliore &egrave; quella basata sul comportamento reale: chi apre, chi clicca, chi agisce.</p>
+
+  <div class="seg-box">
+    <h3>Tre livelli di interesse, misurati automaticamente</h3>
+    <p>Man mano che il piano procede, ogni contatto rivela il proprio livello di interesse attraverso le sue azioni. Questo ci permette di concentrare le risorse su chi ha pi&ugrave; probabilit&agrave; di diventare un cliente.</p>
+    <div class="seg-levels">
+      <div class="seg-level l1">
+        <h4>Chi interagisce</h4>
+        <p>Apre le email, legge i contenuti. &Egrave; attivo e ricettivo. Continua a ricevere il piano completo.</p>
+      </div>
+      <div class="seg-level l2">
+        <h4>Chi usa gli strumenti</h4>
+        <p>Clicca sui tool (calcolatore ROI, guida manutenzione). Ha un problema concreto e sta cercando risposte.</p>
+      </div>
+      <div class="seg-level l3">
+        <h4>Chi ci contatta</h4>
+        <p>Compila un form o prenota una call. &Egrave; pronto a parlare. Il team commerciale viene notificato immediatamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-note gold-note">
+    <strong>Il filtro delle prime due settimane.</strong> Dopo i primi 5 invii, chi non ha aperto neppure un'email viene escluso dalle fasi successive. Questo protegge la reputazione del dominio @labmec.it (fondamentale per la deliverability) e ci permette di concentrare le fasi educativa e di conversione solo su contatti realmente interessati, migliorando tutti i risultati a cascata.
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- LE 3 FASI                                  -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">L'approccio</div>
+  <div class="section-title">Un percorso in 3 fasi progressive</div>
+  <p class="section-desc">Non inviamo 17 email di vendita. Costruiamo un percorso che parte dal valore, passa per l'autorit&agrave; e arriva alla conversione. Ogni fase prepara quella successiva.</p>
+
+  <div class="approach-flow">
+    <div class="approach-card ph-r">
+      <div class="phase-num">1</div>
+      <h3>Riattivazione</h3>
+      <p>Offrire valore gratuito per risvegliare l'interesse e identificare chi &egrave; ancora attivo</p>
+      <div class="dur">2 settimane &middot; 4 email</div>
+    </div>
+    <div class="approach-arrow">&rarr;</div>
+    <div class="approach-card ph-e">
+      <div class="phase-num">2</div>
+      <h3>Educazione</h3>
+      <p>Costruire autorit&agrave; presentando prodotti, risultati, competenze e formazione</p>
+      <div class="dur">4 settimane &middot; 7 email</div>
+    </div>
+    <div class="approach-arrow">&rarr;</div>
+    <div class="approach-card ph-c">
+      <div class="phase-num">3</div>
+      <h3>Conversione</h3>
+      <p>Aprire la porta al contatto diretto con analisi gratuite e opzioni accessibili</p>
+      <div class="dur">2+ settimane &middot; 5 email</div>
+    </div>
+  </div>
+
+  <div class="phase-note gold-note">
+    <strong>Prima di tutto: un'email di benvenuto.</strong> Il piano inizia con un messaggio di re-introduzione che spiega al contatto chi &egrave; LabMec e cosa ricever&agrave; nelle settimane successive. Nessuna vendita, nessuna pressione: un saluto professionale che scalda il dominio di invio e prepara il terreno.
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FASE 1 DETAIL                              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="phase-section bg-alt">
+  <div class="wrap">
+    <div class="phase-head">
+      <span class="phase-dot" style="background:var(--orange)"></span>
+      <span class="phase-label" style="color:var(--orange);">Fase 1 &mdash; Riattivazione</span>
+    </div>
+    <div class="section-title">Prima di vendere qualcosa, diamo qualcosa</div>
+    <p class="phase-info">Le prime 2 settimane sono dedicate esclusivamente a offrire strumenti utili e risorse pratiche. Nessuna menzione commerciale. Il contatto riceve valore reale e noi identifichiamo chi &egrave; ancora attivo nel database.</p>
+
+    <div class="theme-grid">
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--orange);">1</div>
+        <div class="theme-body">
+          <h4>Calcolatore ROI</h4>
+          <p>Quanto rende davvero l'automazione? Uno strumento che calcola il ritorno dell'investimento CNC in base ai dati del contatto.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--orange);">2</div>
+        <div class="theme-body">
+          <h4>Costi energetici</h4>
+          <p>Quanto consuma la macchina ogni mese? Un calcolatore che rivela costi spesso trascurati e apre il discorso sull'efficienza.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--orange);">3</div>
+        <div class="theme-body">
+          <h4>Fermo macchina</h4>
+          <p>Ogni ora di stop ha un costo preciso. Una guida pratica alla manutenzione preventiva, con checklist scaricabile.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--orange);">4</div>
+        <div class="theme-body">
+          <h4>Fornitore locale vs importazione</h4>
+          <p>Il prezzo in fattura non &egrave; il prezzo reale. Assistenza, ricambi, tempi di fermo: i costi nascosti di una macchina importata.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-note gold-note">
+      <strong>Perch&eacute; partiamo dai tool e non dai prodotti?</strong> Su un database freddo, la prima email non pu&ograve; essere &ldquo;compra la nostra macchina&rdquo;. Offrire uno strumento gratuito (calcolatore, guida, checklist) costruisce fiducia, dimostra competenza e ci d&agrave; un dato prezioso: chi lo usa ha un problema concreto che LabMec pu&ograve; risolvere.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FASE 2 DETAIL                              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="phase-section">
+  <div class="wrap">
+    <div class="phase-head">
+      <span class="phase-dot" style="background:var(--green)"></span>
+      <span class="phase-label" style="color:var(--green);">Fase 2 &mdash; Educazione</span>
+    </div>
+    <div class="section-title">Costruire autorit&agrave; e fiducia, email dopo email</div>
+    <p class="phase-info">Chi ha dimostrato interesse nella fase precedente ora riceve contenuti che posizionano LabMec come l'esperto di riferimento. Presentiamo ogni linea di prodotto con il suo nome, mostriamo risultati reali e facciamo emergere i differenziatori che vi rendono unici nel mercato.</p>
+
+    <div class="theme-grid">
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">1</div>
+        <div class="theme-body">
+          <h4>Pantografi CNC</h4>
+          <p class="product-name" style="color:var(--gold);">Linea Atena &mdash; dal modello S al L</p>
+          <p>Come un pantografo CNC cambia la produzione quotidiana. Precisione, automazione, riduzione dei passaggi manuali.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">2</div>
+        <div class="theme-body">
+          <h4>Taglio Laser</h4>
+          <p class="product-name" style="color:var(--gold);">Linea Prometeo &mdash; 3 formati disponibili</p>
+          <p>Velocit&agrave; e finitura impeccabile. Perch&eacute; sempre pi&ugrave; officine stanno aggiungendo il laser alla propria linea.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">3</div>
+        <div class="theme-body">
+          <h4>Taglio Plasma</h4>
+          <p class="product-name" style="color:var(--gold);">Linea Pegaso &mdash; S, M, L</p>
+          <p>La potenza di penetrazione che il laser non offre. La soluzione per la carpenteria metallica pesante.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">4</div>
+        <div class="theme-body">
+          <h4>Agevolazioni e bandi</h4>
+          <p>Credito d'imposta 4.0, bandi regionali, FESR: come il prossimo macchinario pu&ograve; costare fino al 40% in meno. E perch&eacute; la finestra &egrave; adesso.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">5</div>
+        <div class="theme-body">
+          <h4>Assistenza Made in Italy</h4>
+          <p>Il vero costo di una macchina si misura dopo l'acquisto. Tecnico a 30 minuti, supporto in italiano, assistenza continua anche oltre la garanzia. Questo &egrave; il differenziatore LabMec.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">6</div>
+        <div class="theme-body">
+          <h4>Risultati dei clienti</h4>
+          <p>I numeri parlano: +30% di produzione, precisione al centesimo di millimetro, vibrazioni eliminate. Testimonianze reali di chi ha gi&agrave; scelto LabMec e pu&ograve; raccontare i risultati.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--green);">7</div>
+        <div class="theme-body">
+          <h4>Formazione e mondo educational</h4>
+          <p>LabMec non vende solo macchine: forma le persone che le useranno. Corsi pratici personalizzati per le aziende, programmi Scuola 4.0 e FESR per gli istituti tecnici.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-note gold-note">
+      <strong>Perch&eacute; citare i nomi dei prodotti?</strong> <em>Atena, Prometeo, Pegaso</em>: non sono sigle tecniche, sono nomi che si ricordano. Inserirli nelle email educative costruisce familiarit&agrave; con il brand. Quando il contatto sar&agrave; pronto a chiedere un preventivo, non cercher&agrave; &ldquo;un pantografo CNC&rdquo;: cercher&agrave; <strong>Atena</strong>.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FASE 3 DETAIL                              -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="phase-section bg-alt">
+  <div class="wrap">
+    <div class="phase-head">
+      <span class="phase-dot" style="background:var(--purple)"></span>
+      <span class="phase-label" style="color:var(--purple);">Fase 3 &mdash; Conversione</span>
+    </div>
+    <div class="section-title">Chi &egrave; pronto, trova la porta aperta</div>
+    <p class="phase-info">Per chi ha letto, cliccato e mostrato interesse concreto, questa &egrave; la fase in cui LabMec apre la porta. Offriamo pi&ugrave; vie d'accesso: un'analisi gratuita per chi vuole capire, l'usato garantito per chi ha un budget contenuto, il contatto diretto con gli ingegneri per chi &egrave; pronto.</p>
+
+    <div class="theme-grid">
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--purple);">1</div>
+        <div class="theme-body">
+          <h4>Analisi gratuita della produzione</h4>
+          <p>30 minuti con un ingegnere LabMec per analizzare il processo produttivo del contatto e identificare dove sta perdendo margine. Nessun impegno.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--blue);">2</div>
+        <div class="theme-body">
+          <h4>Rilancio strumento energetico</h4>
+          <p>Per chi non ha ancora usato il calcolatore dei costi energetici, un secondo invito con un angolo diverso: officina efficiente = officina che guadagna.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:#8b5e3c;">3</div>
+        <div class="theme-body">
+          <h4>Macchine ricondizionate e garantite</h4>
+          <p>Non tutti i primi investimenti CNC devono pesare sul bilancio. LabMec offre macchine usate ricondizionate con garanzia. Una via d'accesso a basso rischio per chi vuole iniziare.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--purple);">4</div>
+        <div class="theme-body">
+          <h4>Il momento giusto</h4>
+          <p>Una riflessione su cosa succede a chi rimanda troppo: il divario competitivo si allarga. Tono sobrio, mai allarmistico. Un invito a ragionare sui tempi.</p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--purple);">5</div>
+        <div class="theme-body">
+          <h4>Contatto diretto con i tecnici</h4>
+          <p>L'ultima email del piano arriva a nome dell'Ing. Maurizio Palmieri, non del &ldquo;team marketing&rdquo;. Un messaggio diretto, personale, con un invito concreto: prenota una call con i nostri tecnici.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-note gold-note">
+      <strong>Perch&eacute; includere l'usato?</strong> Il database contiene contatti con budget diversi. Chi non pu&ograve; permettersi una macchina nuova oggi pu&ograve; iniziare con un ricondizionato LabMec garantito. &Egrave; un lead in pi&ugrave;, non un lead in meno: chi compra l'usato oggi, compra il nuovo domani.
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- IL TONO                                     -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">Il tono</div>
+  <div class="section-title">Come scriviamo</div>
+  <p class="section-desc">Ogni email &egrave; breve (massimo 150 parole), diretta e senza fronzoli. Nessun emoji, nessuno sconto fittizio, nessun &ldquo;Compra ora!&rdquo;. L'unica azione che chiediamo &egrave; visitare una pagina o compilare un form.</p>
+
+  <div class="tone-block">
+    <blockquote>&ldquo;Da ingegnere a imprenditore. Numeri e margini, mai slogan.&rdquo;</blockquote>
+    <p>Il tono &egrave; quello di un tecnico competente che parla a un altro professionista. Concreto, rispettoso del tempo di chi legge, focalizzato sui problemi reali dell'officina. Ogni email entra subito nel merito: niente &ldquo;sperando che stia bene&rdquo;, niente giri di parole. Un problema, un dato, una risorsa, un'azione.</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- IL PERCORSO VISIVO                         -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">Il percorso</div>
+  <div class="section-title">Da contatto freddo a richiesta concreta</div>
+  <p class="section-desc">Ogni contatto attraversa un percorso chiaro. Chi dimostra interesse riceve contenuti sempre pi&ugrave; mirati. Chi non interagisce viene rimosso per proteggere la qualit&agrave; degli invii.</p>
+
+  <div class="journey-wrap">
+    <div class="journey-flow">
+      <div class="journey-step" style="background:var(--navy);color:#fff;">
+        Database<br>freddo
+        <span>1.500 &ndash; 5.000</span>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step" style="background:var(--gold-dim);color:var(--dark);border:2px solid var(--gold);">
+        Welcome
+        <span>Presentazione</span>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step" style="background:var(--orange-bg);color:var(--orange);border:2px solid var(--orange);">
+        Riattivazione
+        <span>4 email &middot; Tool</span>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-filter">
+        Filtro
+        <span>Solo contatti attivi</span>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step" style="background:var(--green-bg);color:var(--green);border:2px solid var(--green);">
+        Educazione
+        <span>7 email &middot; Prodotti</span>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step" style="background:var(--purple-bg);color:var(--purple);border:2px solid var(--purple);">
+        Conversione
+        <span>5 email &middot; Contatto</span>
+      </div>
+      <div class="journey-arrow">&rarr;</div>
+      <div class="journey-step" style="background:var(--gold);color:var(--navy);">
+        Form / Call
+        <span>&rarr; Team Commerciale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CALENDARIO SINTETICO                       -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">Il calendario</div>
+  <div class="section-title">Settimana per settimana</div>
+  <p class="section-desc">Due invii a settimana, il marted&igrave; e il gioved&igrave; mattina alle 08:00. Frequenza calibrata: abbastanza per restare presenti, non cos&igrave; tanta da infastidire.</p>
+
+  <div class="cal-grid">
+    <div class="cal-header">Sett.</div>
+    <div class="cal-header">Marted&igrave;</div>
+    <div class="cal-header">Gioved&igrave;</div>
+
+    <div class="cal-week">0</div>
+    <div class="cal-cell" style="background:var(--warm); grid-column: span 2; justify-content:center; font-size:12px; color:var(--mid);">Setup e preparazione</div>
+
+    <div class="cal-week">0</div>
+    <div class="cal-cell" style="grid-column: span 2; justify-content:center;">
+      <span class="cal-pill w">E0</span><span class="cal-theme">Welcome &mdash; Presentazione LabMec</span>
+    </div>
+
+    <div class="cal-week">1</div>
+    <div class="cal-cell"><span class="cal-pill r">R1</span><span class="cal-theme">Calcolatore ROI</span></div>
+    <div class="cal-cell"><span class="cal-pill r">R2</span><span class="cal-theme">Costi energetici</span></div>
+
+    <div class="cal-week">2</div>
+    <div class="cal-cell"><span class="cal-pill r">R3</span><span class="cal-theme">Fermo macchina</span></div>
+    <div class="cal-cell"><span class="cal-pill r">R4</span><span class="cal-theme">Locale vs importazione</span></div>
+
+    <div class="cal-review">Review 1 &mdash; Analisi risultati Fase 1 &middot; Esclusione contatti non attivi</div>
+
+    <div class="cal-week">3</div>
+    <div class="cal-cell"><span class="cal-pill e">E1</span><span class="cal-theme">Pantografi &mdash; Atena</span></div>
+    <div class="cal-cell"><span class="cal-pill e">E2</span><span class="cal-theme">Laser &mdash; Prometeo</span></div>
+
+    <div class="cal-week">4</div>
+    <div class="cal-cell"><span class="cal-pill e">E3</span><span class="cal-theme">Plasma &mdash; Pegaso</span></div>
+    <div class="cal-cell"><span class="cal-pill e">E4</span><span class="cal-theme">Agevolazioni 4.0</span></div>
+
+    <div class="cal-week">5</div>
+    <div class="cal-cell"><span class="cal-pill e">E5</span><span class="cal-theme">Assistenza post-vendita</span></div>
+    <div class="cal-cell"><span class="cal-pill e">E6</span><span class="cal-theme">Risultati clienti</span></div>
+
+    <div class="cal-week">6</div>
+    <div class="cal-cell"><span class="cal-pill e">E7</span><span class="cal-theme">Formazione & educational</span></div>
+    <div class="cal-cell"><span class="cal-pill c">C1</span><span class="cal-theme">Analisi gratuita</span></div>
+
+    <div class="cal-week">7</div>
+    <div class="cal-cell"><span class="cal-pill v">V1</span><span class="cal-theme">Rilancio energia</span></div>
+    <div class="cal-cell"><span class="cal-pill u">U1</span><span class="cal-theme">Usato garantito</span></div>
+
+    <div class="cal-week">8</div>
+    <div class="cal-cell"><span class="cal-pill c">C2</span><span class="cal-theme">Il momento giusto</span></div>
+    <div class="cal-cell"><span class="cal-pill c">C3</span><span class="cal-theme">Call con Ing. Palmieri</span></div>
+
+    <div class="cal-review">Review 2 &mdash; Bilancio completo &middot; ROI del piano &middot; Decisioni Q3</div>
+  </div>
+
+  <div class="phase-note gold-note" style="margin-top:24px;">
+    <strong>Nota sul 1&deg; Maggio.</strong> L'email E4 sugli incentivi fiscali cade nella settimana del 1&deg; maggio (festivo). L'invio verr&agrave; anticipato al mercoled&igrave; 30 aprile per garantire che il messaggio venga letto in un giorno lavorativo.
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- DOPO LA CAMPAGNA                           -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">Dopo la campagna</div>
+  <div class="section-title">Il piano non finisce con l'ultima email</div>
+  <p class="section-desc">I contatti che hanno interagito con il piano ma non hanno ancora compilato un form sono lead caldi. Non vanno persi: vanno nutriti nel tempo con una cadenza pi&ugrave; leggera.</p>
+
+  <div class="seg-box" style="border-left:4px solid var(--teal);">
+    <h3 style="color:var(--teal);">Newsletter mensile &mdash; da giugno 2026</h3>
+    <p>Una email al mese rivolta ai contatti attivi che non si sono ancora convertiti. Il ciclo vendita CNC &egrave; lungo: chi oggi legge, domani compra. La newsletter mantiene LabMec nella mente del contatto senza pressione commerciale.</p>
+    <div class="seg-levels" style="margin-top:16px;">
+      <div class="seg-level" style="background:var(--teal-bg); color:var(--teal);">
+        <h4>Contenuti</h4>
+        <p>Nuovi modelli, casi studio, aggiornamenti su bandi e incentivi, novit&agrave; dal mondo CNC.</p>
+      </div>
+      <div class="seg-level" style="background:var(--teal-bg); color:var(--teal);">
+        <h4>Frequenza</h4>
+        <p>Un invio al mese, il primo marted&igrave;. Stessa struttura e tono del piano principale.</p>
+      </div>
+      <div class="seg-level" style="background:var(--teal-bg); color:var(--teal);">
+        <h4>Pulizia</h4>
+        <p>Ogni trimestre, rimozione dei contatti che non aprono da 3 mesi consecutivi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- KPI                                        -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="section-label">I risultati</div>
+  <div class="section-title">Come misuriamo il successo</div>
+  <p class="section-desc">Ogni azione &egrave; tracciabile. Al termine del piano avremo dati chiari su cosa ha funzionato, cosa va migliorato e quanto vale l'investimento fatto.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <h3>Contatti generati</h3>
+      <p>Quante persone hanno compilato un form o richiesto un'analisi gratuita. Questo &egrave; l'indicatore principale: lead pronti per il team commerciale.</p>
+    </div>
+    <div class="kpi-card">
+      <h3>Tasso di engagement</h3>
+      <p>Quanti contatti hanno aperto e cliccato sulle email. Ci dice quanta parte del database &egrave; realmente attiva e ricettiva.</p>
+    </div>
+    <div class="kpi-card">
+      <h3>Pagine pi&ugrave; efficaci</h3>
+      <p>Quali pagine di atterraggio generano pi&ugrave; form compilati: i tool (calcolatori, guide) o le pillar page (prodotti). Ci guida per il Q3.</p>
+    </div>
+    <div class="kpi-card">
+      <h3>ROI del piano</h3>
+      <p>Costo totale del piano email vs valore dei contatti generati. Se anche solo 2-3 contatti si trasformano in trattativa, il piano si ripaga.</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <strong>LabMec Italia</strong> &mdash; Strategia Email Marketing Q2 2026<br>
+  <div class="footer-line">Preparato da Mirai Studio &mdash; Marzo 2026</div>
+</footer>
+
+</body>
+</html>
