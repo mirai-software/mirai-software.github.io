@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategia Social: Wild-toy garden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            background-color: #FAF6F0;
+            color: #3E362E;
+        }
+        .accent-bg { background-color: #D48C8C; }
+        .accent-text { color: #D48C8C; }
+        .secondary-bg { background-color: #B5838D; }
+        .nav-card { transition: all 0.2s ease-in-out; }
+        .nav-card:hover, .nav-card.active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: #D48C8C;
+        }
+        .nav-card.active {
+            background-color: #fcebeb;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased pb-20">
+
+    <!-- Chosen Palette: Warm Neutrals with Terracotta (#D48C8C) and Dusty Rose (#B5838D) accents to reflect a premium, sensual, and skin-like aesthetic. -->
+    <!-- Application Structure Plan: The SPA uses a dashboard-style layout. It begins with an executive summary, flows into an interactive 'Content Pillars' explorer, and concludes with the Conversion Matrix funnel. -->
+    <!-- Visualization & Content Choices: Interactive tab system for the 4 pillars to chunk information. NO SVG or Mermaid used; only standard HTML/CSS shapes and Canvas. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl">🔥</span>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-[#3E362E]">Wild-toy garden</h1>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider"></p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#ambassador" class="hover:text-[#D48C8C] transition-colors">Volto Brand</a>
+                <a href="#overview" class="hover:text-[#D48C8C] transition-colors">Visione Strategica</a>
+                <a href="#tov" class="hover:text-[#D48C8C] transition-colors">Tone of Voice</a>
+                <a href="#pilastri" class="hover:text-[#D48C8C] transition-colors">Pilastri Editoriali</a>
+                <a href="#matrice" class="hover:text-[#D48C8C] transition-colors">Matrice di Conversione</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-10 space-y-20">
+
+        <section id="ambassador" class="pt-4">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold mb-4">Il Volto del Brand (Ambassador)</h2>
+                <p class="text-gray-600">
+                    Definire chi rappresenta <strong>Wild-toy garden</strong> sui social è fondamentale. Ecco le 4 strategie esplorabili per la produzione dei contenuti visivi, con relativi pro e contro.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Opzione 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#3E362E]"></div>
+                    <div class="text-4xl mb-4">👤</div>
+                    <h3 class="font-bold text-lg mb-4">1. Persona Fissa</h3>
+                    <div class="space-y-4 text-sm mt-auto">
+                        <div class="bg-[#f5ecee] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#B5838D] block mb-1">✓ Pro</strong> 
+                            Affidabilità e fidelizzazione del pubblico. Crea un legame empatico e riconoscibile a lungo termine.
+                        </div>
+                        <div class="bg-[#fcebeb] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#D48C8C] block mb-1">✗ Contro</strong> 
+                            Difficoltà (logistica e contrattuale) nel trovare e mantenere una persona fissa disposta a esporsi.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opzione 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#3E362E]"></div>
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="font-bold text-lg mb-4">2. Guest Star</h3>
+                    <div class="space-y-4 text-sm mt-auto">
+                        <div class="bg-[#f5ecee] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#B5838D] block mb-1">✓ Pro</strong> 
+                            Forte differenziazione sulla pagina. Permette di intercettare più categorie e nicchie di persone.
+                        </div>
+                        <div class="bg-[#fcebeb] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#D48C8C] block mb-1">✗ Contro</strong> 
+                            Sforzo organizzativo altissimo per trovare talent/modelli diversi ad ogni sessione di shooting.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opzione 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#3E362E]"></div>
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="font-bold text-lg mb-4">3. Modello Ibrido</h3>
+                    <div class="space-y-4 text-sm mt-auto">
+                        <div class="bg-[#f5ecee] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#B5838D] block mb-1">✓ Pro</strong> 
+                            Unisce la fidelizzazione del volto fisso alla freschezza e inclusività delle guest star.
+                        </div>
+                        <div class="bg-[#fcebeb] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#D48C8C] block mb-1">✗ Contro</strong> 
+                            Richiede il massimo del budget e della strutturazione editoriale (doppia gestione talent).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opzione 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#3E362E]"></div>
+                    <div class="text-4xl mb-4">🧸</div>
+                    <h3 class="font-bold text-lg mb-4">4. La Mascotte</h3>
+                    <div class="space-y-4 text-sm mt-auto">
+                        <div class="bg-[#f5ecee] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#B5838D] block mb-1">✓ Pro</strong> 
+                            Scalabilità totale: non serve trovare persone reali. Altamente ironico e condivisibile.
+                        </div>
+                        <div class="bg-[#fcebeb] p-3 rounded-lg text-gray-700">
+                            <strong class="text-[#D48C8C] block mb-1">✗ Contro</strong> 
+                            Più difficile generare empatia profonda o trattare temi educativi complessi con serietà.
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/reel/DE7EGoFt6rF/" target="_blank" class="mt-4 text-xs font-bold text-[#D48C8C] hover:underline flex items-center">
+                        🔗 Guarda la reference mascotte
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Il Posizionamento</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Questa strategia mira a posizionare <strong>Wild-toy garden</strong> come un punto di riferimento per il benessere sessuale. Uniamo un'immagine esplicita e curata a un tono di voce sfacciato, ironico e totalmente privo di tabù.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-white rounded-full shadow-sm text-sm font-semibold border border-gray-100">🔥 Tono Sfacciato</span>
+                    <span class="px-4 py-2 bg-white rounded-full shadow-sm text-sm font-semibold border border-gray-100">🧠 Benessere Consapevole</span>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="text-xl font-semibold mb-4 border-b pb-2">Ispirazioni & Benchmark</h3>
+                <p class="text-sm text-gray-600 mb-4">La nostra architettura comunicativa si ispira ai leader del settore, filtrati per i nostri formati chiave:</p>
+                <ul class="space-y-4">
+                    <li class="flex items-start space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-[#fcebeb] flex items-center justify-center text-xl shrink-0">🎯</div>
+                        <div>
+                            <p class="font-bold text-sm text-gray-800">Profili Reference</p>
+                            <div class="text-xs text-gray-500 mt-1 flex flex-col space-y-1 font-medium">
+                                <a href="https://www.instagram.com/feekyfeekystore/" target="_blank" class="hover:text-[#D48C8C] transition-colors">→ Feeky Feeky (Tono & Contenuti)</a>
+                                <a href="https://www.instagram.com/lovehoneyofficial/" target="_blank" class="hover:text-[#D48C8C] transition-colors">→ Lovehoney (Inclusività)</a>
+                                <a href="https://www.instagram.com/mysecretcase/" target="_blank" class="hover:text-[#D48C8C] transition-colors">→ MySecretCase (Education)</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-3 pt-2 border-t border-gray-100">
+                        <div class="w-10 h-10 rounded-full bg-[#f5ecee] flex items-center justify-center text-xl shrink-0">📌</div>
+                        <div>
+                            <p class="font-bold text-sm text-gray-800">Esempi Formati</p>
+                            <div class="text-xs text-gray-500 mt-1 flex flex-col space-y-1 font-medium">
+                                <a href="https://www.instagram.com/reel/DJBhq7tC3JS/" target="_blank" class="hover:text-[#B5838D] transition-colors">🎥 Reference Video Reel</a>
+                                <a href="https://www.instagram.com/p/DWQzFdhl3S0/?img_index=1" target="_blank" class="hover:text-[#B5838D] transition-colors">📚 Reference Carosello</a>
+                                <a href="https://www.instagram.com/p/DV0g8mEDxGG/" target="_blank" class="hover:text-[#B5838D] transition-colors">✨ Reference Grafica</a>
+                                <a href="https://www.instagram.com/feekyfeekystore/" target="_blank" class="hover:text-[#B5838D] transition-colors">🗺️ Reference Storie in Evidenza</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tov" class="pt-10">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold mb-4">Il Tone of Voice (ToV)</h2>
+                <p class="text-gray-600">
+                    Il tono di Wild-toy garden è <strong>Sensual-Witty</strong>: esperto come un sessuologo, ma ironico e complice come una chiacchierata tra amiche. Ecco le regole d'ingaggio per il copy.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-3">🔥</div>
+                    <h3 class="font-bold text-lg mb-2 text-[#3E362E]">Sfacciato, non volgare</h3>
+                    <p class="text-sm text-gray-600">Rompiamo i tabù e parliamo di piacere in modo diretto, ma l'eleganza è la nostra linea rossa. Giochiamo con l'immaginazione, mai con il "pornese".</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-3">🤝</div>
+                    <h3 class="font-bold text-lg mb-2 text-[#3E362E]">Complice e Rassicurante</h3>
+                    <p class="text-sm text-gray-600">L'utente deve sentirsi compreso. Usiamo l'ironia situazionale (POV) per normalizzare l'imbarazzo e trasformarlo in un sorriso.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-[#f5ecee] p-5 rounded-2xl border border-[#B5838D]/30 h-full">
+                    <h4 class="font-bold text-[#B5838D] mb-2 flex items-center"><span class="text-xl mr-2">✅</span> DO'S (Cosa fare)</h4>
+                    <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                        <li>Usare situazioni iper-realistiche (il partner che russa, lo stress da ufficio).</li>
+                        <li>Valorizzare forme, materiali e texture nei testi.</li>
+                        <li>Usare microcopy rassicurante su spedizione e privacy.</li>
+                    </ul>
+                </div>
+                <div class="bg-[#fcebeb] p-5 rounded-2xl border border-[#D48C8C]/30 h-full">
+                    <h4 class="font-bold text-[#D48C8C] mb-2 flex items-center"><span class="text-xl mr-2">🚫</span> DON'TS (Cosa evitare)</h4>
+                    <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside">
+                        <li>Linguaggio clinico o ginecologico troppo freddo.</li>
+                        <li>Doppi sensi da bar o umorismo maschilista/stereotipato.</li>
+                        <li>Far sentire l'utente "sbagliato" o non all'altezza.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="pilastri" class="pt-10">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold mb-4">I 4 Pilastri Editoriali</h2>
+                <p class="text-gray-600">
+                    Esplora la struttura dei contenuti progettata per attrarre, educare e convertire. Ogni formato ha un ruolo specifico nell'ecosistema del brand. Clicca sui formati sottostanti per analizzarne i dettagli strategici.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <button id="btn-video" class="nav-card active bg-white p-4 rounded-xl border-2 border-transparent text-center cursor-pointer" onclick="updatePillar('video')">
+                    <div class="text-3xl mb-2">🎥</div>
+                    <h3 class="font-bold text-sm">Video (Reel)</h3>
+                    <p class="text-xs text-gray-500 mt-1">Discovery</p>
+                </button>
+                <button id="btn-caroselli" class="nav-card bg-white p-4 rounded-xl border-2 border-transparent text-center cursor-pointer" onclick="updatePillar('caroselli')">
+                    <div class="text-3xl mb-2">📚</div>
+                    <h3 class="font-bold text-sm">Caroselli</h3>
+                    <p class="text-xs text-gray-500 mt-1">Trust</p>
+                </button>
+                <button id="btn-grafiche" class="nav-card bg-white p-4 rounded-xl border-2 border-transparent text-center cursor-pointer" onclick="updatePillar('grafiche')">
+                    <div class="text-3xl mb-2">✨</div>
+                    <h3 class="font-bold text-sm">Grafiche</h3>
+                    <p class="text-xs text-gray-500 mt-1">Engagement</p>
+                </button>
+                <button id="btn-storie" class="nav-card bg-white p-4 rounded-xl border-2 border-transparent text-center cursor-pointer" onclick="updatePillar('storie')">
+                    <div class="text-3xl mb-2">🗺️</div>
+                    <h3 class="font-bold text-sm">Storie (Evidenza)</h3>
+                    <p class="text-xs text-gray-500 mt-1">Conversion</p>
+                </button>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 min-h-[300px] flex flex-col justify-center">
+                <div id="pillar-content" class="fade-in">
+                </div>
+            </div>
+        </section>
+
+        <section id="matrice" class="pt-10 mb-20">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold mb-4">Matrice di Conversione & CTA</h2>
+                <p class="text-gray-600">
+                    Il percorso dell'utente dal primo contatto all'acquisto, mappato attraverso le Call to Action (CTA) specifiche progettate per guidarlo fluidamente lungo l'esperienza d'acquisto.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-stretch gap-6 relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2 rounded-full"></div>
+                
+                <div class="flex-1 bg-white p-6 rounded-2xl shadow-md border-t-4 border-[#D48C8C] relative z-10 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[#fcebeb] text-[#D48C8C] flex items-center justify-center text-xl font-bold mb-4 shadow-sm">1</div>
+                    <h3 class="text-lg font-bold mb-2">Awareness</h3>
+                    <p class="text-sm text-gray-500 mb-4">Contenuti Video</p>
+                    <div class="mt-auto bg-gray-50 px-4 py-3 rounded-lg w-full">
+                        <p class="text-sm font-semibold italic">"Vieni a scoprire il piacere. Link in Bio."</p>
+                    </div>
+                </div>
+
+                <div class="flex-1 bg-white p-6 rounded-2xl shadow-md border-t-4 border-[#B5838D] relative z-10 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-[#f5ecee] text-[#B5838D] flex items-center justify-center text-xl font-bold mb-4 shadow-sm">2</div>
+                    <h3 class="text-lg font-bold mb-2">Consideration</h3>
+                    <p class="text-sm text-gray-500 mb-4">Caroselli Educativi</p>
+                    <div class="mt-auto bg-gray-50 px-4 py-3 rounded-lg w-full">
+                        <p class="text-sm font-semibold italic">"Salva questo post"</p>
+                    </div>
+                </div>
+
+                <div class="flex-1 bg-white p-6 rounded-2xl shadow-md border-t-4 border-[#3E362E] relative z-10 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 text-[#3E362E] flex items-center justify-center text-xl font-bold mb-4 shadow-sm">3</div>
+                    <h3 class="text-lg font-bold mb-2">Conversion</h3>
+                    <p class="text-sm text-gray-500 mb-4">Storie / Highlights</p>
+                    <div class="mt-auto bg-gray-50 px-4 py-3 rounded-lg w-full">
+                        <p class="text-sm font-semibold italic text-[#D48C8C]">"Scopri il piacere"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const pillarData = {
+            video: {
+                title: 'I Video',
+                subtitle: 'Fase: Discovery',
+                icon: '🎥',
+                objective: 'Attrarre nuovi utenti tramite l\'ironia e la riconoscibilità.',
+                focus: 'Ironia situazionale, montaggio serrato, identificazione immediata (Relatability). Utilizzo di titoli "hook" ad alto contrasto per catturare l\'attenzione nei primi secondi.',
+                themeColor: '#D48C8C',
+                details: []
+            },
+            caroselli: {
+                title: 'I Caroselli: "Anatomia del Piacere"',
+                subtitle: 'Fase: Trust & Education',
+                icon: '📚',
+                objective: 'Educare l\'utente e rassicurarlo sulla qualità dei prodotti.',
+                focus: 'Design pulito, approccio micro-learning per l\'abbattimento delle frizioni all\'acquisto tramite l\'informazione.',
+                themeColor: '#B5838D',
+                details: [
+                    'Caroselli Informativi (guide, materiali)',
+                    'Caroselli sui Prodotti (focus benefici)'
+                ]
+            },
+            grafiche: {
+                title: 'Le Grafiche: "Verità Senza Filtri"',
+                subtitle: 'Fase: Engagement',
+                icon: '✨',
+                objective: 'Generare salvataggi e condivisioni (Save & Share) per la viralità organica.',
+                focus: 'Minimalismo estetico, copy "bold" e citazioni fortemente condivisibili. Formato a singolo post grafico d\'impatto.',
+                themeColor: '#D48C8C',
+                details: []
+            },
+            storie: {
+                title: 'Storie in Evidenza: "Guida all\'Esplorazione"',
+                subtitle: 'Fase: Conversion & Navigazione',
+                icon: '🗺️',
+                objective: 'Facilitare il percorso d\'acquisto, risolvere dubbi pre-vendita e fare customer service.',
+                focus: 'Architettura UX-Oriented intuitiva e categorizzazione chiara per rassicurare l\'utente.',
+                themeColor: '#3E362E',
+                details: [
+                    '✨ Primi Passi: Guida per chi non ha mai usato un toy.',
+                    '📦 Pacco Anonimo: Video/Foto sulla Privacy First.',
+                    '💬 Vox Populi: Testimonianze e recensioni ironiche.',
+                    '⚙️ Tech & Care: Tutorial su ricarica e pulizia.'
+                ]
+            }
+        };
+
+        function updatePillar(id) {
+            document.querySelectorAll('.nav-card').forEach(card => {
+                card.classList.remove('active', 'border-[#D48C8C]');
+                card.classList.add('border-transparent');
+            });
+            
+            const activeBtn = document.getElementById('btn-' + id);
+            activeBtn.classList.add('active', 'border-[#D48C8C]');
+            activeBtn.classList.remove('border-transparent');
+
+            const data = pillarData[id];
+            const contentDiv = document.getElementById('pillar-content');
+            
+            contentDiv.classList.remove('fade-in');
+            void contentDiv.offsetWidth; 
+            contentDiv.classList.add('fade-in');
+
+            let detailsHTML = '';
+            if (data.details.length > 0) {
+                detailsHTML = '<div class="mt-6 border-t pt-4"><h4 class="font-bold text-sm mb-3">Architettura / Esecuzione:</h4><ul class="space-y-2">';
+                data.details.forEach(detail => {
+                    detailsHTML += `<li class="text-sm text-gray-700 bg-gray-50 p-2 rounded">${detail}</li>`;
+                });
+                detailsHTML += '</ul></div>';
+            }
+
+            contentDiv.innerHTML = `
+                <div class="flex items-start space-x-4">
+                    <div class="text-5xl" style="color: ${data.themeColor}">${data.icon}</div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wide" style="color: ${data.themeColor}">${data.subtitle}</p>
+                        <h3 class="text-2xl font-bold mt-1 mb-4 text-[#3E362E]">${data.title}</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 mb-1">Obiettivo Principale:</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">${data.objective}</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 mb-1">Focus Strategico:</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">${data.focus}</p>
+                            </div>
+                        </div>
+                        ${detailsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        updatePillar('video');
+    </script>
+</body>
+</html>
